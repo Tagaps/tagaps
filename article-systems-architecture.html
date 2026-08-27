@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems Architecture: Making the Invisible Visible - TAG</title>
+    <meta name="description" content="Systems Architecture: Making the Invisible Visible">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/favicon-tag_4723be1e.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #00af8d;
+            --neon-green: #94ce15;
+            --orange: #e84005;
+            --yellow: #efa726;
+            --dark-blue: #181921;
+            --blue-gray: #99aaa6;
+            --white: #ffffff;
+            --text-dark: #859390;
+            --font-family: 'Antipasto', 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--dark-blue);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-blue);
+            padding: 1rem 0;
+            position: relative;
+            z-index: 50;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-logo {
+            height: 1.5rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            display: block;
+            line-height: 1;
+        }
+
+        .top-bar-logo:hover {
+            opacity: 1;
+        }
+
+        /* Navbar Container - Sticky */
+        #navbar-container {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        /* Navigation */
+        nav {
+            position: relative;
+            background-color: var(--white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding-left: 10%;
+        }
+
+        .nav-logo {
+            height: 3rem;
+        }
+
+        .nav-logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-left: -11%;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+            margin-left: auto;
+            margin-right: -2%;
+        }
+
+        .nav-links a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown-btn {
+            background: none;
+            border: none;
+            color: var(--dark-blue);
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s;
+            padding: 0;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .nav-links .dropdown-btn:hover {
+            color: var(--turquoise);
+        }
+
+        .dropdown-icon {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            margin-left: 0.3rem;
+            vertical-align: middle;
+        }
+
+        .nav-separator {
+            width: 1px;
+            height: 1.5rem;
+            background-color: var(--blue-gray);
+            opacity: 0.3;
+            list-style: none;
+        }
+
+        .nav-links .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            background-color: var(--white);
+            border: 1px solid var(--blue-gray);
+            border-radius: 0.5rem;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .nav-links .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+        }
+
+        .nav-links .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--dark-blue);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+            color: var(--turquoise);
+        }
+
+        .contact-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background-color: var(--orange);
+            color: var(--white);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232, 64, 5, 0.3);
+        }
+
+        /* PAGE CONTENT */
+        .page-content {
+            padding-top: 2rem;
+        }
+
+        /* HEADER NAVIGATION */
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-back:hover {
+            gap: 1rem;
+        }
+
+        .case-counter {
+            color: var(--blue-gray);
+            font-size: 0.9rem;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(24, 25, 33, 0.6);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 3rem;
+            color: var(--white);
+        }
+
+        .case-badge {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* PROJECT DETAILS BOX */
+        .project-details {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            height: fit-content;
+            transition: all 0.3s;
+        }
+
+        .project-details:hover {
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+        }
+
+        .project-details h3 {
+            color: var(--orange);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item {
+            margin-bottom: 2rem;
+        }
+
+        .detail-label {
+            color: var(--blue-gray);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .detail-value {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* TECH STACK */
+        .tech-stack {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .tech-stack:hover {
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+        }
+
+        .tech-stack h3 {
+            color: var(--orange);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .tech-icon {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .tech-icon:hover {
+            background: rgba(0, 175, 141, 0.1);
+            border-color: var(--turquoise);
+        }
+
+        /* CONTENT COLUMN */
+        .content-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .content-section {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .section-icon {
+            width: 3rem;
+            height: 3rem;
+            min-width: 3rem;
+            background: rgba(0, 175, 141, 0.1);
+            border: 1px solid rgba(0, 175, 141, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: var(--turquoise);
+        }
+
+        .section-content h2 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .section-content h1,
+        .section-content h2,
+        .section-content h3 {
+            padding: 0 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content h1 {
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .section-content h3 {
+            font-size: 1.3rem;
+            color: var(--white);
+        }
+
+        /* Article Images Grid */
+        .article-image {
+            max-width: 100%;
+            height: auto;
+            margin: 0.5rem;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .section-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem;
+            max-width: calc(100% - 4rem);
+        }
+
+        .images-grid .article-image {
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+
+        .section-content ul {
+            padding: 0 2rem 0 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .section-content table {
+            margin: 1.5rem 2rem;
+            width: calc(100% - 4rem);
+            border-collapse: collapse;
+        }
+
+        .section-content table th,
+        .section-content table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-content table th {
+            background-color: rgba(0, 175, 141, 0.1);
+            color: var(--turquoise);
+            font-weight: 600;
+        }
+
+        .section-content a {
+            color: var(--turquoise);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .section-content a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* RESULTS SECTION */
+        .results-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .results-section h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .result-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* NAVIGATION SECTION */
+        .navigation-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+        }
+
+        .nav-button.prev {
+            justify-content: flex-start;
+        }
+
+        .nav-button.next {
+            justify-content: flex-end;
+        }
+
+        .nav-label {
+            font-size: 0.85rem;
+            color: var(--blue-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-top: 0.5rem;
+        }
+
+        .nav-arrow {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            transition: all 0.3s;
+        }
+
+        .nav-button.prev:hover .nav-arrow {
+            transform: translateX(-5px);
+        }
+
+        .nav-button.next:hover .nav-arrow {
+            transform: translateX(5px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .navigation-section {
+                grid-template-columns: 1fr;
+            }
+
+            .header-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* FOOTER STYLES */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--blue-gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--turquoise);
+        }
+
+        .footer-logo {
+            height: 3rem;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links a {
+            color: var(--blue-gray);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--turquoise);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--blue-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--blue-gray);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--blue-gray);
+        }
+
+        .footer-logo {
+            height: 3rem;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* ===== RESPONSIVE OPTIMIZATION (PANTALLAS GRANDES) ===== */
+        /* IMPORTANTE: 1440x900 es INTOCABLE. Estos cambios solo aplican a pantallas > 1440px */
+
+        @media (min-width: 1600px) {
+            .proof-elements { padding: 8rem 0; }
+            .problems { padding: 8rem 0; }
+            .video-section { padding: 8rem 0; }
+            .meets-guide { padding: 8rem 0; }
+            .tech-stack { padding: 8rem 0; }
+            .insights { padding: 8rem 0; }
+            .hero-image { max-width: 110%; }
+            .hero-pattern { max-width: 110%; }
+            .problems h2, .video-section h2, .meets-guide h2, .insights h2 { font-size: 3.2rem; }
+            .tech-stack h2 { font-size: 2.8rem; }
+        }
+
+        @media (min-width: 1920px) {
+            .proof-elements { padding: 10rem 0; }
+            .problems { padding: 10rem 0; }
+            .video-section { padding: 10rem 0; }
+            .meets-guide { padding: 10rem 0; }
+            .tech-stack { padding: 10rem 0; }
+            .insights { padding: 10rem 0; }
+            .problems h2, .video-section h2, .meets-guide h2, .insights h2 { font-size: 3.5rem; }
+        }
+    </style>
+    <!-- Mobile styles - loaded after inline styles to ensure proper override -->
+    <link rel="stylesheet" href="navbar-mobile-styles.css?v=2">
+    <link rel="stylesheet" href="navbar-compact.css?v=2">
+
+    <style id="mobile-nav-internal-pages-fix">
+        @media (max-width: 768px) {
+            body > .top-bar,
+            body > nav {
+                display: none !important;
+            }
+        }
+    </style>
+<style id="tag-responsive-polish">
+html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}*,*:before,*:after{box-sizing:border-box}img,svg,video,iframe{max-width:100%;height:auto}section,main,footer,header,nav{max-width:100%;overflow-x:clip}.container{width:min(100%,1200px)!important;max-width:1200px!important;padding-left:clamp(1rem,4vw,1.5rem)!important;padding-right:clamp(1rem,4vw,1.5rem)!important}.hero-orientation{max-width:min(100%,980px)!important;white-space:normal!important;text-wrap:pretty}.ticker-wrapper,.logo-ticker,.logo-wall,.logos-section{overflow:hidden!important}.ticker-tape{will-change:transform}.tag-leads-bg,.ecosystem-bg,.hero-pattern{max-width:100vw!important}.footer-content{min-width:0!important}.footer-section{min-width:0!important;max-width:100%!important}.footer-section a,.footer-section h3{max-width:100%!important;overflow-wrap:anywhere}.footer-bottom,.footer-bottom-links{min-width:0!important;max-width:100%!important}
+.services-page .services-hero{background-repeat:no-repeat!important;background-size:cover!important}.services-page .audience-card,.services-page .service-card,.services-page .capacity-card{min-width:0!important}.services-page .capacity-card{width:100%!important;max-width:100%!important}.services-page .capacity-copy{min-width:0!important}.services-page .capacity-cta{max-width:max-content!important}.services-page .capacity-cta span{white-space:nowrap!important}
+@media (max-width:1024px){.nav-content{gap:1rem!important}.nav-links{gap:1rem!important}.services-page .services-hero{min-height:600px!important;background-position:62% center!important}.services-page .services-hero-copy{max-width:560px!important}.services-page .services-hero h1{font-size:clamp(2.7rem,7vw,3.8rem)!important;line-height:1.12!important}.services-page .services-hero p{font-size:clamp(1.1rem,2.4vw,1.35rem)!important;line-height:1.45!important}.services-page .capacity-card{grid-template-columns:72px minmax(0,1fr)!important}.services-page .capacity-cta{grid-column:2!important;justify-self:start!important}}
+@media (max-width:900px){.audience-grid,.core-grid,.services-page .audience-grid,.services-page .core-grid{grid-template-columns:1fr!important}.services-page .services-hero:before{background:linear-gradient(to right,rgba(0,175,141,.94) 0%,rgba(0,175,141,.78) 58%,rgba(0,175,141,.2) 100%)!important}.footer-content{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:2rem!important}.footer-bottom{display:flex!important;flex-wrap:wrap!important;gap:1rem!important;justify-content:space-between!important}.nonprofit-image-col,.nonprofit-img{width:100%!important;max-width:100%!important}}
+@media (max-width:640px){body{font-size:16px!important}.container{padding-left:1rem!important;padding-right:1rem!important}.top-bar{padding:.7rem 0!important}.nav-content{min-height:58px!important}.nav-logo{height:2.35rem!important}.hero,.hero-section,.page-hero,.service-hero,.case-hero,.article-hero{min-height:auto!important}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1,.case-hero h1,.article-hero h1{font-size:clamp(2.15rem,10vw,3rem)!important;line-height:1.08!important;text-wrap:balance;letter-spacing:0!important}.hero p,.hero-section p,.page-hero p,.service-hero p,.case-hero p,.article-hero p{font-size:clamp(1rem,4.6vw,1.2rem)!important;line-height:1.48!important}.hero-orientation{font-size:clamp(.86rem,3.8vw,1rem)!important;line-height:1.45!important;width:auto!important;max-width:100%!important}.tag-leads-bg,.ecosystem-bg{left:0!important;right:0!important;width:100%!important}.hero-pattern{right:0!important;left:auto!important;width:min(52vw,220px)!important}.services-page .services-hero{min-height:560px!important;padding:4.25rem 0!important;background-position:68% center!important}.services-page .services-hero:before{background:linear-gradient(to bottom,rgba(0,175,141,.98) 0%,rgba(0,175,141,.88) 56%,rgba(0,175,141,.28) 100%)!important}.services-page .services-hero h1{font-size:clamp(2.55rem,13vw,3.45rem)!important;line-height:1.08!important;margin-bottom:1.25rem!important}.services-page .services-hero p{font-size:clamp(1.08rem,5vw,1.3rem)!important;line-height:1.42!important}.services-page .audience-card,.services-page .service-card{grid-template-columns:1fr!important;gap:1rem!important;padding:1.35rem!important}.services-page .audience-icon,.services-page .service-icon{width:64px!important;height:64px!important}.services-page .capacity-card{grid-template-columns:1fr!important;gap:1rem!important;padding:1.25rem!important}.services-page .capacity-icon{width:64px!important;height:64px!important}.services-page .capacity-cta{grid-column:auto!important;justify-self:start!important;width:auto!important;max-width:100%!important;padding:.72rem .9rem!important}.services-page .capacity-cta span{white-space:normal!important}.footer-content{grid-template-columns:1fr!important;gap:1.6rem!important;text-align:left!important}.footer-section,.footer-section h3,.footer-section a{text-align:left!important;width:auto!important}.footer-bottom{flex-direction:column!important;align-items:flex-start!important}.footer-bottom-links{display:flex!important;flex-wrap:wrap!important;gap:.75rem!important}.tag-cookie-consent{left:.75rem!important;right:.75rem!important;bottom:.75rem!important}}
+@media (max-width:420px){.container{padding-left:.9rem!important;padding-right:.9rem!important}.services-page .services-hero h1{font-size:clamp(2.25rem,12vw,3rem)!important}.services-page .services-hero p br{display:none}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1{font-size:clamp(2rem,10.5vw,2.65rem)!important}.closing-actions,.footer-bottom-links{width:100%!important}.closing-btn{width:100%!important;justify-content:flex-start!important}}
+</style></head>
+<body>
+<div class="top-bar">
+    <div class="container">
+        <div class="top-bar-content">
+            
+            <a href="https://www.bigaps.com/" target="_blank" rel="noopener noreferrer">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/logo-big_89fdd27e.png" alt="BIG" class="top-bar-logo">
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- NAVIGATION DESKTOP ONLY -->
+<nav>
+    <div class="container">
+        <div class="nav-content">
+            <a href="/index" class="nav-logo-link" id="nav-logo-link">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/PrimarylogoTAGforclearbackground_e4900ec5.png" alt="TAG" class="nav-logo">
+            </a>
+            <ul class="nav-links">
+                <li class="dropdown"><button class="dropdown-btn" type="button" aria-expanded="false">Services <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="dropdown-menu"><a href="/services" id="nav-services">Services Overview</a><a href="/services/systems-architecture" id="nav-services-systems">Systems Architecture</a><a href="/services/talent-capability" id="nav-services-talent">Talent Capability</a><a href="/services/self-directed-teams" id="nav-services-teams">Self-Directed Teams</a><a href="/services/workflow-automation" id="nav-services-workflow">Workflow Automation</a><a href="/capacity-as-a-service" id="nav-services-capacity">Capacity as a Service</a></div></li>
+                <li><a href="/our-work" id="nav-our-work">Our Work</a></li>
+                <li class="dropdown">
+                    <button class="dropdown-btn">Insights <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                    <div class="dropdown-menu">
+                        <a href="/our-thinking" id="nav-our-thinking">Our Thinking</a>
+                        <a href="/tag-in-action" id="nav-tag-in-action">TAG in Action</a>
+                    </div>
+                </li>
+                <li><a href="/about" id="nav-about">About</a></li>
+                <li class="nav-separator"></li>
+                <li><a href="/contact" id="nav-contact-link"><button class="contact-btn" id="nav-contact">Contact</button></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+        <div class="container">
+            <!-- HEADER NAVIGATION -->
+            <div class="header-nav">
+                <a href="/our-thinking" class="nav-back">← All Articles</a>
+                <span class="case-counter">ARTICLE 1/5</span>
+            </div>
+
+            <!-- HERO SECTION -->
+            <section class="hero">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/article-systems-architecture_a1443608.jpeg" alt="Article Hero" class="hero-image">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="case-badge">ARTICLE 01</span>
+                    <h1>Systems Architecture: Making the Invisible Visible</h1>
+                    <div class="hero-meta">
+                        <span class="meta-badge">Leadership & Systems</span>
+                        <span class="meta-badge">⏱ 12 min</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MAIN CONTENT -->
+            <div class="main-content">
+                <!-- RIGHT COLUMN: CONTENT -->
+                <div class="content-column">
+                    <!-- THE PROBLEM -->
+                    <div class="content-section">
+                        <div class="section-content">
+<h1>Systems Architecture: Making the Invisible Visible</h1>
+<h3><strong>The Problem Most Leaders Never See</strong></h3>
+<p>You are an SMB leader and drowning in the details. Every day brings a new crisis, a new decision, a new challenge, demanding your attention. Your calendar is packed with meetings. Your inbox is overflowing. Your team is waiting for direction. And somewhere beneath all of this noise, you have a nagging sense that something fundamental is broken—but you cannot quite see what it is.</p>
+<p>This is the condition of most leaders today. They are trapped in the weeds, unable to step back and see the system shaping their organization. They are so close to the problem that they cannot see the problem itself. The irony is profound: the very thing preventing you from seeing the system is the system itself. When systems are broken, they create chaos. Chaos demands constant attention. Constant attention prevents you from stepping back to redesign the system. You become trapped in a cycle of reaction, urgency, and firefighting—unable to escape because the system itself prevents escape. This is not a personal failure. This is a systems failure.</p>
+<p>Most leaders do not struggle because they lack vision, intelligence, or commitment. They struggle because the systems shaping behavior, decisions, and focus are invisible. When you cannot see the system, you cannot lead the organization. You can only manage the symptoms.</p>
+<p>Systems Architecture is the discipline that makes the invisible visible and this isn’t a natural capability that leaders just have; it’s learned. It is the lens through which leaders can step back from the chaos and see the structural forces shaping their organization. It is how you move from managing effort to engineering outcomes.</p>
+<h3>The Core Truth: Outcomes Are Produced by Systems, Not Effort</h3>
+<p>For decades, leadership has operated under a flawed assumption: if we hire better talent, train them more often, and deploy newer tools, performance will inevitably rise. This assumption has driven billions of dollars in spending on recruitment, training programs, software platforms, and consultants promising transformation. Yet performance remains inconsistent. Execution drifts. Alignment frays. Teams that should be high-performing underperform. And leaders are left wondering why their best people are not delivering their best work. The answer is structural, not personal.</p>
+<p>Talent operates within systems. When those systems are invisible, disconnected, or misaligned with human nature, even the most capable individuals will struggle to execute. A brilliant engineer cannot overcome a broken information system. A dedicated manager cannot compensate for unclear decision rights. A committed team cannot sustain performance when the workflow is chaotic.</p>
+<p>This is the fundamental principle of Systems Architecture: outcomes are produced by systems, not effort. When results are inconsistent, when execution drifts, or when alignment breaks down, the cause is architectural long before it is personal. The system is shaping behavior in ways that prevent performance. The solution is not to blame people or change culture. The solution is to redesign the system.</p>
+<h3>The Consulting Paradox: Why Traditional Approaches Fail</h3>
+<p>The consulting industry is a $650 billion enterprise built on a flawed model, for the most part. Organizations hire consultants to solve their problems. Consultants analyze the organization, produce reports with recommendations, and leave. Organizations are left with reports, not transformation.</p>
+<p>The results speak for themselves: 70% of organizational projects fail (PM360 Consulting, 2026). 38% of consulting implementations fail completely (Project Management Works, 2023-2025). 95% of transformation initiatives fail to deliver promised results (MIT 2025 Study).</p>
+<p>The consequences are severe. McKinsey paid $650 million to settle allegations of failed consulting advice related to the opioid crisis (Justice Department, Dec 2024). Deloitte paid over $400 million for a failed algorithmic system in the UK (2024). Deloitte paid £298 million ($539 million) for a failed NHS healthcare system implementation (UK Government Audit). These are not isolated incidents—they represent a systemic failure in how consulting operates.</p>
+<p>Why do consulting recommendations fail to be implemented? The reasons are structural:</p>
+<p>Lack of Accountability for Outcomes. Consultants are paid for analysis, not results. Once the report is delivered, the engagement ends. There is no accountability for whether the recommendations are actually implemented or whether they actually improve performance.</p>
+<p>Disconnect Between Analysis and Execution. Consultants spend months analyzing the organization, then produce a report. The organization is left to implement the recommendations alone. There is no guidance through the messy, complex process of actually changing how work happens.</p>
+<p>Recommendations Are Not Embedded in Systems. Consultants produce recommendations in isolation. They do not ensure that the recommended changes are embedded in the workflows, decision-making processes, and daily operations that will sustain them. When consultants leave, the organization reverts to old patterns because the system has not changed.</p>
+<p>The same failure pattern appears in training and talent development. Organizations invest billions in training programs—$102.8 billion in 2025 alone (Lorman, 2025)—yet talent capability does not improve. The $366 billion leadership development industry produces most programs that fail to create desired results (Forbes/McKinsey, 2019). Why? Because training is treated as an isolated intervention, not as part of a system.</p>
+<p>Employees attend training, learn concepts, return to their jobs—and the system does not support application. Knowledge is not retained. Skills do not transfer. Performance does not improve. Training transfer is the critical failure point (ROI Institute; Training Associates, 2025). Employees do not apply training to their work (Maheswari, 2025). Skills decline without system support (Barnett & Mattox, 2010). The parallel is unmistakable: both consulting and training fail because they operate outside of systems. They treat the problem in isolation. They produce recommendations or teach skills, but they do not ensure the change is embedded in the system that will sustain it.</p>
+<h3>The MEACT Specialist: A Different Model</h3>
+<p>Organizations do not need consultants. Organizations need MEACT specialists. MEACT stands for Mentor, Educate, Advise, Coach, and Train. It is a fundamentally different model from traditional consulting.</p>
+<p>Traditional Consultant:</p>
+<ul>
+<li>Analyzes the organization</li>
+<li>Produces a report with recommendations</li>
+<li>Leaves</li>
+<li>Organization is left to implement alone</li>
+<li>No accountability for outcomes</li>
+<li>Billable hours drive engagement length, not results</li>
+</ul>
+<p>MEACT Specialist:</p>
+<ul>
+<li>Works WITH the organization through the entire transformation</li>
+<li>Mentors leadership on systems thinking and architectural decisions</li>
+<li>Educates teams on new processes and workflows</li>
+<li>Advises on decisions and trade-offs as they arise</li>
+<li>Coaches through implementation challenges and resistance</li>
+<li>Trains people to sustain the system after engagement ends</li>
+<li>Stays invested in outcomes, not billable hours</li>
+<li>Accountability for results, not analysis</li>
+</ul>
+<p>The MEACT model embeds change into systems. It does not just recommend change—it guides the organization through the complex process of implementing it. It does not just train people—it trains people within the context of redesigned workflows. It does not just advise—it stays with the organization until the new system is sustainable. This is why MEACT specialists succeed where traditional consultants and trainers fail: they ensure that change is embedded in the system that will sustain it.</p>
+<h3>The Distinction: Why Systems Architecture Differs from Culture Change</h3>
+<p>Most organizational consulting focuses on culture change. Culture specialists are brought in to shift mindsets, build engagement, and transform how people think and feel about their work. While well-intentioned, this approach misses the fundamental point: culture is not the cause of performance problems. Culture is the result of systems.</p>
+<p>When systems are clear, aligned, and well-designed, culture improves naturally. People feel less friction. Decisions are faster. Work flows smoothly. Collaboration becomes easier. Trust builds because clarity builds trust. Engagement increases because people can see the impact of their work.</p>
+<p>Conversely, when systems are broken, no amount of culture change will fix the underlying problem. You can run all-hands meetings, organize trust-fall exercises, and invest in team-building exercises—but if the system still creates friction, confusion, and misalignment, people will still be frustrated. The culture will still be broken because the system is still broken. This is why traditional consulting fails: it treats the symptom (culture) instead of the cause (systems).</p>
+<p>As a Systems Architect, we take the opposite approach. We do not focus on changing how people think or feel. We focus on changing how work flows. We redesign the systems that shape behavior, decisions, and focus. Culture improves as a natural consequence of better systems. This distinction is not semantic. It is fundamental. And it changes everything about how organizations approach performance improvement.</p>
+<h3>The Methodology: Making Systems Visible</h3>
+<p>Systems Architecture is built on principles from lean manufacturing—a discipline that has proven, over decades, that systems drive performance. The methodology is straightforward but rigorous.</p>
+<p>Step 1: Map the Value Stream</p>
+<p>The first step is to map the value stream. What is the beginning of the process? What is the end? What steps add value? What steps create friction?</p>
+<p>This is where most organizations discover the real problem. The value stream is rarely a straight line. It is a tangled web of disconnected processes, unclear handoffs, and redundant steps. People are working hard, but the system itself is preventing flow.</p>
+<p>The goal of value stream mapping is to establish clarity: what is the actual flow? Where does it break down? What steps are truly necessary, and what steps are waste?</p>
+<p>Step 2: Identify Waste</p>
+<p>During the process of mapping the value stream,  the next step is to identify where waste is hidden. Waste takes many forms: duplicate work, unnecessary steps, information lost between systems, decisions delayed, people waiting for clarity, cognitive load wasted on navigation instead of production.</p>
+<p>In a manufacturing environment, waste is visible. You can see material piling up. You can see workers standing idle. You can see inefficient movement. The IKEA packaging department, before systems redesign, was a clear example of waste made visible: materials scattered randomly, no clear workflow, workers navigating chaos instead of producing.</p>
+<p>In an information-driven organization, waste is invisible. But it is no less real. Information is lost between platforms. People spend hours searching for data instead of analyzing it.  Decisions are delayed because the decision-maker does not have the information they need. Meetings happen because the workflow is unclear. Email chains proliferate because decision rights are ambiguous.</p>
+<p>Identifying this waste requires systematic observation. You must examine the value stream you mapped and ask: where  does friction occur? Where are decisions delayed? Where is cognitive load highest? Where is information lost?</p>
+<p>Step 3: Redesign for Sequential Flow</p>
+<p>Once the value stream is clear and waste is identified, the redesign begins. The principle is simple: eliminate waste, establish sequence, and create flow.</p>
+<p>In the IKEA packaging department photos below show the redesign and how it transformed chaos into order. Materials were organized sequentially. Workflow became clear. Workers no longer had to decide what to do next—the system told them. Material flowed from one station to the next in a predictable sequence. The result was a 27% improvement in throughput in just 90 days</p>
+<div class="images-grid">
+<img src="https://t8471746.p.clickup-attachments.com/t8471746/405303db-c97a-4e76-bbc7-625ea8e6fd77/image.png" alt="Article Image" class="article-image">
+<img src="https://t8471746.p.clickup-attachments.com/t8471746/3bed4e42-58f8-4693-8794-dcdd87fa62af/image.png" alt="Article Image" class="article-image">
+<img src="https://t8471746.p.clickup-attachments.com/t8471746/782eafc9-8468-4e4e-9f53-e4afb3a5c187/image.png" alt="Article Image" class="article-image">
+<img src="https://t8471746.p.clickup-attachments.com/t8471746/8a23ed39-21c4-4a7e-8c06-b51a1992cfcc/image.png" alt="Article Image" class="article-image">
+</div>
+<p>The same principle applies to information systems. Instead of information scattered across platforms with no clear flow, you establish a sequence: information enters the system at a defined point, flows through defined steps, and exits at a defined point. Workers do not have to decide where to find information or what to work on next. The system directs them.</p>
+<p>This is not about controlling people. It is about removing friction so people can focus on what matters: producing value.</p>
+<h3>The Real Challenge: Information Flow Systems</h3>
+<p>While the principles of Systems Architecture come from lean manufacturing, the real battleground for most organizations is information flow.</p>
+<p>Over the past decade, organizations have invested billions in digital platforms: HubSpot, ClickUp, QuickBooks, Salesforce, and dozens of others. These platforms promised revolutionary performance improvements. Yet the promised improvements have never materialized (Industry Analysis, 2024-2025).</p>
+<p>Why? Because the platforms were adopted without systems thinking.</p>
+<p>Most organizations treat each platform as a standalone tool. HubSpot manages marketing. ClickUp manages projects. QuickBooks manages finance. But these systems do not talk to each other. Information is trapped in silos. Data is duplicated across platforms. Decisions are delayed because the decision-maker cannot see the full picture.</p>
+<p>The result is information overload combined with information fragmentation. People have access to massive amounts of data, but they cannot find the specific information they need. They spend hours navigating between systems, searching for data, and manually transferring information from one platform to another.</p>
+<p>Cognitive load research shows that as leaders accumulate more routine decisions, their ability to make complex, high-stakes judgments deteriorates (LinkedIn Research, 2025). Information overload causes decision paralysis (PMC/NIH, 2026). Cognitive biases increase under information overload (ACR Journal, 2025).</p>
+<p>This creates three critical breakdowns:</p>
+<p>Information Overload: People cannot decide what they should be working on at any moment in time. Too many options, too many priorities, too much noise. The cognitive load of deciding what to do next is higher than the cognitive load of actually doing the work.</p>
+<p>Platform Fragmentation: Systems do not talk to each other. Information is siloed. Specialists are required just to ensure information flows between platforms. Most organizations do not have these specialists, so information flow breaks down entirely.</p>
+<p>Unbalanced Workload Distribution: Work does not flow to where it is needed. Like a restaurant with peak hours and slow hours, workload in organizations is uneven. But unlike a restaurant where staff can move to where they are needed, in information systems, people are stuck in their roles. When workload spikes, some people are overwhelmed while others are underutilized.</p>
+<p>These breakdowns are not the fault of the platforms. They are the result of adopting platforms without systems architecture.</p>
+<h3>The Solution: Architected Information Flow</h3>
+<p>Systems Architecture solves these problems by applying the same principles used in manufacturing to information flow.</p>
+<p>First, you establish clarity about information needs. What information does each role need at each moment? Not all information—just the information required to make the next decision or take the next action.</p>
+<p>Second, you design the flow. How does information enter the system? What platforms does it pass through? What transformations occur? How does it reach the person who needs it?</p>
+<p>Third, you eliminate noise. Information that is not needed at a specific moment is removed from view. This is not about hiding information. It is about surfacing only the information required at each step, reducing cognitive load and enabling focus.</p>
+<p>Fourth, you automate the handoffs. Instead of people manually transferring information between systems, automation ensures information flows seamlessly. This requires specialists who understand both the business process and the technical capabilities of the platforms—but the investment pays dividends in reduced friction and increased flow.</p>
+<p>Fifth, you integrate AI strategically. Automation moves information between systems. AI transforms information into insight. When information flow is clear and sequential, AI becomes a force multiplier—it can process data faster, identify patterns humans would miss, and surface the most relevant information at the moment of decision.</p>
+<p>But here is the critical distinction: AI without systems architecture creates chaos. If information is scattered across platforms and workflows are unclear, adding AI just amplifies the noise. AI integration only succeeds when it is built on a foundation of clear systems architecture. The system must be designed first. AI is then layered on top to accelerate decision-making and reduce cognitive load.</p>
+<p>The result is a system where information flows predictably, AI augments human decision-making, people know what to work on at each moment, and decisions are faster because the decision-maker has the information they need—processed and surfaced by intelligent systems.</p>
+<p>The Proof: Real-World Examples</p>
+<p>The principle of Systems Architecture is not theoretical. It is proven in practice.</p>
+<p>Manufacturing Example: IKEA Packaging Department</p>
+<p>Consider a packaging department at an IKEA vendor. Before systems redesign, the department was chaos: materials scattered randomly, no clear workflow, workers navigating clutter instead of producing. Cognitive load was high. Waste was everywhere. Throughput was inconsistent.</p>
+<p>The redesign applied lean principles: identify waste, map the value stream, establish sequential flow. Materials were organized. Workflow became clear. Workers no longer had to decide what to do next—the system told them.</p>
+<p>The result: 27% improvement in throughput in 90 days.</p>
+<p>Same people. Same equipment. Same skill level. Different system. Dramatically better results.</p>
+<p>Information Flow Example:</p>
+<p>Insurance Marketing AgencyAn insurance marketing agency faced a critical information flow problem. Client onboarding took two weeks—a significant friction point that delayed revenue and frustrated clients. The process involved multiple platforms (CRM, email marketing, meeting transcripts, project management), unclear handoffs, and manual information transfer between systems.</p>
+<p>The Systems Architecture approach applied the same lean principles to information flow:</p>
+<p>Identify Waste: Hours spent in meetings that were not recorded. Client information scattered across multiple platforms. Manual transcription of meeting notes. Unclear decision points about what clients needed when.</p>
+<p>Map the Value Stream: Client inquiry → Initial meeting → Information capture → Onboarding setup → Active engagement. Each step involved multiple platforms and manual handoffs.</p>
+<p>Redesign for Sequential Flow: Automated meeting transcription captured all information in real-time. AI knowledge bot synthesized information and made it available to the right team members at the right time. Workflow automation connected CRM, email marketing, and project management so information flowed seamlessly between systems. Decision points became clear because the system surfaced the exact information needed at each step.</p>
+<p>The result: Client onboarding reduced from 2 weeks to 3 days—an 86% improvement.</p>
+<p>Same team. Same platforms. Same skill level. Different system. Dramatically faster execution.</p>
+<p>This is the power of Systems Architecture applied to information flow. It is not about working harder. It is about working smarter—by designing systems that enable information to flow predictably and decisions to be made faster.</p>
+<h3>The Architecture: Integrated Systems</h3>
+<p>Systems Architecture is not a collection of isolated improvements. It is an integrated ecosystem where each component reinforces the others.</p>
+<p>The Architected Performance System organizes the entire organization into six interconnected domains: Client, Finance, Leadership, Marketing, Systems, and Talent. Within each domain, systems are structured using the same six-category hierarchy: Governing Principles, Philosophies, Frameworks, Standards, SOPs, and Tools.</p>
+<p>This sequence ensures that decisions made upstream protect execution downstream. You never deploy a tool without a standard. You never write an SOP without a framework. You never make a decision outside of your governing principles.</p>
+<p>The Systems Domain specifically focuses on creating flow, removing friction, and enabling execution. It is where value streams are mapped, waste is eliminated, and sequential flow is established. But the Systems Domain does not operate in isolation. It is interconnected with the Talent Domain (who executes the system), the Leadership Domain (who governs the system), and all other domains.</p>
+<p>When systems are well-designed, talent performs. When talent is well-developed, systems are maintained. When leadership is clear, both systems and talent are aligned. This integration is what makes the Architected Performance System powerful. It is not just a systems design methodology. It is a complete operating system for the organization.</p>
+<h3>The Transformation: From Invisible to Visible</h3>
+<p>The journey from chaos to clarity is not instantaneous. It requires time, discipline, and commitment. But the transformation is profound.</p>
+<p>Leaders who adopt Systems Architecture move from managing effort to engineering outcomes. They step back from the weeds and see the system. They make decisions based on structural clarity, not reactive urgency. They build organizations where performance is deliberate, measurable, and repeatable.</p>
+<p>This is not about working harder. It is about working smarter—by designing systems that enable people to do their best work.</p>
+<p>The invisible forces that have been working against you are now visible. The system that created them is now named. And the architecture to replace them is now available.</p>
+<h3>What Comes Next</h3>
+<p>Making the invisible visible is the first step. The second step is acting on that clarity.</p>
+<p>If your organization is experiencing inconsistent execution, unclear decision-making, or talent that underperforms despite capability, the cause is likely architectural. The solution is Systems Architecture delivered by MEACT specialists—Mentor, Educate, Advise, Coach, Train—who embed change into systems and stay invested in outcomes.</p>
+<p>The path forward is clear: make the invisible visible, design systems that enable performance, and engineer outcomes that compound.</p>
+<h3>Key Takeaways</h3>
+<p>Systems Architecture makes the invisible visible by applying lean principles to organizational design. It recognizes that outcomes are produced by systems, not effort. It focuses on redesigning systems, not changing culture. It solves the information overload, platform fragmentation, and workload imbalance that plague modern organizations. It is proven in practice, as demonstrated by real-world examples like the IKEA packaging department (27% throughput improvement in 90 days) and the Insurance Marketing Agency (86% reduction in client onboarding time). It is delivered by MEACT specialists—Mentor, Educate, Advise, Coach, Train—who embed change into systems and stay invested in outcomes. And it is the foundation of the Architected Performance System—an integrated operating system that transforms how organizations think, decide, and execute.</p>
+<p>The path forward is clear: make the invisible visible, design systems that enable performance, and engineer outcomes that compound.</p>
+<p>Research Citations</p>
+<p>1.PM360 Consulting (2026) — Project Failure Statistics: 70% of projects fail</p>
+<p>2.Project Management Works (2023-2025) — 38% of consulting implementations fail completely</p>
+<p><a href="http://3.MIT">3.MIT</a> 2025 Study — 95% of transformation initiatives fail to deliver promised results</p>
+<p>4.Justice Department (Dec 2024) — McKinsey $650 million settlement for failed consulting advice</p>
+<p><a href="http://5.UK">5.UK</a> Government Audit — Deloitte £298 million ($539 million) NHS system failure</p>
+<p>6.Lorman (2025) — $102.8 billion spent on training in 2025</p>
+<p>7.Forbes/McKinsey (2019) — $366 billion leadership development industry, most programs fail</p>
+<p>8.ROI Institute — Training transfer failure and ROI measurement</p>
+<p><a href="http://9.Training">9.Training</a> Associates (2025) — Why training programs fail</p>
+<p>10.Maheswari (2025) — Bridging the gap between training and practice</p>
+<p>11.Barnett & Mattox (2010) — Skills decline after training without system support</p>
+<p>12.LinkedIn Research (2025) — Cognitive load and decision-making efficiency</p>
+<p>13.PMC/NIH (2026) — Information overload causes decision paralysis</p>
+<p>14.ACR Journal (2025) — Cognitive biases increase under information overload</p>
+<p>15.Mantec (2025) — Lean manufacturing ROI: 15-30% efficiency gains</p>
+<p>16.IJERET (2025) — Lean manufacturing financial performance improvements</p>
+<p>17.PMI (2024) — Systems thinking improves project outcomes</p>
+<p>18.Springer (2024) — Systems thinking and competitive capabilities</p>
+</div>
+                    </div>
+
+            
+
+                        <!-- NAVIGATION SECTION -->
+            <div class="navigation-section">
+                <div style="flex: 1;"></div>
+                <a href="/article-talent-capability" class="nav-button next">
+                <div style="text-align: right;">
+                    <div class="nav-label">Next →</div>
+                    <div class="nav-title">Talent Capability: Why Performance Improves When L...</div>
+                </div>
+            </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 9: Footer -->
+            <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="/index">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663397493018/RtUPfWsgEAaldZbl.png" alt="TAG" class="footer-logo">
+                </a>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="/systems-architecture">Systems Architecture</a>
+                <a href="/talent-capability">Talent Capability</a>
+                <a href="/team-service">Self-directed Teams</a>
+                <a href="/workflow-automation">Workflow Automation</a>
+                <a href="/capacity-as-a-service">Capacity as a Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="/our-work">Our Work</a>
+                <a href="/our-thinking">Our Thinking</a>
+                <a href="/tag-in-action">TAG in action</a>
+                <a href="/about">About</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TAG. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        if (window.innerWidth <= 768) {
+            const script = document.createElement('script');
+            script.src = 'navbar-mobile.js?v=5';
+            document.body.appendChild(script);
+        }
+    </script>
+    <script src="dropdown-handler.js?v=5"></script>
+<style>
+.nav-links a.contact-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;text-decoration:none!important;color:var(--white)!important;line-height:1.2!important}.nav-links .dropdown{position:relative!important}.nav-links .dropdown-menu{pointer-events:auto!important}.nav-links .dropdown-menu a{pointer-events:auto!important;cursor:pointer!important}.nav-links .dropdown.open .dropdown-menu{display:block!important;visibility:visible!important;opacity:1!important}.mobile-menu-mobile.active{display:flex!important;visibility:visible!important;height:auto!important;overflow:visible!important}.mobile-dropdown-menu-mobile.active{display:flex!important;visibility:visible!important;height:auto!important;overflow:visible!important}.mobile-dropdown-btn-mobile[aria-expanded="true"] .dropdown-icon-mobile,.dropdown-btn[aria-expanded="true"] .dropdown-icon{transform:rotate(180deg)}
+</style>
+<script>
+(function(){
+  window.TAG_MENU_DEBUG = window.TAG_MENU_DEBUG || false;
+  var TAG_LOCAL_SLUGS = ['','home','about','systems-architecture','talent-capability','team-service','workflow-automation','fractional-services','our-work','our-thinking','tag-in-action','insights','contact','thank-you','privacy','terms','article-trust-lens-framework','article-triforce-leadership','article-talent-capability','article-systems-architecture','article-statistics-decoded','article-tag-in-action-04','article-tag-in-action-03','article-tag-in-action-02','article-tag-in-action-01'];
+  function isLocalPreview(){ return location.hostname === '127.0.0.1' || location.hostname === 'localhost'; }
+  function normalizeLocalHref(href){
+    if(!isLocalPreview() || !href || href.indexOf('/') !== 0 || href.indexOf('//') === 0) return href;
+    var hash = '';
+    var hashIndex = href.indexOf('#');
+    if(hashIndex >= 0){ hash = href.slice(hashIndex); href = href.slice(0, hashIndex); }
+    var query = '';
+    var queryIndex = href.indexOf('?');
+    if(queryIndex >= 0){ query = href.slice(queryIndex); href = href.slice(0, queryIndex); }
+    var slug = href.replace(/^\//,'').replace(/\/$/,'');
+    if(slug === '') return '/home.html' + query + hash;
+    if(TAG_LOCAL_SLUGS.indexOf(slug) >= 0 && !/\.html$/.test(slug)) return '/' + slug + '.html' + query + hash;
+    return href + query + hash;
+  }
+  function log(){ if(window.TAG_MENU_DEBUG && window.console) console.log.apply(console, arguments); }
+  function bindOnce(el, key, handler){
+    if(!el || el.dataset[key] === '1') return false;
+    el.dataset[key] = '1';
+    el.addEventListener('click', handler);
+    return true;
+  }
+  function closeDesktopMenus(except){
+    document.querySelectorAll('.tag-desktop-nav .dropdown.open').forEach(function(item){
+      if(except && item === except) return;
+      item.classList.remove('open');
+      var btn=item.querySelector('.dropdown-btn');
+      if(btn) btn.setAttribute('aria-expanded','false');
+    });
+  }
+  function initTagMenu(){
+    var bound = 0;
+    document.querySelectorAll('a[href^="/"]').forEach(function(link){
+      if(bindOnce(link, 'tagLocalRouteReady', function(e){
+        var raw = link.getAttribute('href');
+        var next = normalizeLocalHref(raw);
+        if(next && next !== raw){
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = next;
+        }
+      })) bound++;
+    });
+    document.querySelectorAll('.tag-desktop-nav .dropdown-btn').forEach(function(btn){
+      if(!btn.getAttribute('type')) btn.setAttribute('type','button');
+      if(!btn.getAttribute('aria-expanded')) btn.setAttribute('aria-expanded','false');
+      if(bindOnce(btn, 'tagMenuReady', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var item=btn.closest('.dropdown');
+        var willOpen=item && !item.classList.contains('open');
+        closeDesktopMenus(item);
+        if(item){
+          item.classList.toggle('open', !!willOpen);
+          btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+      })) bound++;
+    });
+    document.querySelectorAll('.hamburger-btn-mobile').forEach(function(btn){
+      if(!btn.getAttribute('type')) btn.setAttribute('type','button');
+      if(bindOnce(btn, 'tagMenuReady', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var nav=btn.closest('nav') || document;
+        var menu=nav.querySelector('.mobile-menu-mobile') || document.querySelector('.mobile-menu-mobile');
+        if(menu){
+          var willOpen=!menu.classList.contains('active');
+          menu.classList.toggle('active', willOpen);
+          btn.classList.toggle('active', willOpen);
+          btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+      })) bound++;
+    });
+    document.querySelectorAll('.mobile-dropdown-btn-mobile').forEach(function(btn){
+      if(!btn.getAttribute('type')) btn.setAttribute('type','button');
+      if(!btn.getAttribute('aria-expanded')) btn.setAttribute('aria-expanded','false');
+      if(bindOnce(btn, 'tagMenuReady', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var wrap=btn.closest('.mobile-dropdown-item');
+        var menu=wrap && wrap.querySelector('.mobile-dropdown-menu-mobile');
+        if(menu){
+          var willOpen=!menu.classList.contains('active');
+          menu.classList.toggle('active', willOpen);
+          btn.classList.toggle('active', willOpen);
+          btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+      })) bound++;
+    });
+    if(!document.documentElement.dataset.tagMenuCloseReady){
+      document.documentElement.dataset.tagMenuCloseReady='1';
+      document.addEventListener('click', function(e){
+        if(e.target.closest && e.target.closest('.tag-desktop-nav .dropdown')) return;
+        closeDesktopMenus();
+      }, true);
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') closeDesktopMenus();
+      });
+    }
+    if(bound) log('TAG menu bound', bound);
+    return bound;
+  }
+  window.initTagMenu = initTagMenu;
+  function scheduleInit(){
+    initTagMenu();
+    setTimeout(initTagMenu, 50);
+    setTimeout(initTagMenu, 250);
+    setTimeout(initTagMenu, 1000);
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', scheduleInit);
+  scheduleInit();
+  if(!window.__TAG_MENU_OBSERVER__ && 'MutationObserver' in window){
+    window.__TAG_MENU_OBSERVER__ = new MutationObserver(function(){ initTagMenu(); });
+    window.__TAG_MENU_OBSERVER__.observe(document.documentElement, {childList:true, subtree:true});
+  }
+})();
+</script>
+
+
+<style id="tag-hero-stat-fix-style">
+.hero,.hero-section,.service-hero,.page-hero,.case-hero,.article-hero{background-repeat:no-repeat!important;background-size:cover!important;background-position:center center}.hero[style*="background"],.hero-section[style*="background"],.service-hero[style*="background"],.page-hero[style*="background"]{background-repeat:no-repeat!important;background-size:cover!important}.challenge-stat{font-variant-numeric:tabular-nums;will-change:contents}.challenge-stat.tag-stat-animating{opacity:.96}
+</style>
+<script id="tag-stat-animation-script">
+(function(){
+  function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+  function decimalsOf(n){var s=String(n);return s.indexOf('.')>=0?s.split('.')[1].length:0;}
+  function formatNumber(value, decimals){return decimals?value.toFixed(decimals):String(Math.round(value));}
+  function animateText(el, finalText){
+    var text=(finalText||el.textContent||'').trim();
+    if(!text || el.dataset.tagStatDone==='1') return;
+    el.dataset.tagStatDone='1';
+    el.classList.add('tag-stat-animating');
+    var range=text.match(/^([^0-9+-]*[+-]?)(\d+(?:\.\d+)?)(\s*[-–]\s*)(\d+(?:\.\d+)?)([^0-9]*)$/);
+    var single=text.match(/^([^0-9+-]*[+-]?)(\d+(?:\.\d+)?)([^0-9]*)$/);
+    var start=performance.now();
+    var duration=1200;
+    function frame(now){
+      var p=Math.min(1,(now-start)/duration);
+      var e=easeOutCubic(p);
+      if(range){
+        var a=parseFloat(range[2]), b=parseFloat(range[4]);
+        var da=decimalsOf(range[2]), db=decimalsOf(range[4]);
+        el.textContent=range[1]+formatNumber(a*e,da)+range[3]+formatNumber(b*e,db)+range[5];
+      }else if(single){
+        var n=parseFloat(single[2]);
+        var d=decimalsOf(single[2]);
+        el.textContent=single[1]+formatNumber(n*e,d)+single[3];
+      }else{
+        el.textContent=text;
+        p=1;
+      }
+      if(p<1) requestAnimationFrame(frame); else { el.textContent=text; el.classList.remove('tag-stat-animating'); }
+    }
+    requestAnimationFrame(frame);
+  }
+  function initStats(){
+    var stats=[].slice.call(document.querySelectorAll('.challenge-stat'));
+    stats.forEach(function(el){ if(!el.dataset.tagFinalStat) el.dataset.tagFinalStat=(el.textContent||'').trim(); });
+    if(!stats.length) return;
+    if(!('IntersectionObserver' in window)){
+      stats.forEach(function(el){animateText(el,el.dataset.tagFinalStat);});
+      return;
+    }
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ animateText(entry.target,entry.target.dataset.tagFinalStat); observer.unobserve(entry.target); }
+      });
+    },{threshold:.35});
+    stats.forEach(function(el){observer.observe(el);});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initStats); else initStats();
+})();
+</script>
+
+<style id="tag-cookie-consent-style">
+.tag-cookie-consent{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:2147483000;background:#181921;color:#fff;border:1px solid rgba(153,170,166,.35);box-shadow:0 18px 50px rgba(0,0,0,.28);border-radius:14px;padding:1rem;display:none;font-family:'Antipasto','Poppins',sans-serif}.tag-cookie-consent.is-visible{display:block}.tag-cookie-consent__inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}.tag-cookie-consent__copy{font-size:.9rem;line-height:1.5;color:#c9d5d2;text-align:left}.tag-cookie-consent__copy strong{display:block;color:#fff;font-size:1rem;margin-bottom:.15rem}.tag-cookie-consent__copy a{color:#00af8d;text-decoration:underline;text-underline-offset:3px}.tag-cookie-consent__actions{display:flex;gap:.75rem;flex-shrink:0}.tag-cookie-consent__btn{appearance:none;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:transparent;color:#fff;cursor:pointer;font:inherit;font-weight:800;padding:.7rem 1rem;white-space:nowrap}.tag-cookie-consent__btn--accept{background:#e84005;border-color:#e84005}.tag-cookie-consent__btn:hover{transform:translateY(-1px)}@media(max-width:720px){.tag-cookie-consent__inner{flex-direction:column;align-items:flex-start}.tag-cookie-consent__actions{width:100%;flex-direction:column}.tag-cookie-consent__btn{width:100%}}
+</style>
+<div class="tag-cookie-consent" id="tag-cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+  <div class="tag-cookie-consent__inner">
+    <div class="tag-cookie-consent__copy"><strong>Cookie preferences</strong>We use cookies to keep the site working, improve performance, and understand how visitors use TAG. You can accept all cookies or continue with necessary cookies only. <a href="/privacy">Privacy Policy</a></div>
+    <div class="tag-cookie-consent__actions"><button class="tag-cookie-consent__btn" type="button" data-tag-cookie-choice="necessary">Necessary only</button><button class="tag-cookie-consent__btn tag-cookie-consent__btn--accept" type="button" data-tag-cookie-choice="accepted">Accept all</button></div>
+  </div>
+</div>
+<script id="tag-cookie-consent-script">
+(function(){
+  var key='tag_cookie_consent';
+  var banner=document.getElementById('tag-cookie-consent');
+  if(!banner) return;
+  function setCookie(value){
+    try{localStorage.setItem(key,value);}catch(e){}
+    var secure=location.protocol==='https:'?'; Secure':'';
+    document.cookie=key+'='+encodeURIComponent(value)+'; Max-Age=31536000; Path=/; SameSite=Lax'+secure;
+  }
+  function hasChoice(){
+    try{if(localStorage.getItem(key)) return true;}catch(e){}
+    return document.cookie.indexOf(key+'=')!==-1;
+  }
+  if(!hasChoice()) banner.classList.add('is-visible');
+  banner.querySelectorAll('[data-tag-cookie-choice]').forEach(function(btn){
+    btn.addEventListener('click',function(){setCookie(btn.getAttribute('data-tag-cookie-choice'));banner.classList.remove('is-visible');});
+  });
+})();
+</script>
+
+<style id="tag-responsive-polish-final">
+html,body{max-width:100%!important;overflow-x:hidden!important}.tag-webflow-root,main,section,header,footer,nav{max-width:100%!important}.container{width:min(100%,1200px)!important;max-width:1200px!important;min-width:0!important;padding-left:clamp(1rem,4vw,1.5rem)!important;padding-right:clamp(1rem,4vw,1.5rem)!important}img,svg,video,iframe{max-width:100%;height:auto}.hero-orientation{width:auto!important;max-width:min(100%,1120px)!important;white-space:normal!important;overflow-wrap:normal!important;text-wrap:pretty!important}.ticker-wrapper,.logo-ticker,.logo-wall,.logos-section{overflow:hidden!important}.ticker-tape{max-width:none!important}.footer-content,.footer-section,.footer-bottom,.footer-bottom-links{min-width:0!important}.footer-section{max-width:100%!important}.footer-section a,.footer-section h3{max-width:100%!important;overflow-wrap:anywhere}.tag-leads-bg,.ecosystem-bg{max-width:100vw!important;overflow:hidden!important}.hero-pattern{max-width:52vw!important}.nonprofit-image-col,.nonprofit-img{max-width:100%!important}.services-page .audience-card,.services-page .service-card,.services-page .capacity-card{min-width:0!important}.services-page .services-hero:before{background:linear-gradient(to right,var(--turquoise) 0%,var(--turquoise) 45%,rgba(0,175,141,.66) 65%,rgba(0,175,141,0) 90%)!important}.services-page .capacity-card{height:auto!important;min-height:0!important;max-height:none!important}.services-page .capacity-cta{display:inline-flex!important;flex-direction:column!important;align-items:flex-start!important;width:auto!important;max-width:max-content!important;min-width:0!important;padding:.72rem .85rem!important;border-radius:30px!important}.services-page .capacity-cta span{display:block!important;line-height:1.15!important;white-space:nowrap!important}
+@media (max-width:1024px){.services-page .services-hero{min-height:600px!important;background-position:62% center!important}.services-page .services-hero h1{font-size:clamp(2.7rem,7vw,3.8rem)!important;line-height:1.12!important}.services-page .services-hero p{font-size:clamp(1.1rem,2.4vw,1.35rem)!important;line-height:1.45!important}.services-page .capacity-card{grid-template-columns:72px minmax(0,1fr)!important}.services-page .capacity-cta{grid-column:2!important;justify-self:start!important}.footer-content{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:900px){.audience-grid,.core-grid,.services-page .audience-grid,.services-page .core-grid{grid-template-columns:1fr!important}.services-page .services-hero:before{background:linear-gradient(to right,rgba(0,175,141,.94) 0%,rgba(0,175,141,.78) 58%,rgba(0,175,141,.2) 100%)!important}.nonprofit-image-col,.nonprofit-img{width:100%!important;max-width:100%!important}.footer-bottom{display:flex!important;flex-wrap:wrap!important;gap:1rem!important;justify-content:space-between!important}}
+@media (max-width:640px){body{font-size:16px!important}.container{padding-left:1rem!important;padding-right:1rem!important}.nav-logo{height:2.35rem!important}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1,.case-hero h1,.article-hero h1{font-size:clamp(2.15rem,10vw,3rem)!important;line-height:1.08!important;text-wrap:balance!important;letter-spacing:0!important}.hero p,.hero-section p,.page-hero p,.service-hero p,.case-hero p,.article-hero p{font-size:clamp(1rem,4.6vw,1.2rem)!important;line-height:1.48!important}.hero-orientation{display:block!important;width:auto!important;max-width:100%!important;white-space:normal!important;font-size:clamp(.86rem,3.8vw,1rem)!important;line-height:1.45!important}.tag-leads-bg,.ecosystem-bg{left:0!important;right:0!important;width:100%!important}.hero-pattern{right:0!important;left:auto!important;width:min(52vw,220px)!important}.hero-visual{width:100%!important;max-width:100%!important;overflow:hidden!important}.services-page .services-hero{min-height:560px!important;padding:4.25rem 0!important;background-position:68% center!important}.services-page .services-hero:before{background:linear-gradient(to bottom,rgba(0,175,141,.98) 0%,rgba(0,175,141,.88) 56%,rgba(0,175,141,.28) 100%)!important}.services-page .services-hero h1{font-size:clamp(2.55rem,13vw,3.45rem)!important;line-height:1.08!important;margin-bottom:1.25rem!important}.services-page .services-hero p{font-size:clamp(1.08rem,5vw,1.3rem)!important;line-height:1.42!important}.services-page .audience-card,.services-page .service-card,.services-page .capacity-card{grid-template-columns:1fr!important;gap:1rem!important;padding:1.35rem!important}.services-page .audience-icon,.services-page .service-icon,.services-page .capacity-icon{width:64px!important;height:64px!important}.services-page .capacity-cta{grid-column:auto!important;justify-self:start!important;width:auto!important;max-width:100%!important;padding:.72rem .9rem!important}.services-page .capacity-cta span{white-space:normal!important}.footer-content{display:grid!important;grid-template-columns:1fr!important;gap:1.6rem!important;text-align:left!important}.footer-section,.footer-section h3,.footer-section a{text-align:left!important;width:auto!important}.footer-bottom{flex-direction:column!important;align-items:flex-start!important}.footer-bottom-links{display:flex!important;flex-wrap:wrap!important;gap:.75rem!important}.tag-cookie-consent{left:.75rem!important;right:.75rem!important;bottom:.75rem!important}}
+@media (max-width:420px){.container{padding-left:.9rem!important;padding-right:.9rem!important}.services-page .services-hero h1{font-size:clamp(2.25rem,12vw,3rem)!important}.services-page .services-hero p br{display:none!important}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1{font-size:clamp(2rem,10.5vw,2.65rem)!important}.closing-actions,.footer-bottom-links{width:100%!important}.closing-btn{width:100%!important;justify-content:flex-start!important}}
+</style><style id="tag-tablet-polish-final">
+@media (min-width:641px) and (max-width:1024px){
+  .hero{min-height:620px!important;background-position:56% center!important;align-items:center!important;}
+  .hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.92) 42%,rgba(232,64,5,.55) 70%,rgba(232,64,5,.16) 100%)!important;}
+  .hero .container{width:100%!important;max-width:768px!important;padding-left:1.5rem!important;padding-right:1.5rem!important;}
+  .hero .hero-content{width:100%!important;max-width:680px!important;display:block!important;margin:0!important;}
+  .hero .hero-text{width:100%!important;max-width:660px!important;padding:2.75rem 0!important;}
+  .hero .hero-text h1{font-size:clamp(2.75rem,6.25vw,3.45rem)!important;line-height:1.13!important;margin-bottom:1.35rem!important;max-width:660px!important;text-wrap:balance!important;}
+  .hero .hero-text p:not(.hero-orientation){font-size:clamp(1.02rem,2.25vw,1.18rem)!important;line-height:1.48!important;max-width:620px!important;margin-bottom:1.25rem!important;}
+  .hero .hero-text p br{display:none!important;}
+  .hero .hero-btn{padding:.82rem 1.9rem!important;font-size:1rem!important;}
+  .hero .hero-orientation{font-size:.82rem!important;line-height:1.35!important;max-width:620px!important;white-space:normal!important;margin-top:1rem!important;}
+  .services-page .services-hero{min-height:620px!important;background-position:70% center!important;align-items:center!important;}
+  .services-page .services-hero:before{background:linear-gradient(to right,var(--turquoise) 0%,rgba(0,175,141,.94) 43%,rgba(0,175,141,.58) 71%,rgba(0,175,141,.18) 100%)!important;}
+  .services-page .services-hero .container{max-width:768px!important;padding-left:1.5rem!important;padding-right:1.5rem!important;}
+  .services-page .services-hero-copy{max-width:620px!important;}
+  .services-page .services-hero h1{font-size:clamp(2.85rem,6.5vw,3.65rem)!important;line-height:1.12!important;margin-bottom:1.3rem!important;max-width:620px!important;}
+  .services-page .services-hero p{font-size:clamp(1.05rem,2.35vw,1.2rem)!important;line-height:1.48!important;max-width:560px!important;}
+  .services-page .audience-section,.services-page .core-services,.services-page .capacity-section{padding-top:3.5rem!important;padding-bottom:3.5rem!important;}
+  .services-page .audience-grid,.services-page .core-grid{gap:1.25rem!important;}
+  .services-page .audience-card,.services-page .service-card{padding:1.35rem!important;gap:1.15rem!important;}
+  .services-page .audience-icon,.services-page .service-icon,.services-page .capacity-icon{width:72px!important;height:72px!important;}
+  .services-page .capacity-card{padding:1.35rem!important;gap:1.15rem!important;grid-template-columns:72px minmax(0,1fr) auto!important;align-items:center!important;}
+  .services-page .capacity-copy h2{font-size:clamp(1.65rem,3.4vw,2rem)!important;line-height:1.15!important;}
+  .services-page .capacity-copy p{font-size:1rem!important;line-height:1.45!important;}
+  .services-page .capacity-cta{grid-column:auto!important;justify-self:end!important;max-width:196px!important;padding:.72rem .85rem!important;font-size:.95rem!important;}
+  .hero-video{height:520px!important;min-height:520px!important;}
+  .wwb-hero,.page-hero,.service-hero,.case-hero,.article-hero{padding-top:4.5rem!important;padding-bottom:4.5rem!important;}
+  .hero-visual{max-width:360px!important;margin-left:auto!important;margin-right:auto!important;}
+  .tag-cookie-consent{left:1rem!important;right:1rem!important;bottom:1rem!important;padding:.85rem 1rem!important;border-radius:12px!important;}
+  .tag-cookie-consent__inner{gap:.8rem!important;}
+  .tag-cookie-consent__copy{font-size:.82rem!important;line-height:1.35!important;}
+  .tag-cookie-consent__copy strong{font-size:.92rem!important;}
+  .tag-cookie-consent__btn{padding:.62rem .9rem!important;font-size:.88rem!important;}
+}
+@media (min-width:641px) and (max-width:820px){
+  .services-page .capacity-card{grid-template-columns:72px minmax(0,1fr)!important;}
+  .services-page .capacity-cta{grid-column:2!important;justify-self:start!important;max-width:max-content!important;}
+}
+</style><style id="tag-tablet-image-balance">
+@media (min-width:641px) and (max-width:1024px){
+  .hero{background-position:72% center!important;}
+  .hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.94) 38%,rgba(232,64,5,.68) 58%,rgba(232,64,5,.08) 100%)!important;}
+  .hero .hero-content{max-width:650px!important;}
+  .hero .hero-text{max-width:630px!important;}
+  .hero .hero-text h1{max-width:630px!important;font-size:clamp(2.65rem,6vw,3.25rem)!important;}
+  .hero .hero-text p:not(.hero-orientation){max-width:610px!important;}
+}
+</style><style id="tag-home-mid-screen-polish">
+@media (min-width:1025px) and (max-width:1450px){
+  .hero{min-height:710px!important;background-position:62% center!important;}
+  .hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.96) 40%,rgba(232,64,5,.72) 62%,rgba(232,64,5,.18) 100%)!important;}
+  .hero .container{max-width:1240px!important;width:100%!important;padding-left:clamp(3rem,7vw,6rem)!important;padding-right:clamp(2rem,4vw,4rem)!important;}
+  .hero .hero-content{max-width:760px!important;width:760px!important;display:block!important;margin:0!important;}
+  .hero .hero-text{max-width:760px!important;width:760px!important;padding:3rem 0!important;}
+  .hero .hero-text h1{font-size:clamp(3.15rem,4.45vw,4rem)!important;line-height:1.16!important;max-width:760px!important;margin-bottom:1.65rem!important;text-wrap:balance!important;}
+  .hero .hero-text p:not(.hero-orientation){font-size:clamp(1.18rem,1.75vw,1.48rem)!important;line-height:1.48!important;max-width:760px!important;margin-bottom:1.65rem!important;}
+  .hero .hero-btn{font-size:1.15rem!important;padding:1rem 2.8rem!important;}
+  .hero .hero-orientation{font-size:.95rem!important;line-height:1.35!important;max-width:760px!important;white-space:normal!important;margin-top:1.35rem!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  .hero .container{padding-left:3rem!important;padding-right:2rem!important;}
+  .hero .hero-content,.hero .hero-text{width:690px!important;max-width:690px!important;}
+  .hero .hero-text h1{font-size:clamp(3rem,4.3vw,3.45rem)!important;max-width:690px!important;}
+  .hero .hero-text p:not(.hero-orientation),.hero .hero-orientation{max-width:660px!important;}
+}
+</style><style id="tag-home-mid-screen-force">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero .container{max-width:1240px!important;width:100%!important;padding-left:clamp(3rem,7vw,6rem)!important;padding-right:clamp(2rem,4vw,4rem)!important;}
+  section.hero .container .hero-content{max-width:760px!important;width:760px!important;display:block!important;margin-left:0!important;margin-right:auto!important;}
+  section.hero .container .hero-content .hero-text{max-width:760px!important;width:760px!important;padding:3rem 0!important;}
+  section.hero .container .hero-content .hero-text h1{font-size:clamp(3.15rem,4.45vw,4rem)!important;line-height:1.16!important;max-width:760px!important;width:760px!important;margin-bottom:1.65rem!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){font-size:clamp(1.18rem,1.75vw,1.48rem)!important;line-height:1.48!important;max-width:760px!important;width:760px!important;margin-bottom:1.65rem!important;}
+  section.hero .container .hero-content .hero-text .hero-orientation{font-size:.95rem!important;line-height:1.35!important;max-width:760px!important;width:auto!important;white-space:normal!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  section.hero .container .hero-content,section.hero .container .hero-content .hero-text{width:690px!important;max-width:690px!important;}
+  section.hero .container .hero-content .hero-text h1{width:690px!important;max-width:690px!important;font-size:clamp(3rem,4.3vw,3.45rem)!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation),section.hero .container .hero-content .hero-text .hero-orientation{width:auto!important;max-width:660px!important;}
+}
+</style><style id="tag-home-mid-screen-image-visible">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero{background-position:70% center!important;}
+  section.hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.94) 36%,rgba(232,64,5,.68) 52%,rgba(232,64,5,.25) 70%,rgba(232,64,5,0) 100%)!important;}
+}
+</style><style id="tag-home-mid-screen-smaller">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero .container .hero-content .hero-text h1{font-size:clamp(2.85rem,4.05vw,3.62rem)!important;line-height:1.17!important;max-width:760px!important;width:760px!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){font-size:clamp(1.08rem,1.55vw,1.3rem)!important;line-height:1.5!important;max-width:730px!important;width:730px!important;}
+  section.hero .container .hero-content .hero-text .hero-orientation{font-size:.86rem!important;max-width:730px!important;}
+  section.hero .container .hero-content .hero-text .hero-btn{font-size:1.06rem!important;padding:.9rem 2.45rem!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  section.hero .container .hero-content .hero-text h1{font-size:clamp(2.75rem,4vw,3.15rem)!important;width:690px!important;max-width:690px!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){font-size:clamp(1.02rem,1.65vw,1.16rem)!important;width:auto!important;max-width:650px!important;}
+}
+</style><style id="tag-home-mid-screen-smaller-image-balance">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero{background-position:72% center!important;}
+  section.hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.93) 34%,rgba(232,64,5,.58) 50%,rgba(232,64,5,.12) 68%,rgba(232,64,5,0) 100%)!important;}
+}
+</style><style id="tag-home-hero-slightly-smaller-final">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero .container .hero-content,section.hero .container .hero-content .hero-text{width:700px!important;max-width:700px!important;}
+  section.hero .container .hero-content .hero-text h1{width:700px!important;max-width:700px!important;font-size:clamp(2.45rem,3.55vw,3.15rem)!important;line-height:1.18!important;margin-bottom:1.45rem!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){width:auto!important;max-width:660px!important;font-size:clamp(1rem,1.35vw,1.16rem)!important;line-height:1.5!important;margin-bottom:1.35rem!important;}
+  section.hero .container .hero-content .hero-text .hero-orientation{font-size:.8rem!important;max-width:660px!important;}
+  section.hero .container .hero-content .hero-text .hero-btn{font-size:1rem!important;padding:.82rem 2.25rem!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  section.hero .container .hero-content,section.hero .container .hero-content .hero-text{width:640px!important;max-width:640px!important;}
+  section.hero .container .hero-content .hero-text h1{width:640px!important;max-width:640px!important;font-size:clamp(2.35rem,3.55vw,2.8rem)!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){max-width:610px!important;font-size:clamp(.98rem,1.4vw,1.08rem)!important;}
+}
+</style><style id="tag-nav-alignment-final">
+.tag-desktop-nav .nav-links,
+#navbar-container .nav-links,
+nav .nav-links{
+  display:flex!important;
+  align-items:center!important;
+}
+.tag-desktop-nav .nav-links>li,
+#navbar-container .nav-links>li,
+nav .nav-links>li,
+.tag-desktop-nav .nav-links .dropdown,
+#navbar-container .nav-links .dropdown,
+nav .nav-links .dropdown{
+  display:flex!important;
+  align-items:center!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1!important;
+}
+.tag-desktop-nav .nav-links a,
+#navbar-container .nav-links a,
+nav .nav-links a,
+.tag-desktop-nav .nav-links .dropdown-btn,
+#navbar-container .nav-links .dropdown-btn,
+nav .nav-links .dropdown-btn{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:44px!important;
+  height:44px!important;
+  padding:0!important;
+  margin:0!important;
+  line-height:1!important;
+  vertical-align:middle!important;
+  font-family:var(--font-family)!important;
+  font-size:.9rem!important;
+  font-weight:500!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+}
+.tag-desktop-nav .nav-links .dropdown-btn,
+#navbar-container .nav-links .dropdown-btn,
+nav .nav-links .dropdown-btn{
+  gap:.35rem!important;
+  appearance:none!important;
+  background:none!important;
+  border:0!important;
+}
+.tag-desktop-nav .dropdown-icon,
+#navbar-container .dropdown-icon,
+nav .dropdown-icon{
+  display:block!important;
+  flex:0 0 auto!important;
+  width:1rem!important;
+  height:1rem!important;
+  margin:0!important;
+  transform-origin:center!important;
+  position:relative!important;
+  top:0!important;
+  vertical-align:middle!important;
+}
+.tag-desktop-nav .nav-links .dropdown-menu,
+#navbar-container .nav-links .dropdown-menu,
+nav .nav-links .dropdown-menu{
+  top:calc(100% + .35rem)!important;
+}
+.tag-desktop-nav .nav-links .dropdown-menu a,
+#navbar-container .nav-links .dropdown-menu a,
+nav .nav-links .dropdown-menu a{
+  justify-content:flex-start!important;
+  min-height:40px!important;
+  height:auto!important;
+  padding:.65rem .9rem!important;
+}
+</style><style id="tag-contact-nav-button-fix">
+#navbar-container .nav-links a.contact-btn,
+.tag-desktop-nav .nav-links a.contact-btn,
+body > nav .nav-links a.contact-btn,
+nav .nav-links a.contact-btn{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:44px!important;
+  height:44px!important;
+  width:auto!important;
+  min-width:92px!important;
+  padding:0 1.25rem!important;
+  border-radius:50px!important;
+  background-color:var(--orange)!important;
+  color:var(--white)!important;
+  font-weight:800!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+}
+#navbar-container .nav-links a.contact-btn:hover,
+.tag-desktop-nav .nav-links a.contact-btn:hover,
+body > nav .nav-links a.contact-btn:hover,
+nav .nav-links a.contact-btn:hover{
+  color:var(--white)!important;
+  background-color:#d63804!important;
+  transform:translateY(-2px)!important;
+}
+@media (min-width:769px){
+  #navbar-container .nav-links a.contact-btn,
+  .tag-desktop-nav .nav-links a.contact-btn,
+  body > nav .nav-links a.contact-btn,
+  nav .nav-links a.contact-btn{
+    min-width:88px!important;
+    padding:0 1.15rem!important;
+    font-size:.72rem!important;
+  }
+}
+</style><script id="tag-services-dropdown-fix">
+(function(){
+  function closeDesktop(except){
+    document.querySelectorAll('.tag-desktop-nav .dropdown').forEach(function(item){
+      if(item !== except){
+        item.classList.remove('open','active');
+        var btn=item.querySelector('.dropdown-btn');
+        var menu=item.querySelector('.dropdown-menu');
+        if(btn) btn.setAttribute('aria-expanded','false');
+        if(menu) menu.style.display='';
+      }
+    });
+  }
+  function bindMenus(){
+    document.querySelectorAll('.tag-desktop-nav .dropdown-btn').forEach(function(btn){
+      if(btn.dataset.servicesDropdownFix) return;
+      btn.dataset.servicesDropdownFix='1';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var item=btn.closest('.dropdown');
+        var menu=item && item.querySelector('.dropdown-menu');
+        if(!item || !menu) return;
+        var open=!item.classList.contains('open');
+        closeDesktop(item);
+        item.classList.toggle('open', open);
+        item.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menu.style.display=open ? 'block' : '';
+      }, true);
+    });
+    document.querySelectorAll('.hamburger-btn-mobile').forEach(function(btn){
+      if(btn.dataset.servicesDropdownFix) return;
+      btn.dataset.servicesDropdownFix='1';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var nav=btn.closest('nav') || document;
+        var menu=nav.querySelector('.mobile-menu-mobile') || document.querySelector('.mobile-menu-mobile');
+        if(!menu) return;
+        var open=!menu.classList.contains('active');
+        menu.classList.toggle('active', open);
+        btn.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }, true);
+    });
+    document.querySelectorAll('.mobile-dropdown-btn-mobile').forEach(function(btn){
+      if(btn.dataset.servicesDropdownFix) return;
+      btn.dataset.servicesDropdownFix='1';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var menu=btn.nextElementSibling;
+        if(!menu) return;
+        var open=!menu.classList.contains('active');
+        document.querySelectorAll('.mobile-dropdown-menu-mobile').forEach(function(other){ if(other !== menu) other.classList.remove('active'); });
+        document.querySelectorAll('.mobile-dropdown-btn-mobile').forEach(function(other){ if(other !== btn){ other.classList.remove('active'); other.setAttribute('aria-expanded','false'); } });
+        menu.classList.toggle('active', open);
+        btn.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }, true);
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindMenus); else bindMenus();
+  setTimeout(bindMenus, 100);
+  setTimeout(bindMenus, 500);
+})();
+</script>
+<style id="tag-unified-hero-type">
+:root{
+  --tag-hero-heading-size:clamp(39px,5.8vw,50px);
+  --tag-hero-heading-line:1.14;
+  --tag-hero-copy-size:clamp(16px,2.3vw,19px);
+  --tag-hero-copy-line:1.5;
+}
+html body .hero h1,
+html body section.hero h1,
+html body section.hero .container .hero-content .hero-text h1,
+html body .hero .hero-text h1,
+html body .hero-section h1,
+html body .page-hero h1,
+html body .service-hero h1,
+html body .case-hero h1,
+html body .article-hero h1,
+html body .services-page .services-hero h1,
+html body .caas-page .caas-hero h1,
+html body .caas-hero h1{
+  font-size:var(--tag-hero-heading-size)!important;
+  line-height:var(--tag-hero-heading-line)!important;
+  letter-spacing:0!important;
+  text-wrap:balance!important;
+  max-width:min(760px,100%)!important;
+}
+html body .hero h1 span,
+html body section.hero h1 span,
+html body .hero .hero-text h1 span,
+html body .hero-section h1 span,
+html body .page-hero h1 span,
+html body .service-hero h1 span,
+html body .case-hero h1 span,
+html body .article-hero h1 span{
+  font-size:inherit!important;
+  line-height:inherit!important;
+  letter-spacing:inherit!important;
+}
+html body .hero p:not(.hero-orientation):not(.subtitle),
+html body section.hero p:not(.hero-orientation):not(.subtitle),
+html body section.hero .container .hero-content .hero-text p:not(.hero-orientation):not(.subtitle),
+html body .hero .hero-text p:not(.hero-orientation):not(.subtitle),
+html body .hero-section p,
+html body .page-hero p,
+html body .service-hero p,
+html body .case-hero p,
+html body .article-hero p,
+html body .services-page .services-hero p,
+html body .caas-page .caas-hero p,
+html body .caas-hero p{
+  font-size:var(--tag-hero-copy-size)!important;
+  line-height:var(--tag-hero-copy-line)!important;
+  max-width:min(720px,100%)!important;
+}
+html body .hero .subtitle,
+html body .hero p.subtitle,
+html body section.hero .hero-text p.subtitle,
+html body section.hero .container .hero-content .hero-text p.subtitle{
+  font-size:var(--tag-hero-copy-size)!important;
+  line-height:var(--tag-hero-copy-line)!important;
+}
+@media (max-width:640px){
+  :root{
+    --tag-hero-heading-size:clamp(34px,10vw,39px);
+    --tag-hero-copy-size:clamp(16px,4.3vw,17px);
+    --tag-hero-heading-line:1.1;
+  }
+  html body .hero h1,html body section.hero h1,html body section.hero .container .hero-content .hero-text h1,html body .services-page .services-hero h1,html body .caas-page .caas-hero h1,html body .caas-hero h1{width:auto!important;max-width:100%!important;}
+  html body .hero p:not(.hero-orientation):not(.subtitle),html body section.hero p:not(.hero-orientation):not(.subtitle),html body .services-page .services-hero p,html body .caas-page .caas-hero p,html body .caas-hero p{max-width:100%!important;}
+}
+</style>
+</body>
+</html>

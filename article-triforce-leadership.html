@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The TriForce Leadership Discipline: Personal Responsibility, Initiative, and Performance - TAG</title>
+    <meta name="description" content="The TriForce Leadership Discipline: Personal Responsibility, Initiative, and Performance">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/favicon-tag_4723be1e.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #00af8d;
+            --neon-green: #94ce15;
+            --orange: #e84005;
+            --yellow: #efa726;
+            --dark-blue: #181921;
+            --blue-gray: #99aaa6;
+            --white: #ffffff;
+            --text-dark: #859390;
+            --font-family: 'Antipasto', 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--dark-blue);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-blue);
+            padding: 1rem 0;
+            position: relative;
+            z-index: 50;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-logo {
+            height: 1.5rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            display: block;
+            line-height: 1;
+        }
+
+        .top-bar-logo:hover {
+            opacity: 1;
+        }
+
+        /* Navbar Container - Sticky */
+        #navbar-container {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        /* Navigation */
+        nav {
+            position: relative;
+            background-color: var(--white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding-left: 10%;
+        }
+
+        .nav-logo {
+            height: 3rem;
+        }
+
+        .nav-logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-left: -11%;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+            margin-left: auto;
+            margin-right: -2%;
+        }
+
+        .nav-links a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown-btn {
+            background: none;
+            border: none;
+            color: var(--dark-blue);
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s;
+            padding: 0;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .nav-links .dropdown-btn:hover {
+            color: var(--turquoise);
+        }
+
+        .dropdown-icon {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            margin-left: 0.3rem;
+            vertical-align: middle;
+        }
+
+        .nav-separator {
+            width: 1px;
+            height: 1.5rem;
+            background-color: var(--blue-gray);
+            opacity: 0.3;
+            list-style: none;
+        }
+
+        .nav-links .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            background-color: var(--white);
+            border: 1px solid var(--blue-gray);
+            border-radius: 0.5rem;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .nav-links .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+        }
+
+        .nav-links .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--dark-blue);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+            color: var(--turquoise);
+        }
+
+        .contact-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background-color: var(--orange);
+            color: var(--white);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232, 64, 5, 0.3);
+        }
+
+        /* PAGE CONTENT */
+        .page-content {
+            padding-top: 2rem;
+        }
+
+        /* HEADER NAVIGATION */
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-back:hover {
+            gap: 1rem;
+        }
+
+        .case-counter {
+            color: var(--blue-gray);
+            font-size: 0.9rem;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(24, 25, 33, 0.6);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 3rem;
+            color: var(--white);
+        }
+
+        .case-badge {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* PROJECT DETAILS BOX */
+        .project-details {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            height: fit-content;
+            transition: all 0.3s;
+        }
+
+        .project-details:hover {
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+        }
+
+        .project-details h3 {
+            color: var(--orange);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item {
+            margin-bottom: 2rem;
+        }
+
+        .detail-label {
+            color: var(--blue-gray);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .detail-value {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* TECH STACK */
+        .tech-stack {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .tech-stack:hover {
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+        }
+
+        .tech-stack h3 {
+            color: var(--orange);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .tech-icon {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .tech-icon:hover {
+            background: rgba(0, 175, 141, 0.1);
+            border-color: var(--turquoise);
+        }
+
+        /* CONTENT COLUMN */
+        .content-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .content-section {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .section-icon {
+            width: 3rem;
+            height: 3rem;
+            min-width: 3rem;
+            background: rgba(0, 175, 141, 0.1);
+            border: 1px solid rgba(0, 175, 141, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: var(--turquoise);
+        }
+
+        .section-content h2 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .section-content h1,
+        .section-content h2,
+        .section-content h3 {
+            padding: 0 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content h1 {
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .section-content h3 {
+            font-size: 1.3rem;
+            color: var(--white);
+        }
+
+        /* Article Images Grid */
+        .article-image {
+            max-width: 100%;
+            height: auto;
+            margin: 0.5rem;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .section-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem;
+            max-width: calc(100% - 4rem);
+        }
+
+        .images-grid .article-image {
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+
+        .section-content ul {
+            padding: 0 2rem 0 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .section-content table {
+            margin: 1.5rem 2rem;
+            width: calc(100% - 4rem);
+            border-collapse: collapse;
+        }
+
+        .section-content table th,
+        .section-content table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-content table th {
+            background-color: rgba(0, 175, 141, 0.1);
+            color: var(--turquoise);
+            font-weight: 600;
+        }
+
+        .section-content a {
+            color: var(--turquoise);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .section-content a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* RESULTS SECTION */
+        .results-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .results-section h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .result-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* NAVIGATION SECTION */
+        .navigation-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+        }
+
+        .nav-button.prev {
+            justify-content: flex-start;
+        }
+
+        .nav-button.next {
+            justify-content: flex-end;
+        }
+
+        .nav-label {
+            font-size: 0.85rem;
+            color: var(--blue-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-top: 0.5rem;
+        }
+
+        .nav-arrow {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            transition: all 0.3s;
+        }
+
+        .nav-button.prev:hover .nav-arrow {
+            transform: translateX(-5px);
+        }
+
+        .nav-button.next:hover .nav-arrow {
+            transform: translateX(5px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .navigation-section {
+                grid-template-columns: 1fr;
+            }
+
+            .header-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* FOOTER STYLES */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--blue-gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--turquoise);
+        }
+
+        .footer-logo {
+            height: 3rem;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links a {
+            color: var(--blue-gray);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--turquoise);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--blue-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--blue-gray);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--blue-gray);
+        }
+
+        .footer-logo {
+            height: 3rem;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* ===== RESPONSIVE OPTIMIZATION (PANTALLAS GRANDES) ===== */
+        /* IMPORTANTE: 1440x900 es INTOCABLE. Estos cambios solo aplican a pantallas > 1440px */
+
+        @media (min-width: 1600px) {
+            .proof-elements { padding: 8rem 0; }
+            .problems { padding: 8rem 0; }
+            .video-section { padding: 8rem 0; }
+            .meets-guide { padding: 8rem 0; }
+            .tech-stack { padding: 8rem 0; }
+            .insights { padding: 8rem 0; }
+            .hero-image { max-width: 110%; }
+            .hero-pattern { max-width: 110%; }
+            .problems h2, .video-section h2, .meets-guide h2, .insights h2 { font-size: 3.2rem; }
+            .tech-stack h2 { font-size: 2.8rem; }
+        }
+
+        @media (min-width: 1920px) {
+            .proof-elements { padding: 10rem 0; }
+            .problems { padding: 10rem 0; }
+            .video-section { padding: 10rem 0; }
+            .meets-guide { padding: 10rem 0; }
+            .tech-stack { padding: 10rem 0; }
+            .insights { padding: 10rem 0; }
+            .problems h2, .video-section h2, .meets-guide h2, .insights h2 { font-size: 3.5rem; }
+        }
+    </style>
+    <!-- Mobile styles - loaded after inline styles to ensure proper override -->
+    <link rel="stylesheet" href="navbar-mobile-styles.css?v=2">
+    <link rel="stylesheet" href="navbar-compact.css?v=2">
+
+    <style id="mobile-nav-internal-pages-fix">
+        @media (max-width: 768px) {
+            body > .top-bar,
+            body > nav {
+                display: none !important;
+            }
+        }
+    </style>
+<style id="tag-responsive-polish">
+html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}*,*:before,*:after{box-sizing:border-box}img,svg,video,iframe{max-width:100%;height:auto}section,main,footer,header,nav{max-width:100%;overflow-x:clip}.container{width:min(100%,1200px)!important;max-width:1200px!important;padding-left:clamp(1rem,4vw,1.5rem)!important;padding-right:clamp(1rem,4vw,1.5rem)!important}.hero-orientation{max-width:min(100%,980px)!important;white-space:normal!important;text-wrap:pretty}.ticker-wrapper,.logo-ticker,.logo-wall,.logos-section{overflow:hidden!important}.ticker-tape{will-change:transform}.tag-leads-bg,.ecosystem-bg,.hero-pattern{max-width:100vw!important}.footer-content{min-width:0!important}.footer-section{min-width:0!important;max-width:100%!important}.footer-section a,.footer-section h3{max-width:100%!important;overflow-wrap:anywhere}.footer-bottom,.footer-bottom-links{min-width:0!important;max-width:100%!important}
+.services-page .services-hero{background-repeat:no-repeat!important;background-size:cover!important}.services-page .audience-card,.services-page .service-card,.services-page .capacity-card{min-width:0!important}.services-page .capacity-card{width:100%!important;max-width:100%!important}.services-page .capacity-copy{min-width:0!important}.services-page .capacity-cta{max-width:max-content!important}.services-page .capacity-cta span{white-space:nowrap!important}
+@media (max-width:1024px){.nav-content{gap:1rem!important}.nav-links{gap:1rem!important}.services-page .services-hero{min-height:600px!important;background-position:62% center!important}.services-page .services-hero-copy{max-width:560px!important}.services-page .services-hero h1{font-size:clamp(2.7rem,7vw,3.8rem)!important;line-height:1.12!important}.services-page .services-hero p{font-size:clamp(1.1rem,2.4vw,1.35rem)!important;line-height:1.45!important}.services-page .capacity-card{grid-template-columns:72px minmax(0,1fr)!important}.services-page .capacity-cta{grid-column:2!important;justify-self:start!important}}
+@media (max-width:900px){.audience-grid,.core-grid,.services-page .audience-grid,.services-page .core-grid{grid-template-columns:1fr!important}.services-page .services-hero:before{background:linear-gradient(to right,rgba(0,175,141,.94) 0%,rgba(0,175,141,.78) 58%,rgba(0,175,141,.2) 100%)!important}.footer-content{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:2rem!important}.footer-bottom{display:flex!important;flex-wrap:wrap!important;gap:1rem!important;justify-content:space-between!important}.nonprofit-image-col,.nonprofit-img{width:100%!important;max-width:100%!important}}
+@media (max-width:640px){body{font-size:16px!important}.container{padding-left:1rem!important;padding-right:1rem!important}.top-bar{padding:.7rem 0!important}.nav-content{min-height:58px!important}.nav-logo{height:2.35rem!important}.hero,.hero-section,.page-hero,.service-hero,.case-hero,.article-hero{min-height:auto!important}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1,.case-hero h1,.article-hero h1{font-size:clamp(2.15rem,10vw,3rem)!important;line-height:1.08!important;text-wrap:balance;letter-spacing:0!important}.hero p,.hero-section p,.page-hero p,.service-hero p,.case-hero p,.article-hero p{font-size:clamp(1rem,4.6vw,1.2rem)!important;line-height:1.48!important}.hero-orientation{font-size:clamp(.86rem,3.8vw,1rem)!important;line-height:1.45!important;width:auto!important;max-width:100%!important}.tag-leads-bg,.ecosystem-bg{left:0!important;right:0!important;width:100%!important}.hero-pattern{right:0!important;left:auto!important;width:min(52vw,220px)!important}.services-page .services-hero{min-height:560px!important;padding:4.25rem 0!important;background-position:68% center!important}.services-page .services-hero:before{background:linear-gradient(to bottom,rgba(0,175,141,.98) 0%,rgba(0,175,141,.88) 56%,rgba(0,175,141,.28) 100%)!important}.services-page .services-hero h1{font-size:clamp(2.55rem,13vw,3.45rem)!important;line-height:1.08!important;margin-bottom:1.25rem!important}.services-page .services-hero p{font-size:clamp(1.08rem,5vw,1.3rem)!important;line-height:1.42!important}.services-page .audience-card,.services-page .service-card{grid-template-columns:1fr!important;gap:1rem!important;padding:1.35rem!important}.services-page .audience-icon,.services-page .service-icon{width:64px!important;height:64px!important}.services-page .capacity-card{grid-template-columns:1fr!important;gap:1rem!important;padding:1.25rem!important}.services-page .capacity-icon{width:64px!important;height:64px!important}.services-page .capacity-cta{grid-column:auto!important;justify-self:start!important;width:auto!important;max-width:100%!important;padding:.72rem .9rem!important}.services-page .capacity-cta span{white-space:normal!important}.footer-content{grid-template-columns:1fr!important;gap:1.6rem!important;text-align:left!important}.footer-section,.footer-section h3,.footer-section a{text-align:left!important;width:auto!important}.footer-bottom{flex-direction:column!important;align-items:flex-start!important}.footer-bottom-links{display:flex!important;flex-wrap:wrap!important;gap:.75rem!important}.tag-cookie-consent{left:.75rem!important;right:.75rem!important;bottom:.75rem!important}}
+@media (max-width:420px){.container{padding-left:.9rem!important;padding-right:.9rem!important}.services-page .services-hero h1{font-size:clamp(2.25rem,12vw,3rem)!important}.services-page .services-hero p br{display:none}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1{font-size:clamp(2rem,10.5vw,2.65rem)!important}.closing-actions,.footer-bottom-links{width:100%!important}.closing-btn{width:100%!important;justify-content:flex-start!important}}
+</style></head>
+<body>
+<div class="top-bar">
+    <div class="container">
+        <div class="top-bar-content">
+            
+            <a href="https://www.bigaps.com/" target="_blank" rel="noopener noreferrer">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/logo-big_89fdd27e.png" alt="BIG" class="top-bar-logo">
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- NAVIGATION DESKTOP ONLY -->
+<nav>
+    <div class="container">
+        <div class="nav-content">
+            <a href="/index" class="nav-logo-link" id="nav-logo-link">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/PrimarylogoTAGforclearbackground_e4900ec5.png" alt="TAG" class="nav-logo">
+            </a>
+            <ul class="nav-links">
+                <li class="dropdown"><button class="dropdown-btn" type="button" aria-expanded="false">Services <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="dropdown-menu"><a href="/services" id="nav-services">Services Overview</a><a href="/services/systems-architecture" id="nav-services-systems">Systems Architecture</a><a href="/services/talent-capability" id="nav-services-talent">Talent Capability</a><a href="/services/self-directed-teams" id="nav-services-teams">Self-Directed Teams</a><a href="/services/workflow-automation" id="nav-services-workflow">Workflow Automation</a><a href="/capacity-as-a-service" id="nav-services-capacity">Capacity as a Service</a></div></li>
+                <li><a href="/our-work" id="nav-our-work">Our Work</a></li>
+                <li class="dropdown">
+                    <button class="dropdown-btn">Insights <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                    <div class="dropdown-menu">
+                        <a href="/our-thinking" id="nav-our-thinking">Our Thinking</a>
+                        <a href="/tag-in-action" id="nav-tag-in-action">TAG in Action</a>
+                    </div>
+                </li>
+                <li><a href="/about" id="nav-about">About</a></li>
+                <li class="nav-separator"></li>
+                <li><a href="/contact" id="nav-contact-link"><button class="contact-btn" id="nav-contact">Contact</button></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+        <div class="container">
+            <!-- HEADER NAVIGATION -->
+            <div class="header-nav">
+                <a href="/our-thinking" class="nav-back">← All Articles</a>
+                <span class="case-counter">ARTICLE 3/5</span>
+            </div>
+
+            <!-- HERO SECTION -->
+            <section class="hero">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/article-triforce-leadership_b92ef90a.jpg" alt="Article Hero" class="hero-image">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="case-badge">ARTICLE 03</span>
+                    <h1>The TriForce Leadership Discipline: Personal Responsibility, Initiative, and Performance</h1>
+                    <div class="hero-meta">
+                        <span class="meta-badge">Leadership & Systems</span>
+                        <span class="meta-badge">⏱ 15 min</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MAIN CONTENT -->
+            <div class="main-content">
+                <!-- RIGHT COLUMN: CONTENT -->
+                <div class="content-column">
+                    <!-- THE PROBLEM -->
+                    <div class="content-section">
+                        <div class="section-content">
+<h1>The TriForce Leadership Discipline: Personal Responsibility, Initiative, and Performance</h1>
+
+<h3>The Article in One Sentence</h3>
+<p>The TriForce Leadership Discipline aligns Personal Responsibility, Initiative, and Performance so organizations stop fighting resistance and start building teams capable of performing and improving as the work changes.</p>
+<h3>Executive Summary</h3>
+<p>Most leaders do not struggle because they lack effort. They struggle because they are trying to create performance with an accountability model that activates too late, consumes leadership energy, and often hires or retains people who are not naturally aligned with change. They are fighting Class 6 talent rivers with tools designed for still water.</p>
+
+<p>TAG’s position is direct: leadership must stop treating resistance to change as a surprise. Resistance is predictable. It appears when the organization hires for skills without examining values, when people are placed into change-heavy environments without the orientation to thrive, and when leaders rely on after-the-fact accountability instead of designing systems that activate Personal Responsibility before performance breaks down.</p>
+
+<p>The TriForce Leadership Discipline is TAG-developed intellectual property designed to help leaders think and decide more clearly about talent, capability, resistance to change, and performance. It is not a motivational model. It is a leadership discipline for identifying, activating, and protecting the human forces required for sustainable performance.</p>
+
+<p>The TriForce Leadership Discipline is built on three forces: Personal Responsibility, Initiative, and Performance. These are not inspirational words. They are the operating requirements of talent in a changing organization. Personal Responsibility gives the person ownership of life, work, choices, and impact. Initiative turns that responsibility into forward movement without waiting to be asked. Performance is the result when responsibility and initiative are aligned with the right system, role, support, and capability pathway.</p>
+
+<p>This article connects directly to TAG’s Talent Capability perspective: talent capability is the measurable capacity created when people, roles, learning, support, and systems align so individuals can perform, improve, and adapt as the work changes. The TriForce answers the deeper question: what human orientation must be present for capability to grow instead of stall?</p>
+
+<p>Every individual has two primary responsibilities: perform and improve performance. The TriForce makes those responsibilities visible. Personal Responsibility says, “I own my contribution.” Initiative says, “I step forward to improve it.” Performance says, “My contribution creates measurable value beyond minimum compliance.”</p>
+
+<p>TAG’s position is clear: leaders do not force Personal Responsibility, Initiative, and Performance into people. Leaders design systems that attract, activate, support, and protect those forces in the right people.</p>
+<h3>Evidence Standard: Why This Argument Is Defensible</h3>
+<p>This article is grounded in TAG’s field-based leadership insight and external evidence. Gallup shows that engagement remains under pressure and carries material productivity consequences. The World Economic Forum reports rapidly changing skill requirements, making adaptability a leadership requirement. Diffusion of Innovations theory explains why people adopt change at different rates, while lean discipline reinforces the importance of going to the source before judging performance. Onboarding and training-transfer research supports TAG’s position that capability strengthens when role clarity, support, practice, and application are designed into the work.</p>
+
+<p>The conclusion is straightforward. If work is changing, engagement is fragile, people vary in readiness for change, and capability requires structured support, leadership cannot rely on motivation, accountability, or personality judgment alone. It needs the TriForce.</p>
+<h3>The Leadership Mistake: Fighting Human Nature Instead of Designing for It</h3>
+<p>Many leaders are exhausted because they are trying to pull performance out of people after the system has already created friction. They chase follow-up, repeat expectations, and hold performance conversations that should have been prevented by better hiring, clearer systems, and stronger capability development.</p>
+
+<p>This is not a criticism of leaders. It is a diagnosis of the model they have inherited. The traditional model assumes that if expectations are stated and people are held accountable, performance should follow. TAG does not accept that as a sufficient operating model. Accountability often arrives after something has already been lost: time, quality, margin, momentum, client confidence, or leadership capacity.</p>
+
+<p>The deeper issue is talent alignment. Leaders often hire for experience, credentials, personality fit, or technical skill. Those factors may matter, but they are incomplete. In a changing business environment, the decisive question is not only, “Can this person do the work?” The stronger question is, “Does this person demonstrate the Personal Responsibility and Initiative required to perform and improve as the work changes?”</p>
+
+<p>When that question is not asked, leaders create predictable resistance. They bring people into roles where adaptation is required, then become frustrated when those people want stability, certainty, repetition, or protection from change. It is acceptable for a person to prefer less change personally. In business, however, change is not optional. Markets, technology, customers, workflows, tools, expectations, and roles change.</p>
+
+<p>This is why TAG uses the language of Class 6 talent rivers. Some leaders are trying to move the organization forward while the talent current is moving hard against them. Pushing harder does not redesign the river. It only exhausts the leader.</p>
+
+<p>The TriForce Leadership Discipline changes the problem. It asks leaders to stop fighting the current and design the talent system around the forces required for progress.</p>
+<h3>What the TriForce Actually Is</h3>
+<p>The TriForce Leadership Discipline is built on three connected forces: Personal Responsibility, Initiative, and Performance. One without the others is incomplete. Personal Responsibility without Initiative becomes private intention. Initiative without Personal Responsibility becomes activity without ownership. Performance without the first two becomes pressure, measurement, or short-term output rather than sustainable contribution.</p>
+
+<table>
+<thead>
+<tr>
+<th>TriForce Element</th>
+<th>Leadership Question</th>
+<th>Failure When Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal Responsibility</td>
+<td>Does this person take ownership of life, work, decisions, contribution, and impact without defaulting to blame?</td>
+<td>Excuses, dependence, defensiveness, avoidance, and repeated transfer of ownership back to the leader.</td>
+</tr>
+<tr>
+<td>Initiative</td>
+<td>Does this person step forward, contribute, learn, and improve without needing to be asked every time?</td>
+<td>Waiting, passivity, compliance, slow improvement, and constant leadership prompting.</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Does this person create measurable value beyond minimum expectation by performing and improving the work?</td>
+<td>Effort without value, motion without progress, numbers without maturity, and inconsistent contribution.</td>
+</tr>
+</tbody>
+</table>
+
+<p>This is the correction leaders need to make. The TriForce is not a communication model. It is not a meeting method. It is not a slogan for stronger leadership. It is a talent-and-performance discipline that defines what leaders must look for, activate, and support if they want performance to become repeatable.</p>
+
+<p>The three forces must remain connected.</p>
+
+<p>Personal Responsibility is the foundation. Initiative is the movement. Performance is the outcome. If Personal Responsibility is weak, the person waits for the system, the leader, the customer, or the circumstance to change before they choose ownership. If Initiative is weak, the person may agree with the goal but fails to move until directed. If Performance is weak, responsibility and initiative have not yet converted into value.</p>
+
+<p>The TriForce gives leaders a cleaner way to think and decide about talent. It moves talent decisions away from vague impressions and toward observable evidence.</p>
+<h3>Personal Responsibility: The Foundation of the Discipline</h3>
+<p>Personal Responsibility is deeper than ownership of tasks. In TAG language, Personal Responsibility is the belief that each person is responsible for thriving in life and work. A person who truly holds that belief does not default to blame. They may identify obstacles, name constraints, and request support, but they do not surrender ownership of their growth to someone else.</p>
+
+<p>This matters because business requires adaptation. A person who sees life as something happening to them will struggle when the work becomes unclear, uncomfortable, or new. A person who sees life as something they are responsible to engage will approach the same conditions differently. They will ask better questions. They will seek learning sooner. They will surface issues earlier. They will take feedback with less defensiveness. They will see improvement as part of the role, not as an extra demand.</p>
+
+<p>Personal Responsibility is not harsh. It is not a license for leaders to abandon support. It is the opposite. When leaders hire people who hold themselves responsible for thriving, the organization has a stronger obligation to provide the system, learning, tools, coaching, and clarity required for that responsibility to become performance.</p>
+
+<p>This is where the TriForce connects directly to Talent Capability. A responsible person still needs a capability system. Personal Responsibility does not replace education, training, coaching, mentoring, advising, role clarity, workflow design, or leadership support. It makes those investments more productive because the person is oriented to use them.</p>
+
+<table>
+<thead>
+<tr>
+<th>Weak Interpretation</th>
+<th>TAG Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Personal Responsibility means people should figure it out alone.”</td>
+<td>Personal Responsibility means people own their contribution while leaders design the support system that makes success possible.</td>
+</tr>
+<tr>
+<td>“Responsible people do not need help.”</td>
+<td>Responsible people engage help constructively and use support to improve performance.</td>
+</tr>
+<tr>
+<td>“Responsibility is enforced through accountability.”</td>
+<td>Responsibility is activated through clarity, selection, support, and meaningful work.</td>
+</tr>
+<tr>
+<td>“If someone struggles, they are not responsible.”</td>
+<td>Responsible people can struggle; the leader’s job is to inspect whether the system is helping or blocking improvement.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Leaders who understand Personal Responsibility stop confusing care with rescue. They do not rescue people from the responsibility to perform and improve. They also do not abandon people inside systems that make performance harder than it needs to be. They lead from the middle ground: clear expectations, structured support, honest conversations, and disciplined improvement.</p>
+<h3>Initiative: The Movement That Converts Responsibility Into Progress</h3>
+<p>Initiative is the willingness to step forward, contribute, learn, and improve without being asked to do so every time. It is where Personal Responsibility becomes visible.</p>
+
+<p>A person may say they take responsibility, but Initiative reveals whether that responsibility has movement behind it. Do they surface a problem early? Do they ask for clarity before drift becomes failure? Do they look for a better method? Do they practice the skill? Do they bring forward an idea? Do they help improve the work around them? Do they move when progress is needed, even before the path is perfect?</p>
+
+<p>Initiative does not mean random action. It does not mean bypassing alignment, ignoring standards, or acting independently from the system. TAG’s view of Initiative is disciplined. The person steps forward in a way that strengthens the work, the team, the client experience, and the system.</p>
+
+<p>This connects to the two primary responsibilities every individual has in their role: perform and improve performance. Performance without improvement eventually becomes decline because the work does not stand still. Improvement without performance becomes experimentation without value. Initiative connects the two. It keeps the person engaged in today’s work while strengthening tomorrow’s capability.</p>
+
+<p>The World Economic Forum’s 2025 Future of Jobs research reports that 39% of workers’ existing skill sets are expected to be transformed or become outdated between 2025 and 2030. That statistic is more than a labour-market forecast. It is a leadership signal. Organizations need people who do not wait passively for change to be made comfortable. They need people who can engage the work, learn through it, and help improve it as requirements shift.</p>
+
+<table>
+<thead>
+<tr>
+<th>Initiative Looks Like</th>
+<th>Initiative Does Not Look Like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asking for clarity before a gap becomes a failure.</td>
+<td>Waiting silently until the leader notices the issue.</td>
+</tr>
+<tr>
+<td>Bringing forward a better way to create value.</td>
+<td>Complaining about the current method without contributing to improvement.</td>
+</tr>
+<tr>
+<td>Learning a new tool or method because the role requires growth.</td>
+<td>Rejecting change because the old method feels safer.</td>
+</tr>
+<tr>
+<td>Improving the work while respecting the system.</td>
+<td>Acting outside alignment and calling it innovation.</td>
+</tr>
+<tr>
+<td>Taking the next responsible step when the path is not perfect.</td>
+<td>Refusing movement until certainty is guaranteed.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Leaders who cultivate Initiative do not simply ask people to “be proactive.” They design roles, rhythms, conversations, and expectations where proactive contribution is visible and valued. They ask better hiring questions. They observe behavior during onboarding. They coach people to identify constraints and propose improvements. They create a system where Initiative is not accidental.</p>
+<h3>Performance: Bigger Than the Numbers</h3>
+<p>Performance is the measurable value created when Personal Responsibility and Initiative operate inside a well-designed system. It includes numbers, but it is bigger than numbers. Performance is not simply hitting a target. It is the consistent creation of value through ownership, contribution, improvement, and alignment.</p>
+
+<p>This distinction matters. A person can hit a number while weakening the system. A team can meet a target while burning out capacity. A leader can drive output while suppressing Initiative. Those outcomes may look like performance for a period of time, but they are not sustainable performance.</p>
+
+<p>TAG defines performance through a larger lens. Performance includes whether the individual contributes above minimum expectation. It includes whether they improve the way work is done. It includes whether they strengthen the system around them. It includes whether they help create clarity, reduce friction, improve the client experience, and make future performance easier to repeat.</p>
+
+<p>This is why the TriForce matters. Personal Responsibility alone is not enough. Initiative alone is not enough. Performance is the test of whether those forces are creating value.</p>
+
+<table>
+<thead>
+<tr>
+<th>Narrow Performance View</th>
+<th>TriForce Performance View</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Did the person hit the number?”</td>
+<td>“Did the person create measurable value in a way that strengthens the system?”</td>
+</tr>
+<tr>
+<td>“Did the person complete the task?”</td>
+<td>“Did the person perform the work and improve how value is created?”</td>
+</tr>
+<tr>
+<td>“Did the person work hard?”</td>
+<td>“Did effort translate into useful, sustainable contribution?”</td>
+</tr>
+<tr>
+<td>“Did the leader get compliance?”</td>
+<td>“Did the person demonstrate responsibility and initiative without constant prompting?”</td>
+</tr>
+<tr>
+<td>“Did the team survive the quarter?”</td>
+<td>“Did the system become stronger because of how people performed?”</td>
+</tr>
+</tbody>
+</table>
+
+<p>This is the performance standard leaders should want. Not forced performance. Not performative busyness. Not compliance dressed up as commitment. Real performance is created when people take responsibility, step forward, improve the work, and create value that can be seen.</p>
+<h3>Why One Force Without the Others Does Not Work</h3>
+<p>The strength of the TriForce is not found in the individual words. It is found in their connection.</p>
+<p>Personal Responsibility without Initiative produces internal ownership that does not move fast enough. A person may care, but if they wait to be asked, the leader still carries the burden of movement. Initiative without Personal Responsibility produces activity that may not be anchored in mature judgment. A person may act quickly, but without ownership of impact, the action may create more noise than progress. Performance without Personal Responsibility and Initiative becomes pressure from the outside rather than commitment from the inside.</p>
+
+<p>This is why leaders must think in systems. If they hire only for skill, they may miss Personal Responsibility. If they reward only visible activity, they may confuse motion with Initiative. If they measure only short-term output, they may miss whether performance is strengthening or weakening the system.</p>
+
+<table>
+<thead>
+<tr>
+<th>If This Is Present</th>
+<th>But This Is Missing</th>
+<th>Predictable Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal Responsibility</td>
+<td>Initiative</td>
+<td>The person may care but still waits for direction.</td>
+</tr>
+<tr>
+<td>Initiative</td>
+<td>Personal Responsibility</td>
+<td>The person may move quickly but fail to own impact or alignment.</td>
+</tr>
+<tr>
+<td>Performance pressure</td>
+<td>Capability support</td>
+<td>People may produce temporarily while long-term capacity declines.</td>
+</tr>
+<tr>
+<td>Capability systems</td>
+<td>TriForce orientation</td>
+<td>The organization may provide support to people who do not engage it.</td>
+</tr>
+<tr>
+<td>TriForce orientation</td>
+<td>Capability systems</td>
+<td>Good people may struggle inside unclear or unsupported work.</td>
+</tr>
+</tbody>
+</table>
+
+<p>The last two rows are critical. TriForce and Talent Capability must work together. A person with strong Personal Responsibility and Initiative still needs a capability system. A strong capability system still needs people who will engage it. One is the human orientation. The other is the organizational architecture.</p>
+
+<p>Together, they make performance deliberate by design.</p>
+<h3>The Hiring Implication: The TriForce Changes the Decision Process</h3>
+<p>The TriForce Leadership Discipline has significant hiring implications. It changes what leaders look for before the person enters the organization.</p>
+
+<p>Most hiring processes overvalue what a person has done and undervalue how the person thinks, chooses, adapts, and improves. Experience matters, but experience without Personal Responsibility can become entitlement. Skill matters, but skill without Initiative can become dependency. Confidence matters, but confidence without Performance can become theatre.</p>
+
+<p>A TriForce-informed hiring process starts with Personal Responsibility. Leaders should ask questions that reveal whether the person owns their life, choices, learning, mistakes, growth, and impact. This must be observable. It cannot be assumed because the person speaks well in an interview.</p>
+<p>Then leaders examine Initiative. They should ask for evidence of times the person stepped forward without being asked, improved a process, learned a new skill, created progress under uncertainty, or contributed beyond the minimum requirement.</p>
+
+<p>Then leaders examine Performance. They should look for proof that responsibility and initiative translated into measurable value. Not just activity. Not just effort. Not just intention. Value.</p>
+
+<table>
+<thead>
+<tr>
+<th>Hiring Dimension</th>
+<th>Weak Hiring Question</th>
+<th>TriForce Hiring Question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal Responsibility</td>
+<td>“Tell us about yourself.”</td>
+<td>“Give an example of a time you took ownership when it would have been easier to blame the system, the leader, or the circumstance.”</td>
+</tr>
+<tr>
+<td>Initiative</td>
+<td>“Are you a self-starter?”</td>
+<td>“Show us where you stepped forward to improve something without being asked.”</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>“What results have you achieved?”</td>
+<td>“What measurable value did your ownership and initiative create, and how did the system improve because of your contribution?”</td>
+</tr>
+<tr>
+<td>Change Readiness</td>
+<td>“Are you comfortable with change?”</td>
+<td>“Describe a time you had to change how you worked. What did you learn, and what did you improve?”</td>
+</tr>
+<tr>
+<td>Capability Growth</td>
+<td>“What training have you completed?”</td>
+<td>“How do you convert learning into better performance?”</td>
+</tr>
+</tbody>
+</table>
+
+<p>This is where the Diffusion of Innovations lens becomes useful. Everett Rogers’ model is widely known for identifying adopter categories such as innovators, early adopters, early majority, late majority, and laggards. TAG does not use these categories to label people casually. It uses the concept to help leaders understand change readiness.</p>
+
+<p>If a role exists in a change-heavy environment, the organization should be honest about what that role requires. It should seek people who can engage improvement, uncertainty, new tools, changing workflows, feedback, and evolving expectations. If an organization fills change-heavy roles with people who are late to adopt or actively resistant, leadership has created predictable resistance before the person even starts.</p>
+
+<p>This does not make the person bad. It means the role, system, and person may not be aligned.</p>
+
+<p>The TriForce helps leaders prevent that mismatch.</p>
+<h3>The Retention Implication: Stop Retaining Resistance Without Naming It</h3>
+<p>Hiring is not the only issue. Retention matters just as much. Organizations often retain resistance because a person has technical knowledge, tenure, relationships, or operational familiarity. Leaders then build workarounds around the resistance and assign change to the same small group of willing people. This is how one person’s resistance becomes a tax on everyone else’s performance.</p>
+
+<p>TAG’s view is not that every person must love change. The view is that every person in a business must accept that change is part of work. Improvement, learning, and adaptation are not optional. The person’s two primary responsibilities remain constant: perform and improve performance.</p>
+<p>Retention decisions should therefore examine whether the person strengthens or weakens those responsibilities.</p>
+
+<table>
+<thead>
+<tr>
+<th>Retention Question</th>
+<th>What It Reveals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Does this person take responsibility when performance gaps appear?</td>
+<td>Whether ownership is active or avoided.</td>
+</tr>
+<tr>
+<td>Does this person step forward to improve the work?</td>
+<td>Whether Initiative exists beyond assigned tasks.</td>
+</tr>
+<tr>
+<td>Does this person adapt as the role changes?</td>
+<td>Whether capability can grow with business reality.</td>
+</tr>
+<tr>
+<td>Does this person make improvement easier or harder for others?</td>
+<td>Whether the person strengthens or drains the system.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Leaders must be fair. Before concluding that a person lacks the TriForce orientation, they must examine whether the system has made expectations clear, support visible, learning available, and performance feedback honest. But once the system has been examined, support has been provided, and the person still refuses responsibility, avoids initiative, or resists improvement, the issue is no longer confusion. It is misalignment.</p>
+<h3>The Leader’s Role: MEACT Specialist, Not Performance Police</h3>
+<p>The leader’s role is not to force the TriForce into people. The leader’s role is to operate as a MEACT specialist and help team members overcome the challenges preventing capability and performance from strengthening.</p>
+
+<p>MEACT stands for mentoring, educating, advising, coaching, and training. This matters because different people need different forms of support at different moments. A person may need education to understand the system. Another may need training to learn the method. Another may need coaching to apply the skill in real conditions. Another may need advising to make better decisions. Another may need mentoring to mature their identity, judgment, and responsibility.</p>
+
+<table>
+<thead>
+<tr>
+<th>MEACT Component</th>
+<th>How It Supports the TriForce</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mentoring</td>
+<td>Strengthens identity, maturity, and the deeper belief that the person is responsible for thriving.</td>
+</tr>
+<tr>
+<td>Educating</td>
+<td>Helps the person understand the system, the role, the value stream, and why improvement matters.</td>
+</tr>
+<tr>
+<td>Advising</td>
+<td>Supports better decisions when the person faces complexity, ambiguity, or competing priorities.</td>
+</tr>
+<tr>
+<td>Coaching</td>
+<td>Converts intention into behavior through guided practice, feedback, and correction in context.</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>Builds the specific skills, methods, tools, and standards required to perform the work.</td>
+</tr>
+</tbody>
+</table>
+
+<p>This is a serious leadership shift. Leaders work for the people who work for them. That does not mean leaders become subordinate to preference, avoidance, or resistance. It means leaders accept responsibility for designing the conditions where the right people can perform, improve, and grow.</p>
+
+<p>This is why going to the work matters. Lean thinking emphasizes genchi genbutsu, or going to the source to check facts directly before making decisions. In talent leadership, the same principle applies. Before judging whether someone lacks responsibility, initiative, or capability, leaders should understand the work environment shaping that person’s behavior.</p>
+
+<p>For SMB leaders, time is real. Leaders may not always be able to spend a full day beside every person. But if direct observation is limited, the organization still needs a documented process that makes the work visible before judgment becomes final. Performance concerns should not be managed through assumption.</p>
+
+<p>A leader who applies the TriForce well asks:</p>
+
+<table>
+<thead>
+<tr>
+<th>Leadership Question</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Have we hired for Personal Responsibility, Initiative, and Performance?</td>
+<td>Tests whether resistance was designed into the system at selection.</td>
+</tr>
+<tr>
+<td>Have we made the person’s two role responsibilities clear: perform and improve performance?</td>
+<td>Clarifies the operating expectation.</td>
+</tr>
+<tr>
+<td>Have we provided the MEACT support required for this person to grow?</td>
+<td>Tests whether capability has been supported, not merely demanded.</td>
+</tr>
+<tr>
+<td>Have we examined the work before judging the worker?</td>
+<td>Protects against assumption-based decisions.</td>
+</tr>
+<tr>
+<td>Have we created conditions where the right person can step forward?</td>
+<td>Ensures the system activates rather than suppresses Initiative.</td>
+</tr>
+</tbody>
+</table>
+
+<p>This is leadership by design.</p>
+<h3>The Accountability Problem: Why the Old Model Keeps Failing</h3>
+<p>The TriForce Leadership Discipline challenges the traditional accountability model because accountability usually arrives after loss. By the time a leader is “holding someone accountable,” the customer may have already been affected, the team may have already absorbed the friction, and the leader may have already spent energy chasing a preventable issue.</p>
+
+<p>Gallup’s workplace research reports that employee engagement fell to 20% globally in 2025 and estimates that low engagement costs the world economy approximately $10 trillion in lost productivity. Gallup also reports that manager engagement has declined, with managers playing a major role in the broader engagement downturn. These findings matter because leaders cannot solve performance by adding more emotional labour to already strained management systems.</p>
+
+<p>A leadership model that depends on constant accountability conversations is not scalable. It asks leaders to inspect, correct, chase, remind, and intervene repeatedly. That may create temporary compliance, but it does not create durable performance.</p>
+
+<p>The TriForce moves the work upstream.</p>
+
+<p>Instead of asking, “How do we hold people accountable after performance fails?” leaders ask, “How do we hire, support, and lead people so Personal Responsibility and Initiative are active before performance fails?”</p>
+
+<p>That question changes everything.</p>
+
+<table>
+<thead>
+<tr>
+<th>Old Accountability Model</th>
+<th>TriForce Leadership Discipline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reacts after performance breaks down.</td>
+<td>Designs conditions before performance breaks down.</td>
+</tr>
+<tr>
+<td>Assumes pressure creates ownership.</td>
+<td>Selects for and activates Personal Responsibility.</td>
+</tr>
+<tr>
+<td>Requires leaders to chase movement.</td>
+<td>Builds Initiative into hiring, support, and expectations.</td>
+</tr>
+<tr>
+<td>Measures output after the fact.</td>
+<td>Connects Performance to contribution, improvement, and system strength.</td>
+</tr>
+<tr>
+<td>Often exhausts leaders.</td>
+<td>Gives leaders a clearer talent decision architecture.</td>
+</tr>
+</tbody>
+</table>
+
+<p>The goal is not less responsibility. The goal is earlier responsibility. The goal is not lower standards. The goal is standards that are visible, supported, and aligned with the people selected into the system.</p>
+<h3>How the TriForce Connects to Talent Capability</h3>
+<p>The Talent Capability pillar established a core TAG principle: capability is not assumed. It is built through a value stream of talent acquisition, education, training, coaching, and career success. The TriForce sits at the center of that value stream because it defines the human orientation required for capability to grow.</p>
+
+<p>Talent Capability answers the question: How does the organization build the measurable capacity for people to perform, improve, and adapt?</p>
+
+<p>The TriForce answers the question: What must be present in the person and activated by the system for that capacity to become performance?</p>
+
+<p>The two should not be separated.</p>
+
+<table>
+<thead>
+<tr>
+<th>Talent Capability System</th>
+<th>TriForce Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Talent acquisition</td>
+<td>Select for Personal Responsibility, Initiative, and evidence of Performance.</td>
+</tr>
+<tr>
+<td>Education</td>
+<td>Help people understand the system, value creation, and why improvement is part of the role.</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>Build the methods and skills required to perform the work.</td>
+</tr>
+<tr>
+<td>Coaching</td>
+<td>Help people apply learning, step forward, and improve in context.</td>
+</tr>
+<tr>
+<td>Career success</td>
+<td>Support long-term growth through mentoring, advising, and responsibility expansion.</td>
+</tr>
+</tbody>
+</table>
+
+<p>This is why TriForce is not a motivational concept. It is a capability multiplier. When the right people enter the right system, capability compounds. When the wrong people enter a change-heavy system, resistance compounds. When responsible, initiative-taking people are placed into weak systems, frustration compounds. When strong systems support people with the right orientation, performance compounds.</p>
+
+<p>This is the architecture leaders must see.</p>
+<h3>The Executive Shift: From Talent Reaction to Talent Design</h3>
+<p>The executive shift is simple to state and demanding to execute. Leaders must stop reacting to resistance after it appears and start designing talent systems that reduce preventable resistance before it enters the organization.</p>
+
+<p>This begins with how leaders think about people. TAG does not believe people are the problem. Poorly designed systems are the problem. But TAG also does not ignore the reality that people differ in values, orientation, responsibility, initiative, and change readiness. Systems-first leadership does not mean everyone is automatically the right fit. It means leaders make better decisions because they examine both the system and the person with discipline.</p>
+<p>The TriForce gives that discipline structure.</p>
+
+<table>
+<thead>
+<tr>
+<th>Executive Belief to Abandon</th>
+<th>Executive Belief to Build</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“People need to be held accountable.”</td>
+<td>“The system should activate Personal Responsibility before failure compounds.”</td>
+</tr>
+<tr>
+<td>“Experience predicts performance.”</td>
+<td>“Responsibility, Initiative, and adaptability determine whether experience will transfer.”</td>
+</tr>
+<tr>
+<td>“Resistance is a people problem.”</td>
+<td>“Resistance is often a predictable result of selection, system design, and change readiness.”</td>
+</tr>
+<tr>
+<td>“Performance is hitting the number.”</td>
+<td>“Performance is measurable value created through responsibility, initiative, improvement, and alignment.”</td>
+</tr>
+<tr>
+<td>“Leaders must push harder.”</td>
+<td>“Leaders must design better.”</td>
+</tr>
+</tbody>
+</table>
+
+<p>This is where leaders feel the weight of the work. The TriForce requires conviction. It asks leaders to stop lowering the standard to avoid uncomfortable decisions. It also asks leaders to stop blaming individuals before examining the system. Both are required. One without the other is incomplete.</p>
+
+<p>Leaders must believe the best of people first. They must examine the system first. They must provide support with discipline. They must make expectations visible. And they must also protect the organization from persistent resistance that drains the people who are trying to move forward.</p>
+<p>That is not harsh leadership. That is responsible leadership.</p>
+<h2>Final Word: The TriForce Is How Performance Becomes Deliberate</h2>
+<p>The TriForce Leadership Discipline is not about slogans, motivation, or personality. It is about the three forces required for people to perform and improve inside changing work: Personal Responsibility, Initiative, and Performance.</p>
+
+<p>Personal Responsibility is the foundation because people must own their contribution, choices, learning, and impact. Initiative is the movement because ownership must become action before the leader has to ask again. Performance is the outcome because responsibility and initiative must create measurable value that strengthens the system.</p>
+
+<p>This is why the TriForce matters so deeply to TAG. It changes how leaders think about talent. It changes how leaders hire. It changes how leaders develop people. It changes how leaders interpret resistance. It changes how leaders decide whether a performance issue is a system constraint, a capability gap, or a values misalignment.</p>
+
+<p>The TriForce does not replace Talent Capability. It strengthens it. Talent Capability builds the system that helps people perform, improve, and adapt. The TriForce identifies the human forces that allow that system to work.</p>
+
+<p>Leaders are not at the table to push harder against resistance. They are at the table to design systems where the right people can move with responsibility, initiative, and measurable contribution.</p>
+<p>Design systems. Align talent. Performance follows.</p>
+<h3>References</h3>
+<p><a href="https://www.gallup.com/workplace/654911/employee-engagement-sinks-year-low.aspx" target="_blank">\[1\] Gallup — Employee Engagement Sinks to 10-Year Low</a>
+<a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank">\[2\] World Economic Forum — The Future of Jobs Report 2025</a>
+<a href="https://www.ou.edu/deptcomm/dodjcc/groups/99A2/theories.htm" target="_blank">\[3\] University of Oklahoma — Diffusion of Innovations Theory Summary</a>
+<a href="https://www.lean.org/the-lean-post/articles/how-to-go-to-the-gemba-go-see-ask-why-show-respect/" target="_blank">\[4\] Lean Enterprise Institute — How to Go to the Gemba: Go See, Ask Why, Show Respect</a>
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9934447/" target="_blank">\[5\] PLOS One / PMC — Formal Onboarding Research</a>
+<a href="https://deepblue.lib.umich.edu/bitstreams/c3a8b983-ca1d-405b-a5ea-70142bae7821/download" target="_blank">\[6\] Baldwin, Ford, and Blume — The State of Transfer of Training Research</a></p>
+
+
+                        <!-- NAVIGATION SECTION -->
+            <div class="navigation-section">
+                <a href="/article-talent-capability" class="nav-button prev">
+                    <div style="text-align: left;">
+                        <div class="nav-label">← Previous</div>
+                        <div class="nav-title">Talent Capability: Why Performance Improves When Leaders Design the System Around the Work</div>
+                    </div>
+                </a>
+                <a href="/article-trust-lens-framework" class="nav-button next">
+                    <div style="text-align: right;">
+                        <div class="nav-label">Next →</div>
+                        <div class="nav-title">The Trust Lens Framework: Building Organizational Trust Through Systems</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 9: Footer -->
+            <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="/index">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663397493018/RtUPfWsgEAaldZbl.png" alt="TAG" class="footer-logo">
+                </a>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="/systems-architecture">Systems Architecture</a>
+                <a href="/talent-capability">Talent Capability</a>
+                <a href="/team-service">Self-directed Teams</a>
+                <a href="/workflow-automation">Workflow Automation</a>
+                <a href="/capacity-as-a-service">Capacity as a Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="/our-work">Our Work</a>
+                <a href="/our-thinking">Our Thinking</a>
+                <a href="/tag-in-action">TAG in action</a>
+                <a href="/about">About</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TAG. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        if (window.innerWidth <= 768) {
+            const script = document.createElement('script');
+            script.src = 'navbar-mobile.js?v=5';
+            document.body.appendChild(script);
+        }
+    </script>
+    <script src="dropdown-handler.js?v=5"></script>
+<style>
+.nav-links a.contact-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;text-decoration:none!important;color:var(--white)!important;line-height:1.2!important}.nav-links .dropdown{position:relative!important}.nav-links .dropdown-menu{pointer-events:auto!important}.nav-links .dropdown-menu a{pointer-events:auto!important;cursor:pointer!important}.nav-links .dropdown.open .dropdown-menu{display:block!important;visibility:visible!important;opacity:1!important}.mobile-menu-mobile.active{display:flex!important;visibility:visible!important;height:auto!important;overflow:visible!important}.mobile-dropdown-menu-mobile.active{display:flex!important;visibility:visible!important;height:auto!important;overflow:visible!important}.mobile-dropdown-btn-mobile[aria-expanded="true"] .dropdown-icon-mobile,.dropdown-btn[aria-expanded="true"] .dropdown-icon{transform:rotate(180deg)}
+</style>
+<script>
+(function(){
+  window.TAG_MENU_DEBUG = window.TAG_MENU_DEBUG || false;
+  var TAG_LOCAL_SLUGS = ['','home','about','systems-architecture','talent-capability','team-service','workflow-automation','fractional-services','our-work','our-thinking','tag-in-action','insights','contact','thank-you','privacy','terms','article-trust-lens-framework','article-triforce-leadership','article-talent-capability','article-systems-architecture','article-statistics-decoded','article-tag-in-action-04','article-tag-in-action-03','article-tag-in-action-02','article-tag-in-action-01'];
+  function isLocalPreview(){ return location.hostname === '127.0.0.1' || location.hostname === 'localhost'; }
+  function normalizeLocalHref(href){
+    if(!isLocalPreview() || !href || href.indexOf('/') !== 0 || href.indexOf('//') === 0) return href;
+    var hash = '';
+    var hashIndex = href.indexOf('#');
+    if(hashIndex >= 0){ hash = href.slice(hashIndex); href = href.slice(0, hashIndex); }
+    var query = '';
+    var queryIndex = href.indexOf('?');
+    if(queryIndex >= 0){ query = href.slice(queryIndex); href = href.slice(0, queryIndex); }
+    var slug = href.replace(/^\//,'').replace(/\/$/,'');
+    if(slug === '') return '/home.html' + query + hash;
+    if(TAG_LOCAL_SLUGS.indexOf(slug) >= 0 && !/\.html$/.test(slug)) return '/' + slug + '.html' + query + hash;
+    return href + query + hash;
+  }
+  function log(){ if(window.TAG_MENU_DEBUG && window.console) console.log.apply(console, arguments); }
+  function bindOnce(el, key, handler){
+    if(!el || el.dataset[key] === '1') return false;
+    el.dataset[key] = '1';
+    el.addEventListener('click', handler);
+    return true;
+  }
+  function closeDesktopMenus(except){
+    document.querySelectorAll('.tag-desktop-nav .dropdown.open').forEach(function(item){
+      if(except && item === except) return;
+      item.classList.remove('open');
+      var btn=item.querySelector('.dropdown-btn');
+      if(btn) btn.setAttribute('aria-expanded','false');
+    });
+  }
+  function initTagMenu(){
+    var bound = 0;
+    document.querySelectorAll('a[href^="/"]').forEach(function(link){
+      if(bindOnce(link, 'tagLocalRouteReady', function(e){
+        var raw = link.getAttribute('href');
+        var next = normalizeLocalHref(raw);
+        if(next && next !== raw){
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = next;
+        }
+      })) bound++;
+    });
+    document.querySelectorAll('.tag-desktop-nav .dropdown-btn').forEach(function(btn){
+      if(!btn.getAttribute('type')) btn.setAttribute('type','button');
+      if(!btn.getAttribute('aria-expanded')) btn.setAttribute('aria-expanded','false');
+      if(bindOnce(btn, 'tagMenuReady', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var item=btn.closest('.dropdown');
+        var willOpen=item && !item.classList.contains('open');
+        closeDesktopMenus(item);
+        if(item){
+          item.classList.toggle('open', !!willOpen);
+          btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+      })) bound++;
+    });
+    document.querySelectorAll('.hamburger-btn-mobile').forEach(function(btn){
+      if(!btn.getAttribute('type')) btn.setAttribute('type','button');
+      if(bindOnce(btn, 'tagMenuReady', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var nav=btn.closest('nav') || document;
+        var menu=nav.querySelector('.mobile-menu-mobile') || document.querySelector('.mobile-menu-mobile');
+        if(menu){
+          var willOpen=!menu.classList.contains('active');
+          menu.classList.toggle('active', willOpen);
+          btn.classList.toggle('active', willOpen);
+          btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+      })) bound++;
+    });
+    document.querySelectorAll('.mobile-dropdown-btn-mobile').forEach(function(btn){
+      if(!btn.getAttribute('type')) btn.setAttribute('type','button');
+      if(!btn.getAttribute('aria-expanded')) btn.setAttribute('aria-expanded','false');
+      if(bindOnce(btn, 'tagMenuReady', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var wrap=btn.closest('.mobile-dropdown-item');
+        var menu=wrap && wrap.querySelector('.mobile-dropdown-menu-mobile');
+        if(menu){
+          var willOpen=!menu.classList.contains('active');
+          menu.classList.toggle('active', willOpen);
+          btn.classList.toggle('active', willOpen);
+          btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+      })) bound++;
+    });
+    if(!document.documentElement.dataset.tagMenuCloseReady){
+      document.documentElement.dataset.tagMenuCloseReady='1';
+      document.addEventListener('click', function(e){
+        if(e.target.closest && e.target.closest('.tag-desktop-nav .dropdown')) return;
+        closeDesktopMenus();
+      }, true);
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') closeDesktopMenus();
+      });
+    }
+    if(bound) log('TAG menu bound', bound);
+    return bound;
+  }
+  window.initTagMenu = initTagMenu;
+  function scheduleInit(){
+    initTagMenu();
+    setTimeout(initTagMenu, 50);
+    setTimeout(initTagMenu, 250);
+    setTimeout(initTagMenu, 1000);
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', scheduleInit);
+  scheduleInit();
+  if(!window.__TAG_MENU_OBSERVER__ && 'MutationObserver' in window){
+    window.__TAG_MENU_OBSERVER__ = new MutationObserver(function(){ initTagMenu(); });
+    window.__TAG_MENU_OBSERVER__.observe(document.documentElement, {childList:true, subtree:true});
+  }
+})();
+</script>
+
+
+<style id="tag-hero-stat-fix-style">
+.hero,.hero-section,.service-hero,.page-hero,.case-hero,.article-hero{background-repeat:no-repeat!important;background-size:cover!important;background-position:center center}.hero[style*="background"],.hero-section[style*="background"],.service-hero[style*="background"],.page-hero[style*="background"]{background-repeat:no-repeat!important;background-size:cover!important}.challenge-stat{font-variant-numeric:tabular-nums;will-change:contents}.challenge-stat.tag-stat-animating{opacity:.96}
+</style>
+<script id="tag-stat-animation-script">
+(function(){
+  function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+  function decimalsOf(n){var s=String(n);return s.indexOf('.')>=0?s.split('.')[1].length:0;}
+  function formatNumber(value, decimals){return decimals?value.toFixed(decimals):String(Math.round(value));}
+  function animateText(el, finalText){
+    var text=(finalText||el.textContent||'').trim();
+    if(!text || el.dataset.tagStatDone==='1') return;
+    el.dataset.tagStatDone='1';
+    el.classList.add('tag-stat-animating');
+    var range=text.match(/^([^0-9+-]*[+-]?)(\d+(?:\.\d+)?)(\s*[-–]\s*)(\d+(?:\.\d+)?)([^0-9]*)$/);
+    var single=text.match(/^([^0-9+-]*[+-]?)(\d+(?:\.\d+)?)([^0-9]*)$/);
+    var start=performance.now();
+    var duration=1200;
+    function frame(now){
+      var p=Math.min(1,(now-start)/duration);
+      var e=easeOutCubic(p);
+      if(range){
+        var a=parseFloat(range[2]), b=parseFloat(range[4]);
+        var da=decimalsOf(range[2]), db=decimalsOf(range[4]);
+        el.textContent=range[1]+formatNumber(a*e,da)+range[3]+formatNumber(b*e,db)+range[5];
+      }else if(single){
+        var n=parseFloat(single[2]);
+        var d=decimalsOf(single[2]);
+        el.textContent=single[1]+formatNumber(n*e,d)+single[3];
+      }else{
+        el.textContent=text;
+        p=1;
+      }
+      if(p<1) requestAnimationFrame(frame); else { el.textContent=text; el.classList.remove('tag-stat-animating'); }
+    }
+    requestAnimationFrame(frame);
+  }
+  function initStats(){
+    var stats=[].slice.call(document.querySelectorAll('.challenge-stat'));
+    stats.forEach(function(el){ if(!el.dataset.tagFinalStat) el.dataset.tagFinalStat=(el.textContent||'').trim(); });
+    if(!stats.length) return;
+    if(!('IntersectionObserver' in window)){
+      stats.forEach(function(el){animateText(el,el.dataset.tagFinalStat);});
+      return;
+    }
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ animateText(entry.target,entry.target.dataset.tagFinalStat); observer.unobserve(entry.target); }
+      });
+    },{threshold:.35});
+    stats.forEach(function(el){observer.observe(el);});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initStats); else initStats();
+})();
+</script>
+
+<style id="tag-cookie-consent-style">
+.tag-cookie-consent{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:2147483000;background:#181921;color:#fff;border:1px solid rgba(153,170,166,.35);box-shadow:0 18px 50px rgba(0,0,0,.28);border-radius:14px;padding:1rem;display:none;font-family:'Antipasto','Poppins',sans-serif}.tag-cookie-consent.is-visible{display:block}.tag-cookie-consent__inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}.tag-cookie-consent__copy{font-size:.9rem;line-height:1.5;color:#c9d5d2;text-align:left}.tag-cookie-consent__copy strong{display:block;color:#fff;font-size:1rem;margin-bottom:.15rem}.tag-cookie-consent__copy a{color:#00af8d;text-decoration:underline;text-underline-offset:3px}.tag-cookie-consent__actions{display:flex;gap:.75rem;flex-shrink:0}.tag-cookie-consent__btn{appearance:none;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:transparent;color:#fff;cursor:pointer;font:inherit;font-weight:800;padding:.7rem 1rem;white-space:nowrap}.tag-cookie-consent__btn--accept{background:#e84005;border-color:#e84005}.tag-cookie-consent__btn:hover{transform:translateY(-1px)}@media(max-width:720px){.tag-cookie-consent__inner{flex-direction:column;align-items:flex-start}.tag-cookie-consent__actions{width:100%;flex-direction:column}.tag-cookie-consent__btn{width:100%}}
+</style>
+<div class="tag-cookie-consent" id="tag-cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+  <div class="tag-cookie-consent__inner">
+    <div class="tag-cookie-consent__copy"><strong>Cookie preferences</strong>We use cookies to keep the site working, improve performance, and understand how visitors use TAG. You can accept all cookies or continue with necessary cookies only. <a href="/privacy">Privacy Policy</a></div>
+    <div class="tag-cookie-consent__actions"><button class="tag-cookie-consent__btn" type="button" data-tag-cookie-choice="necessary">Necessary only</button><button class="tag-cookie-consent__btn tag-cookie-consent__btn--accept" type="button" data-tag-cookie-choice="accepted">Accept all</button></div>
+  </div>
+</div>
+<script id="tag-cookie-consent-script">
+(function(){
+  var key='tag_cookie_consent';
+  var banner=document.getElementById('tag-cookie-consent');
+  if(!banner) return;
+  function setCookie(value){
+    try{localStorage.setItem(key,value);}catch(e){}
+    var secure=location.protocol==='https:'?'; Secure':'';
+    document.cookie=key+'='+encodeURIComponent(value)+'; Max-Age=31536000; Path=/; SameSite=Lax'+secure;
+  }
+  function hasChoice(){
+    try{if(localStorage.getItem(key)) return true;}catch(e){}
+    return document.cookie.indexOf(key+'=')!==-1;
+  }
+  if(!hasChoice()) banner.classList.add('is-visible');
+  banner.querySelectorAll('[data-tag-cookie-choice]').forEach(function(btn){
+    btn.addEventListener('click',function(){setCookie(btn.getAttribute('data-tag-cookie-choice'));banner.classList.remove('is-visible');});
+  });
+})();
+</script>
+
+<style id="tag-responsive-polish-final">
+html,body{max-width:100%!important;overflow-x:hidden!important}.tag-webflow-root,main,section,header,footer,nav{max-width:100%!important}.container{width:min(100%,1200px)!important;max-width:1200px!important;min-width:0!important;padding-left:clamp(1rem,4vw,1.5rem)!important;padding-right:clamp(1rem,4vw,1.5rem)!important}img,svg,video,iframe{max-width:100%;height:auto}.hero-orientation{width:auto!important;max-width:min(100%,1120px)!important;white-space:normal!important;overflow-wrap:normal!important;text-wrap:pretty!important}.ticker-wrapper,.logo-ticker,.logo-wall,.logos-section{overflow:hidden!important}.ticker-tape{max-width:none!important}.footer-content,.footer-section,.footer-bottom,.footer-bottom-links{min-width:0!important}.footer-section{max-width:100%!important}.footer-section a,.footer-section h3{max-width:100%!important;overflow-wrap:anywhere}.tag-leads-bg,.ecosystem-bg{max-width:100vw!important;overflow:hidden!important}.hero-pattern{max-width:52vw!important}.nonprofit-image-col,.nonprofit-img{max-width:100%!important}.services-page .audience-card,.services-page .service-card,.services-page .capacity-card{min-width:0!important}.services-page .services-hero:before{background:linear-gradient(to right,var(--turquoise) 0%,var(--turquoise) 45%,rgba(0,175,141,.66) 65%,rgba(0,175,141,0) 90%)!important}.services-page .capacity-card{height:auto!important;min-height:0!important;max-height:none!important}.services-page .capacity-cta{display:inline-flex!important;flex-direction:column!important;align-items:flex-start!important;width:auto!important;max-width:max-content!important;min-width:0!important;padding:.72rem .85rem!important;border-radius:30px!important}.services-page .capacity-cta span{display:block!important;line-height:1.15!important;white-space:nowrap!important}
+@media (max-width:1024px){.services-page .services-hero{min-height:600px!important;background-position:62% center!important}.services-page .services-hero h1{font-size:clamp(2.7rem,7vw,3.8rem)!important;line-height:1.12!important}.services-page .services-hero p{font-size:clamp(1.1rem,2.4vw,1.35rem)!important;line-height:1.45!important}.services-page .capacity-card{grid-template-columns:72px minmax(0,1fr)!important}.services-page .capacity-cta{grid-column:2!important;justify-self:start!important}.footer-content{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:900px){.audience-grid,.core-grid,.services-page .audience-grid,.services-page .core-grid{grid-template-columns:1fr!important}.services-page .services-hero:before{background:linear-gradient(to right,rgba(0,175,141,.94) 0%,rgba(0,175,141,.78) 58%,rgba(0,175,141,.2) 100%)!important}.nonprofit-image-col,.nonprofit-img{width:100%!important;max-width:100%!important}.footer-bottom{display:flex!important;flex-wrap:wrap!important;gap:1rem!important;justify-content:space-between!important}}
+@media (max-width:640px){body{font-size:16px!important}.container{padding-left:1rem!important;padding-right:1rem!important}.nav-logo{height:2.35rem!important}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1,.case-hero h1,.article-hero h1{font-size:clamp(2.15rem,10vw,3rem)!important;line-height:1.08!important;text-wrap:balance!important;letter-spacing:0!important}.hero p,.hero-section p,.page-hero p,.service-hero p,.case-hero p,.article-hero p{font-size:clamp(1rem,4.6vw,1.2rem)!important;line-height:1.48!important}.hero-orientation{display:block!important;width:auto!important;max-width:100%!important;white-space:normal!important;font-size:clamp(.86rem,3.8vw,1rem)!important;line-height:1.45!important}.tag-leads-bg,.ecosystem-bg{left:0!important;right:0!important;width:100%!important}.hero-pattern{right:0!important;left:auto!important;width:min(52vw,220px)!important}.hero-visual{width:100%!important;max-width:100%!important;overflow:hidden!important}.services-page .services-hero{min-height:560px!important;padding:4.25rem 0!important;background-position:68% center!important}.services-page .services-hero:before{background:linear-gradient(to bottom,rgba(0,175,141,.98) 0%,rgba(0,175,141,.88) 56%,rgba(0,175,141,.28) 100%)!important}.services-page .services-hero h1{font-size:clamp(2.55rem,13vw,3.45rem)!important;line-height:1.08!important;margin-bottom:1.25rem!important}.services-page .services-hero p{font-size:clamp(1.08rem,5vw,1.3rem)!important;line-height:1.42!important}.services-page .audience-card,.services-page .service-card,.services-page .capacity-card{grid-template-columns:1fr!important;gap:1rem!important;padding:1.35rem!important}.services-page .audience-icon,.services-page .service-icon,.services-page .capacity-icon{width:64px!important;height:64px!important}.services-page .capacity-cta{grid-column:auto!important;justify-self:start!important;width:auto!important;max-width:100%!important;padding:.72rem .9rem!important}.services-page .capacity-cta span{white-space:normal!important}.footer-content{display:grid!important;grid-template-columns:1fr!important;gap:1.6rem!important;text-align:left!important}.footer-section,.footer-section h3,.footer-section a{text-align:left!important;width:auto!important}.footer-bottom{flex-direction:column!important;align-items:flex-start!important}.footer-bottom-links{display:flex!important;flex-wrap:wrap!important;gap:.75rem!important}.tag-cookie-consent{left:.75rem!important;right:.75rem!important;bottom:.75rem!important}}
+@media (max-width:420px){.container{padding-left:.9rem!important;padding-right:.9rem!important}.services-page .services-hero h1{font-size:clamp(2.25rem,12vw,3rem)!important}.services-page .services-hero p br{display:none!important}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1{font-size:clamp(2rem,10.5vw,2.65rem)!important}.closing-actions,.footer-bottom-links{width:100%!important}.closing-btn{width:100%!important;justify-content:flex-start!important}}
+</style><style id="tag-tablet-polish-final">
+@media (min-width:641px) and (max-width:1024px){
+  .hero{min-height:620px!important;background-position:56% center!important;align-items:center!important;}
+  .hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.92) 42%,rgba(232,64,5,.55) 70%,rgba(232,64,5,.16) 100%)!important;}
+  .hero .container{width:100%!important;max-width:768px!important;padding-left:1.5rem!important;padding-right:1.5rem!important;}
+  .hero .hero-content{width:100%!important;max-width:680px!important;display:block!important;margin:0!important;}
+  .hero .hero-text{width:100%!important;max-width:660px!important;padding:2.75rem 0!important;}
+  .hero .hero-text h1{font-size:clamp(2.75rem,6.25vw,3.45rem)!important;line-height:1.13!important;margin-bottom:1.35rem!important;max-width:660px!important;text-wrap:balance!important;}
+  .hero .hero-text p:not(.hero-orientation){font-size:clamp(1.02rem,2.25vw,1.18rem)!important;line-height:1.48!important;max-width:620px!important;margin-bottom:1.25rem!important;}
+  .hero .hero-text p br{display:none!important;}
+  .hero .hero-btn{padding:.82rem 1.9rem!important;font-size:1rem!important;}
+  .hero .hero-orientation{font-size:.82rem!important;line-height:1.35!important;max-width:620px!important;white-space:normal!important;margin-top:1rem!important;}
+  .services-page .services-hero{min-height:620px!important;background-position:70% center!important;align-items:center!important;}
+  .services-page .services-hero:before{background:linear-gradient(to right,var(--turquoise) 0%,rgba(0,175,141,.94) 43%,rgba(0,175,141,.58) 71%,rgba(0,175,141,.18) 100%)!important;}
+  .services-page .services-hero .container{max-width:768px!important;padding-left:1.5rem!important;padding-right:1.5rem!important;}
+  .services-page .services-hero-copy{max-width:620px!important;}
+  .services-page .services-hero h1{font-size:clamp(2.85rem,6.5vw,3.65rem)!important;line-height:1.12!important;margin-bottom:1.3rem!important;max-width:620px!important;}
+  .services-page .services-hero p{font-size:clamp(1.05rem,2.35vw,1.2rem)!important;line-height:1.48!important;max-width:560px!important;}
+  .services-page .audience-section,.services-page .core-services,.services-page .capacity-section{padding-top:3.5rem!important;padding-bottom:3.5rem!important;}
+  .services-page .audience-grid,.services-page .core-grid{gap:1.25rem!important;}
+  .services-page .audience-card,.services-page .service-card{padding:1.35rem!important;gap:1.15rem!important;}
+  .services-page .audience-icon,.services-page .service-icon,.services-page .capacity-icon{width:72px!important;height:72px!important;}
+  .services-page .capacity-card{padding:1.35rem!important;gap:1.15rem!important;grid-template-columns:72px minmax(0,1fr) auto!important;align-items:center!important;}
+  .services-page .capacity-copy h2{font-size:clamp(1.65rem,3.4vw,2rem)!important;line-height:1.15!important;}
+  .services-page .capacity-copy p{font-size:1rem!important;line-height:1.45!important;}
+  .services-page .capacity-cta{grid-column:auto!important;justify-self:end!important;max-width:196px!important;padding:.72rem .85rem!important;font-size:.95rem!important;}
+  .hero-video{height:520px!important;min-height:520px!important;}
+  .wwb-hero,.page-hero,.service-hero,.case-hero,.article-hero{padding-top:4.5rem!important;padding-bottom:4.5rem!important;}
+  .hero-visual{max-width:360px!important;margin-left:auto!important;margin-right:auto!important;}
+  .tag-cookie-consent{left:1rem!important;right:1rem!important;bottom:1rem!important;padding:.85rem 1rem!important;border-radius:12px!important;}
+  .tag-cookie-consent__inner{gap:.8rem!important;}
+  .tag-cookie-consent__copy{font-size:.82rem!important;line-height:1.35!important;}
+  .tag-cookie-consent__copy strong{font-size:.92rem!important;}
+  .tag-cookie-consent__btn{padding:.62rem .9rem!important;font-size:.88rem!important;}
+}
+@media (min-width:641px) and (max-width:820px){
+  .services-page .capacity-card{grid-template-columns:72px minmax(0,1fr)!important;}
+  .services-page .capacity-cta{grid-column:2!important;justify-self:start!important;max-width:max-content!important;}
+}
+</style><style id="tag-tablet-image-balance">
+@media (min-width:641px) and (max-width:1024px){
+  .hero{background-position:72% center!important;}
+  .hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.94) 38%,rgba(232,64,5,.68) 58%,rgba(232,64,5,.08) 100%)!important;}
+  .hero .hero-content{max-width:650px!important;}
+  .hero .hero-text{max-width:630px!important;}
+  .hero .hero-text h1{max-width:630px!important;font-size:clamp(2.65rem,6vw,3.25rem)!important;}
+  .hero .hero-text p:not(.hero-orientation){max-width:610px!important;}
+}
+</style><style id="tag-home-mid-screen-polish">
+@media (min-width:1025px) and (max-width:1450px){
+  .hero{min-height:710px!important;background-position:62% center!important;}
+  .hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.96) 40%,rgba(232,64,5,.72) 62%,rgba(232,64,5,.18) 100%)!important;}
+  .hero .container{max-width:1240px!important;width:100%!important;padding-left:clamp(3rem,7vw,6rem)!important;padding-right:clamp(2rem,4vw,4rem)!important;}
+  .hero .hero-content{max-width:760px!important;width:760px!important;display:block!important;margin:0!important;}
+  .hero .hero-text{max-width:760px!important;width:760px!important;padding:3rem 0!important;}
+  .hero .hero-text h1{font-size:clamp(3.15rem,4.45vw,4rem)!important;line-height:1.16!important;max-width:760px!important;margin-bottom:1.65rem!important;text-wrap:balance!important;}
+  .hero .hero-text p:not(.hero-orientation){font-size:clamp(1.18rem,1.75vw,1.48rem)!important;line-height:1.48!important;max-width:760px!important;margin-bottom:1.65rem!important;}
+  .hero .hero-btn{font-size:1.15rem!important;padding:1rem 2.8rem!important;}
+  .hero .hero-orientation{font-size:.95rem!important;line-height:1.35!important;max-width:760px!important;white-space:normal!important;margin-top:1.35rem!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  .hero .container{padding-left:3rem!important;padding-right:2rem!important;}
+  .hero .hero-content,.hero .hero-text{width:690px!important;max-width:690px!important;}
+  .hero .hero-text h1{font-size:clamp(3rem,4.3vw,3.45rem)!important;max-width:690px!important;}
+  .hero .hero-text p:not(.hero-orientation),.hero .hero-orientation{max-width:660px!important;}
+}
+</style><style id="tag-home-mid-screen-force">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero .container{max-width:1240px!important;width:100%!important;padding-left:clamp(3rem,7vw,6rem)!important;padding-right:clamp(2rem,4vw,4rem)!important;}
+  section.hero .container .hero-content{max-width:760px!important;width:760px!important;display:block!important;margin-left:0!important;margin-right:auto!important;}
+  section.hero .container .hero-content .hero-text{max-width:760px!important;width:760px!important;padding:3rem 0!important;}
+  section.hero .container .hero-content .hero-text h1{font-size:clamp(3.15rem,4.45vw,4rem)!important;line-height:1.16!important;max-width:760px!important;width:760px!important;margin-bottom:1.65rem!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){font-size:clamp(1.18rem,1.75vw,1.48rem)!important;line-height:1.48!important;max-width:760px!important;width:760px!important;margin-bottom:1.65rem!important;}
+  section.hero .container .hero-content .hero-text .hero-orientation{font-size:.95rem!important;line-height:1.35!important;max-width:760px!important;width:auto!important;white-space:normal!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  section.hero .container .hero-content,section.hero .container .hero-content .hero-text{width:690px!important;max-width:690px!important;}
+  section.hero .container .hero-content .hero-text h1{width:690px!important;max-width:690px!important;font-size:clamp(3rem,4.3vw,3.45rem)!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation),section.hero .container .hero-content .hero-text .hero-orientation{width:auto!important;max-width:660px!important;}
+}
+</style><style id="tag-home-mid-screen-image-visible">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero{background-position:70% center!important;}
+  section.hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.94) 36%,rgba(232,64,5,.68) 52%,rgba(232,64,5,.25) 70%,rgba(232,64,5,0) 100%)!important;}
+}
+</style><style id="tag-home-mid-screen-smaller">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero .container .hero-content .hero-text h1{font-size:clamp(2.85rem,4.05vw,3.62rem)!important;line-height:1.17!important;max-width:760px!important;width:760px!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){font-size:clamp(1.08rem,1.55vw,1.3rem)!important;line-height:1.5!important;max-width:730px!important;width:730px!important;}
+  section.hero .container .hero-content .hero-text .hero-orientation{font-size:.86rem!important;max-width:730px!important;}
+  section.hero .container .hero-content .hero-text .hero-btn{font-size:1.06rem!important;padding:.9rem 2.45rem!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  section.hero .container .hero-content .hero-text h1{font-size:clamp(2.75rem,4vw,3.15rem)!important;width:690px!important;max-width:690px!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){font-size:clamp(1.02rem,1.65vw,1.16rem)!important;width:auto!important;max-width:650px!important;}
+}
+</style><style id="tag-home-mid-screen-smaller-image-balance">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero{background-position:72% center!important;}
+  section.hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.93) 34%,rgba(232,64,5,.58) 50%,rgba(232,64,5,.12) 68%,rgba(232,64,5,0) 100%)!important;}
+}
+</style><style id="tag-home-hero-slightly-smaller-final">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero .container .hero-content,section.hero .container .hero-content .hero-text{width:700px!important;max-width:700px!important;}
+  section.hero .container .hero-content .hero-text h1{width:700px!important;max-width:700px!important;font-size:clamp(2.45rem,3.55vw,3.15rem)!important;line-height:1.18!important;margin-bottom:1.45rem!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){width:auto!important;max-width:660px!important;font-size:clamp(1rem,1.35vw,1.16rem)!important;line-height:1.5!important;margin-bottom:1.35rem!important;}
+  section.hero .container .hero-content .hero-text .hero-orientation{font-size:.8rem!important;max-width:660px!important;}
+  section.hero .container .hero-content .hero-text .hero-btn{font-size:1rem!important;padding:.82rem 2.25rem!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  section.hero .container .hero-content,section.hero .container .hero-content .hero-text{width:640px!important;max-width:640px!important;}
+  section.hero .container .hero-content .hero-text h1{width:640px!important;max-width:640px!important;font-size:clamp(2.35rem,3.55vw,2.8rem)!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){max-width:610px!important;font-size:clamp(.98rem,1.4vw,1.08rem)!important;}
+}
+</style><style id="tag-nav-alignment-final">
+.tag-desktop-nav .nav-links,
+#navbar-container .nav-links,
+nav .nav-links{
+  display:flex!important;
+  align-items:center!important;
+}
+.tag-desktop-nav .nav-links>li,
+#navbar-container .nav-links>li,
+nav .nav-links>li,
+.tag-desktop-nav .nav-links .dropdown,
+#navbar-container .nav-links .dropdown,
+nav .nav-links .dropdown{
+  display:flex!important;
+  align-items:center!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1!important;
+}
+.tag-desktop-nav .nav-links a,
+#navbar-container .nav-links a,
+nav .nav-links a,
+.tag-desktop-nav .nav-links .dropdown-btn,
+#navbar-container .nav-links .dropdown-btn,
+nav .nav-links .dropdown-btn{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:44px!important;
+  height:44px!important;
+  padding:0!important;
+  margin:0!important;
+  line-height:1!important;
+  vertical-align:middle!important;
+  font-family:var(--font-family)!important;
+  font-size:.9rem!important;
+  font-weight:500!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+}
+.tag-desktop-nav .nav-links .dropdown-btn,
+#navbar-container .nav-links .dropdown-btn,
+nav .nav-links .dropdown-btn{
+  gap:.35rem!important;
+  appearance:none!important;
+  background:none!important;
+  border:0!important;
+}
+.tag-desktop-nav .dropdown-icon,
+#navbar-container .dropdown-icon,
+nav .dropdown-icon{
+  display:block!important;
+  flex:0 0 auto!important;
+  width:1rem!important;
+  height:1rem!important;
+  margin:0!important;
+  transform-origin:center!important;
+  position:relative!important;
+  top:0!important;
+  vertical-align:middle!important;
+}
+.tag-desktop-nav .nav-links .dropdown-menu,
+#navbar-container .nav-links .dropdown-menu,
+nav .nav-links .dropdown-menu{
+  top:calc(100% + .35rem)!important;
+}
+.tag-desktop-nav .nav-links .dropdown-menu a,
+#navbar-container .nav-links .dropdown-menu a,
+nav .nav-links .dropdown-menu a{
+  justify-content:flex-start!important;
+  min-height:40px!important;
+  height:auto!important;
+  padding:.65rem .9rem!important;
+}
+</style><style id="tag-contact-nav-button-fix">
+#navbar-container .nav-links a.contact-btn,
+.tag-desktop-nav .nav-links a.contact-btn,
+body > nav .nav-links a.contact-btn,
+nav .nav-links a.contact-btn{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:44px!important;
+  height:44px!important;
+  width:auto!important;
+  min-width:92px!important;
+  padding:0 1.25rem!important;
+  border-radius:50px!important;
+  background-color:var(--orange)!important;
+  color:var(--white)!important;
+  font-weight:800!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+}
+#navbar-container .nav-links a.contact-btn:hover,
+.tag-desktop-nav .nav-links a.contact-btn:hover,
+body > nav .nav-links a.contact-btn:hover,
+nav .nav-links a.contact-btn:hover{
+  color:var(--white)!important;
+  background-color:#d63804!important;
+  transform:translateY(-2px)!important;
+}
+@media (min-width:769px){
+  #navbar-container .nav-links a.contact-btn,
+  .tag-desktop-nav .nav-links a.contact-btn,
+  body > nav .nav-links a.contact-btn,
+  nav .nav-links a.contact-btn{
+    min-width:88px!important;
+    padding:0 1.15rem!important;
+    font-size:.72rem!important;
+  }
+}
+</style><script id="tag-services-dropdown-fix">
+(function(){
+  function closeDesktop(except){
+    document.querySelectorAll('.tag-desktop-nav .dropdown').forEach(function(item){
+      if(item !== except){
+        item.classList.remove('open','active');
+        var btn=item.querySelector('.dropdown-btn');
+        var menu=item.querySelector('.dropdown-menu');
+        if(btn) btn.setAttribute('aria-expanded','false');
+        if(menu) menu.style.display='';
+      }
+    });
+  }
+  function bindMenus(){
+    document.querySelectorAll('.tag-desktop-nav .dropdown-btn').forEach(function(btn){
+      if(btn.dataset.servicesDropdownFix) return;
+      btn.dataset.servicesDropdownFix='1';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var item=btn.closest('.dropdown');
+        var menu=item && item.querySelector('.dropdown-menu');
+        if(!item || !menu) return;
+        var open=!item.classList.contains('open');
+        closeDesktop(item);
+        item.classList.toggle('open', open);
+        item.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menu.style.display=open ? 'block' : '';
+      }, true);
+    });
+    document.querySelectorAll('.hamburger-btn-mobile').forEach(function(btn){
+      if(btn.dataset.servicesDropdownFix) return;
+      btn.dataset.servicesDropdownFix='1';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var nav=btn.closest('nav') || document;
+        var menu=nav.querySelector('.mobile-menu-mobile') || document.querySelector('.mobile-menu-mobile');
+        if(!menu) return;
+        var open=!menu.classList.contains('active');
+        menu.classList.toggle('active', open);
+        btn.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }, true);
+    });
+    document.querySelectorAll('.mobile-dropdown-btn-mobile').forEach(function(btn){
+      if(btn.dataset.servicesDropdownFix) return;
+      btn.dataset.servicesDropdownFix='1';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var menu=btn.nextElementSibling;
+        if(!menu) return;
+        var open=!menu.classList.contains('active');
+        document.querySelectorAll('.mobile-dropdown-menu-mobile').forEach(function(other){ if(other !== menu) other.classList.remove('active'); });
+        document.querySelectorAll('.mobile-dropdown-btn-mobile').forEach(function(other){ if(other !== btn){ other.classList.remove('active'); other.setAttribute('aria-expanded','false'); } });
+        menu.classList.toggle('active', open);
+        btn.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }, true);
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindMenus); else bindMenus();
+  setTimeout(bindMenus, 100);
+  setTimeout(bindMenus, 500);
+})();
+</script>
+<style id="tag-unified-hero-type">
+:root{
+  --tag-hero-heading-size:clamp(39px,5.8vw,50px);
+  --tag-hero-heading-line:1.14;
+  --tag-hero-copy-size:clamp(16px,2.3vw,19px);
+  --tag-hero-copy-line:1.5;
+}
+html body .hero h1,
+html body section.hero h1,
+html body section.hero .container .hero-content .hero-text h1,
+html body .hero .hero-text h1,
+html body .hero-section h1,
+html body .page-hero h1,
+html body .service-hero h1,
+html body .case-hero h1,
+html body .article-hero h1,
+html body .services-page .services-hero h1,
+html body .caas-page .caas-hero h1,
+html body .caas-hero h1{
+  font-size:var(--tag-hero-heading-size)!important;
+  line-height:var(--tag-hero-heading-line)!important;
+  letter-spacing:0!important;
+  text-wrap:balance!important;
+  max-width:min(760px,100%)!important;
+}
+html body .hero h1 span,
+html body section.hero h1 span,
+html body .hero .hero-text h1 span,
+html body .hero-section h1 span,
+html body .page-hero h1 span,
+html body .service-hero h1 span,
+html body .case-hero h1 span,
+html body .article-hero h1 span{
+  font-size:inherit!important;
+  line-height:inherit!important;
+  letter-spacing:inherit!important;
+}
+html body .hero p:not(.hero-orientation):not(.subtitle),
+html body section.hero p:not(.hero-orientation):not(.subtitle),
+html body section.hero .container .hero-content .hero-text p:not(.hero-orientation):not(.subtitle),
+html body .hero .hero-text p:not(.hero-orientation):not(.subtitle),
+html body .hero-section p,
+html body .page-hero p,
+html body .service-hero p,
+html body .case-hero p,
+html body .article-hero p,
+html body .services-page .services-hero p,
+html body .caas-page .caas-hero p,
+html body .caas-hero p{
+  font-size:var(--tag-hero-copy-size)!important;
+  line-height:var(--tag-hero-copy-line)!important;
+  max-width:min(720px,100%)!important;
+}
+html body .hero .subtitle,
+html body .hero p.subtitle,
+html body section.hero .hero-text p.subtitle,
+html body section.hero .container .hero-content .hero-text p.subtitle{
+  font-size:var(--tag-hero-copy-size)!important;
+  line-height:var(--tag-hero-copy-line)!important;
+}
+@media (max-width:640px){
+  :root{
+    --tag-hero-heading-size:clamp(34px,10vw,39px);
+    --tag-hero-copy-size:clamp(16px,4.3vw,17px);
+    --tag-hero-heading-line:1.1;
+  }
+  html body .hero h1,html body section.hero h1,html body section.hero .container .hero-content .hero-text h1,html body .services-page .services-hero h1,html body .caas-page .caas-hero h1,html body .caas-hero h1{width:auto!important;max-width:100%!important;}
+  html body .hero p:not(.hero-orientation):not(.subtitle),html body section.hero p:not(.hero-orientation):not(.subtitle),html body .services-page .services-hero p,html body .caas-page .caas-hero p,html body .caas-hero p{max-width:100%!important;}
+}
+</style>
+</body>
+</html>

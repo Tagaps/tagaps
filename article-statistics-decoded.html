@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Decoded: Understanding Data for Better Decisions - TAG</title>
+    <meta name="description" content="Statistics Decoded: Understanding Data for Better Decisions">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/favicon-tag_4723be1e.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #00af8d;
+            --neon-green: #94ce15;
+            --orange: #e84005;
+            --yellow: #efa726;
+            --dark-blue: #181921;
+            --blue-gray: #99aaa6;
+            --white: #ffffff;
+            --text-dark: #859390;
+            --font-family: 'Antipasto', 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--dark-blue);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-blue);
+            padding: 1rem 0;
+            position: relative;
+            z-index: 50;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-logo {
+            height: 1.5rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            display: block;
+            line-height: 1;
+        }
+
+        .top-bar-logo:hover {
+            opacity: 1;
+        }
+
+        /* Navbar Container - Sticky */
+        #navbar-container {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        /* Navigation */
+        nav {
+            position: relative;
+            background-color: var(--white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding-left: 10%;
+        }
+
+        .nav-logo {
+            height: 3rem;
+        }
+
+        .nav-logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-left: -11%;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+            margin-left: auto;
+            margin-right: -2%;
+        }
+
+        .nav-links a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown-btn {
+            background: none;
+            border: none;
+            color: var(--dark-blue);
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s;
+            padding: 0;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .nav-links .dropdown-btn:hover {
+            color: var(--turquoise);
+        }
+
+        .dropdown-icon {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            margin-left: 0.3rem;
+            vertical-align: middle;
+        }
+
+        .nav-separator {
+            width: 1px;
+            height: 1.5rem;
+            background-color: var(--blue-gray);
+            opacity: 0.3;
+            list-style: none;
+        }
+
+        .nav-links .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            background-color: var(--white);
+            border: 1px solid var(--blue-gray);
+            border-radius: 0.5rem;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .nav-links .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+        }
+
+        .nav-links .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--dark-blue);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+            color: var(--turquoise);
+        }
+
+        .contact-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background-color: var(--orange);
+            color: var(--white);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232, 64, 5, 0.3);
+        }
+
+        /* PAGE CONTENT */
+        .page-content {
+            padding-top: 2rem;
+        }
+
+        /* HEADER NAVIGATION */
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--turquoise);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-back:hover {
+            gap: 1rem;
+        }
+
+        .case-counter {
+            color: var(--blue-gray);
+            font-size: 0.9rem;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(24, 25, 33, 0.6);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 3rem;
+            color: var(--white);
+        }
+
+        .case-badge {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* PROJECT DETAILS BOX */
+        .project-details {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            height: fit-content;
+            transition: all 0.3s;
+        }
+
+        .project-details:hover {
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+        }
+
+        .project-details h3 {
+            color: var(--orange);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item {
+            margin-bottom: 2rem;
+        }
+
+        .detail-label {
+            color: var(--blue-gray);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .detail-value {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* TECH STACK */
+        .tech-stack {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .tech-stack:hover {
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+        }
+
+        .tech-stack h3 {
+            color: var(--orange);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .tech-icon {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .tech-icon:hover {
+            background: rgba(0, 175, 141, 0.1);
+            border-color: var(--turquoise);
+        }
+
+        /* CONTENT COLUMN */
+        .content-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .content-section {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .section-icon {
+            width: 3rem;
+            height: 3rem;
+            min-width: 3rem;
+            background: rgba(0, 175, 141, 0.1);
+            border: 1px solid rgba(0, 175, 141, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: var(--turquoise);
+        }
+
+        .section-content h2 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .section-content h1,
+        .section-content h2,
+        .section-content h3 {
+            padding: 0 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content h1 {
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .section-content h3 {
+            font-size: 1.3rem;
+            color: var(--white);
+        }
+
+        /* Article Images Grid */
+        .article-image {
+            max-width: 100%;
+            height: auto;
+            margin: 0.5rem;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .section-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem;
+            max-width: calc(100% - 4rem);
+        }
+
+        .images-grid .article-image {
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+
+        .section-content ul {
+            padding: 0 2rem 0 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .section-content table {
+            margin: 1.5rem 2rem;
+            width: calc(100% - 4rem);
+            border-collapse: collapse;
+        }
+
+        .section-content table th,
+        .section-content table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-content table th {
+            background-color: rgba(0, 175, 141, 0.1);
+            color: var(--turquoise);
+            font-weight: 600;
+        }
+
+        .section-content a {
+            color: var(--turquoise);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .section-content a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* RESULTS SECTION */
+        .results-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .results-section h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .result-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* NAVIGATION SECTION */
+        .navigation-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--turquoise);
+            box-shadow: 0 0 20px rgba(0, 175, 141, 0.2);
+        }
+
+        .nav-button.prev {
+            justify-content: flex-start;
+        }
+
+        .nav-button.next {
+            justify-content: flex-end;
+        }
+
+        .nav-label {
+            font-size: 0.85rem;
+            color: var(--blue-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-top: 0.5rem;
+        }
+
+        .nav-arrow {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            transition: all 0.3s;
+        }
+
+        .nav-button.prev:hover .nav-arrow {
+            transform: translateX(-5px);
+        }
+
+        .nav-button.next:hover .nav-arrow {
+            transform: translateX(5px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .navigation-section {
+                grid-template-columns: 1fr;
+            }
+
+            .header-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* FOOTER STYLES */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--blue-gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--turquoise);
+        }
+
+        .footer-logo {
+            height: 3rem;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links a {
+            color: var(--blue-gray);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--turquoise);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--blue-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--blue-gray);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--blue-gray);
+        }
+
+        .footer-logo {
+            height: 3rem;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* ===== RESPONSIVE OPTIMIZATION (PANTALLAS GRANDES) ===== */
+        /* IMPORTANTE: 1440x900 es INTOCABLE. Estos cambios solo aplican a pantallas > 1440px */
+
+        @media (min-width: 1600px) {
+            .proof-elements { padding: 8rem 0; }
+            .problems { padding: 8rem 0; }
+            .video-section { padding: 8rem 0; }
+            .meets-guide { padding: 8rem 0; }
+            .tech-stack { padding: 8rem 0; }
+            .insights { padding: 8rem 0; }
+            .hero-image { max-width: 110%; }
+            .hero-pattern { max-width: 110%; }
+            .problems h2, .video-section h2, .meets-guide h2, .insights h2 { font-size: 3.2rem; }
+            .tech-stack h2 { font-size: 2.8rem; }
+        }
+
+        @media (min-width: 1920px) {
+            .proof-elements { padding: 10rem 0; }
+            .problems { padding: 10rem 0; }
+            .video-section { padding: 10rem 0; }
+            .meets-guide { padding: 10rem 0; }
+            .tech-stack { padding: 10rem 0; }
+            .insights { padding: 10rem 0; }
+            .problems h2, .video-section h2, .meets-guide h2, .insights h2 { font-size: 3.5rem; }
+        }
+    </style>
+    <!-- Mobile styles - loaded after inline styles to ensure proper override -->
+    <link rel="stylesheet" href="navbar-mobile-styles.css?v=2">
+    <link rel="stylesheet" href="navbar-compact.css?v=2">
+
+    <style id="mobile-nav-internal-pages-fix">
+        @media (max-width: 768px) {
+            body > .top-bar,
+            body > nav {
+                display: none !important;
+            }
+        }
+    </style>
+<style id="tag-responsive-polish">
+html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}*,*:before,*:after{box-sizing:border-box}img,svg,video,iframe{max-width:100%;height:auto}section,main,footer,header,nav{max-width:100%;overflow-x:clip}.container{width:min(100%,1200px)!important;max-width:1200px!important;padding-left:clamp(1rem,4vw,1.5rem)!important;padding-right:clamp(1rem,4vw,1.5rem)!important}.hero-orientation{max-width:min(100%,980px)!important;white-space:normal!important;text-wrap:pretty}.ticker-wrapper,.logo-ticker,.logo-wall,.logos-section{overflow:hidden!important}.ticker-tape{will-change:transform}.tag-leads-bg,.ecosystem-bg,.hero-pattern{max-width:100vw!important}.footer-content{min-width:0!important}.footer-section{min-width:0!important;max-width:100%!important}.footer-section a,.footer-section h3{max-width:100%!important;overflow-wrap:anywhere}.footer-bottom,.footer-bottom-links{min-width:0!important;max-width:100%!important}
+.services-page .services-hero{background-repeat:no-repeat!important;background-size:cover!important}.services-page .audience-card,.services-page .service-card,.services-page .capacity-card{min-width:0!important}.services-page .capacity-card{width:100%!important;max-width:100%!important}.services-page .capacity-copy{min-width:0!important}.services-page .capacity-cta{max-width:max-content!important}.services-page .capacity-cta span{white-space:nowrap!important}
+@media (max-width:1024px){.nav-content{gap:1rem!important}.nav-links{gap:1rem!important}.services-page .services-hero{min-height:600px!important;background-position:62% center!important}.services-page .services-hero-copy{max-width:560px!important}.services-page .services-hero h1{font-size:clamp(2.7rem,7vw,3.8rem)!important;line-height:1.12!important}.services-page .services-hero p{font-size:clamp(1.1rem,2.4vw,1.35rem)!important;line-height:1.45!important}.services-page .capacity-card{grid-template-columns:72px minmax(0,1fr)!important}.services-page .capacity-cta{grid-column:2!important;justify-self:start!important}}
+@media (max-width:900px){.audience-grid,.core-grid,.services-page .audience-grid,.services-page .core-grid{grid-template-columns:1fr!important}.services-page .services-hero:before{background:linear-gradient(to right,rgba(0,175,141,.94) 0%,rgba(0,175,141,.78) 58%,rgba(0,175,141,.2) 100%)!important}.footer-content{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:2rem!important}.footer-bottom{display:flex!important;flex-wrap:wrap!important;gap:1rem!important;justify-content:space-between!important}.nonprofit-image-col,.nonprofit-img{width:100%!important;max-width:100%!important}}
+@media (max-width:640px){body{font-size:16px!important}.container{padding-left:1rem!important;padding-right:1rem!important}.top-bar{padding:.7rem 0!important}.nav-content{min-height:58px!important}.nav-logo{height:2.35rem!important}.hero,.hero-section,.page-hero,.service-hero,.case-hero,.article-hero{min-height:auto!important}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1,.case-hero h1,.article-hero h1{font-size:clamp(2.15rem,10vw,3rem)!important;line-height:1.08!important;text-wrap:balance;letter-spacing:0!important}.hero p,.hero-section p,.page-hero p,.service-hero p,.case-hero p,.article-hero p{font-size:clamp(1rem,4.6vw,1.2rem)!important;line-height:1.48!important}.hero-orientation{font-size:clamp(.86rem,3.8vw,1rem)!important;line-height:1.45!important;width:auto!important;max-width:100%!important}.tag-leads-bg,.ecosystem-bg{left:0!important;right:0!important;width:100%!important}.hero-pattern{right:0!important;left:auto!important;width:min(52vw,220px)!important}.services-page .services-hero{min-height:560px!important;padding:4.25rem 0!important;background-position:68% center!important}.services-page .services-hero:before{background:linear-gradient(to bottom,rgba(0,175,141,.98) 0%,rgba(0,175,141,.88) 56%,rgba(0,175,141,.28) 100%)!important}.services-page .services-hero h1{font-size:clamp(2.55rem,13vw,3.45rem)!important;line-height:1.08!important;margin-bottom:1.25rem!important}.services-page .services-hero p{font-size:clamp(1.08rem,5vw,1.3rem)!important;line-height:1.42!important}.services-page .audience-card,.services-page .service-card{grid-template-columns:1fr!important;gap:1rem!important;padding:1.35rem!important}.services-page .audience-icon,.services-page .service-icon{width:64px!important;height:64px!important}.services-page .capacity-card{grid-template-columns:1fr!important;gap:1rem!important;padding:1.25rem!important}.services-page .capacity-icon{width:64px!important;height:64px!important}.services-page .capacity-cta{grid-column:auto!important;justify-self:start!important;width:auto!important;max-width:100%!important;padding:.72rem .9rem!important}.services-page .capacity-cta span{white-space:normal!important}.footer-content{grid-template-columns:1fr!important;gap:1.6rem!important;text-align:left!important}.footer-section,.footer-section h3,.footer-section a{text-align:left!important;width:auto!important}.footer-bottom{flex-direction:column!important;align-items:flex-start!important}.footer-bottom-links{display:flex!important;flex-wrap:wrap!important;gap:.75rem!important}.tag-cookie-consent{left:.75rem!important;right:.75rem!important;bottom:.75rem!important}}
+@media (max-width:420px){.container{padding-left:.9rem!important;padding-right:.9rem!important}.services-page .services-hero h1{font-size:clamp(2.25rem,12vw,3rem)!important}.services-page .services-hero p br{display:none}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1{font-size:clamp(2rem,10.5vw,2.65rem)!important}.closing-actions,.footer-bottom-links{width:100%!important}.closing-btn{width:100%!important;justify-content:flex-start!important}}
+</style></head>
+<body>
+<div class="top-bar">
+    <div class="container">
+        <div class="top-bar-content">
+            
+            <a href="https://www.bigaps.com/" target="_blank" rel="noopener noreferrer">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/logo-big_89fdd27e.png" alt="BIG" class="top-bar-logo">
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- NAVIGATION DESKTOP ONLY -->
+<nav>
+    <div class="container">
+        <div class="nav-content">
+            <a href="/index" class="nav-logo-link" id="nav-logo-link">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/PrimarylogoTAGforclearbackground_e4900ec5.png" alt="TAG" class="nav-logo">
+            </a>
+            <ul class="nav-links">
+                <li class="dropdown"><button class="dropdown-btn" type="button" aria-expanded="false">Services <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="dropdown-menu"><a href="/services" id="nav-services">Services Overview</a><a href="/services/systems-architecture" id="nav-services-systems">Systems Architecture</a><a href="/services/talent-capability" id="nav-services-talent">Talent Capability</a><a href="/services/self-directed-teams" id="nav-services-teams">Self-Directed Teams</a><a href="/services/workflow-automation" id="nav-services-workflow">Workflow Automation</a><a href="/capacity-as-a-service" id="nav-services-capacity">Capacity as a Service</a></div></li>
+                <li><a href="/our-work" id="nav-our-work">Our Work</a></li>
+                <li class="dropdown">
+                    <button class="dropdown-btn">Insights <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                    <div class="dropdown-menu">
+                        <a href="/our-thinking" id="nav-our-thinking">Our Thinking</a>
+                        <a href="/tag-in-action" id="nav-tag-in-action">TAG in Action</a>
+                    </div>
+                </li>
+                <li><a href="/about" id="nav-about">About</a></li>
+                <li class="nav-separator"></li>
+                <li><a href="/contact" id="nav-contact-link"><button class="contact-btn" id="nav-contact">Contact</button></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+        <div class="container">
+            <!-- HEADER NAVIGATION -->
+            <div class="header-nav">
+                <a href="/our-thinking" class="nav-back">← All Articles</a                <span class="article-counter">ARTICLE 5/5</span>            </div>
+
+            <!-- HERO SECTION -->
+            <section class="hero">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/article-statistics-decoded_784ace6a.jpeg" alt="Article Hero" class="hero-image">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="case-badge">ARTICLE 05</span>
+                    <h1>Statistics Decoded: Understanding Data for Better Decisions</h1>
+                    <div class="hero-meta">
+                        <span class="meta-badge">Leadership & Systems</span>
+                        <span class="meta-badge">⏱ 15 min</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MAIN CONTENT -->
+            <div class="main-content">
+                <!-- RIGHT COLUMN: CONTENT -->
+                <div class="content-column">
+                    <!-- THE PROBLEM -->
+                    <div class="content-section">
+                        <div class="section-content">
+<h1>Statistics Decoded: Understanding Data for Better Decisions</h1>
+
+<p><strong>Statistics Decoded is the discipline of reading organizational evidence clearly enough to improve systems, support talent, strengthen trust, and make better leadership decisions.</strong></p>
+<h3>Numbers Do Not Create Clarity by Themselves</h3>
+<p>Leaders are surrounded by statistics. Engagement scores, turnover rates, productivity benchmarks, training completion numbers, AI adoption forecasts, sales conversion rates, utilization reports, customer satisfaction scores, and industry trend data all compete for attention. The modern executive has more access to information than any previous generation of leaders.</p>
+
+<p>Yet more data has not automatically produced better decisions.<strong>Statistics Decoded is the discipline of reading organizational evidence clearly enough to improve systems, support talent, strengthen trust, and make better leadership decisions.</strong></p>
+
+<p>In many organizations, statistics become noise. A number is quoted because it sounds authoritative. A benchmark is used without context. A trend is repeated until it becomes a belief. A dashboard becomes a substitute for diagnosis. Leaders consume statistics, but they do not always decode them.</p>
+<p>TAG sees this as a systems problem.</p>
+
+<p>A statistic is not the truth by itself. It is a signal. It points to something happening inside a system, a market, a workflow, a behavior pattern, or a decision environment. If the leader does not know how to interpret the signal, the number may create confidence without clarity.</p>
+
+<p>That is the purpose of Statistics Decoded.</p>
+
+<p>Statistics Decoded is TAG’s discipline for translating numbers into structural insight, decision relevance, and system action.</p>
+
+<p>This discipline exists because leaders do not need more impressive statistics. They need better interpretation. They need to know what a number reveals, what it does not reveal, what system produced it, what decision it should influence, and what action should follow.</p>
+
+<p>Statistics should not be used to decorate an argument. They should be used to make reality more visible.</p>
+<h3>The Evidence: Data Improves Decisions Only When It Is Interpreted Well</h3>
+<p>The case for evidence-based decision-making is strong. Harvard Business School Online cites a PwC survey of more than 1,000 senior executives showing that highly data-driven organizations are three times more likely to report significant improvements in decision-making compared with organizations that rely less on data. HBS also highlights Google’s people analytics work through Project Oxygen, where analysis of more than 10,000 performance reviews and retention data helped identify behaviors of high-performing managers and contributed to improved manager favorability scores from 83% to 88%.</p>
+
+<p>Research from Brynjolfsson, Hitt, and Kim similarly found that firms emphasizing data-driven decision-making were associated with higher productivity and performance. The lesson is not that data replaces leadership judgment. The lesson is that disciplined use of data can improve decision quality when it is connected to the right questions, interpreted in context, and converted into action.</p>
+
+<p>Evidence-based management research makes the same point from another direction. Evidence-based management is concerned with applying the best available evidence to management decisions so organizational performance can improve. It pushes leaders away from preference, habit, anecdote, hierarchy, and untested intuition as the primary basis for decisions.</p>
+
+<p>At the same time, research on cognitive bias shows why evidence is necessary. Professional judgment can be affected by systematic biases, including overconfidence. Leaders are not weak because they are biased. They are human. The issue is whether the decision system is designed to protect judgment from predictable distortion.</p>
+
+<table>
+<thead>
+<tr>
+<th>Evidence Area</th>
+<th>What It Shows</th>
+<th>TAG Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data-driven decision-making</td>
+<td>Highly data-driven organizations are three times more likely to report major decision improvements.</td>
+<td>Data has value when it improves decisions, not when it simply increases reporting.</td>
+</tr>
+<tr>
+<td>People analytics</td>
+<td>Google analyzed performance and retention data to identify stronger management behaviors.</td>
+<td>Numbers become useful when connected to behavior and system design.</td>
+</tr>
+<tr>
+<td>Firm performance</td>
+<td>Data-driven decision-making is associated with higher productivity and performance.</td>
+<td>Evidence strengthens performance when embedded into operating decisions.</td>
+</tr>
+<tr>
+<td>Cognitive bias</td>
+<td>Professional decisions can be distorted by systematic bias.</td>
+<td>Leaders need decision architecture, not just confidence.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Statistics Decoded exists at the intersection of these findings. Data matters. Evidence matters. But statistics must be interpreted inside a decision discipline.</p>
+<h3>The Problem: Statistics Are Often Used Without Architecture</h3>
+<p>The misuse of statistics usually happens quietly. It does not always look irresponsible. In fact, it often looks professional. A leader cites an industry benchmark. A consultant includes a statistic in a slide deck. A report states that a percentage of employees are disengaged, burned out, resistant to change, or lacking skills. Everyone nods because the number feels credible.</p>
+
+<p>But the harder questions are often skipped.</p>
+
+<p>What was measured? Who was measured? When was it measured? What definition was used? What context shaped the result? Does the statistic apply to this organization? What system created the pattern? What decision should change because of this evidence? What would we do differently if the number were higher or lower?</p>
+
+<p>Without those questions, statistics can create the illusion of understanding.</p>
+
+<p>TAG is especially careful with this issue because marketing and leadership content often use numbers to create urgency. Urgency has value only when it reveals truth. If a statistic is used to scare the market, exaggerate a problem, or borrow credibility without context, it weakens trust. TAG’s marketing philosophy is that marketing is not about convincing the market of something untrue. It is about making the truth visible.</p>
+
+<p>Statistics Decoded applies that philosophy to evidence.</p>
+
+<p>A number must not simply be impressive. It must be structurally useful.</p>
+<h3>The TAG Decoding Sequence</h3>
+<p>The Statistics Decoded discipline begins with a simple premise: every statistic must be translated before it is used. Translation turns a number into insight. Insight turns evidence into better decisions. Better decisions change systems.</p>
+
+<p>TAG’s decoding sequence asks five questions.</p>
+
+<table>
+<thead>
+<tr>
+<th>Decoding Question</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What is the statistic actually saying?</td>
+<td>Clarifies the measurement, definition, and scope.</td>
+</tr>
+<tr>
+<td>What system produced this number?</td>
+<td>Moves attention from symptom to structure.</td>
+</tr>
+<tr>
+<td>What does this number reveal, and what does it not reveal?</td>
+<td>Prevents overstatement and false certainty.</td>
+</tr>
+<tr>
+<td>What decision should this influence?</td>
+<td>Connects evidence to leadership action.</td>
+</tr>
+<tr>
+<td>What must change in the system if the number matters?</td>
+<td>Converts interpretation into performance design.</td>
+</tr>
+</tbody>
+</table>
+
+<p>This sequence protects leaders from using statistics as decoration. It also protects organizations from acting on numbers that have not been interpreted properly.</p>
+
+<p>For example, a low engagement score may reveal a morale issue. It may also reveal unclear roles, weak manager capability, poor communication, lack of trust, change fatigue, unrealistic workload, limited growth visibility, or system friction that prevents people from doing meaningful work. The statistic points to the problem area. It does not automatically identify the root cause.</p>
+
+<p>A high training completion rate may look positive. But if performance does not improve, the statistic may reveal that attendance was measured while capability transfer was not. The number may be accurate and still misleading.</p>
+
+<p>A turnover rate may signal poor retention. But the interpretation depends on who is leaving, why they are leaving, how long they stayed, whether they were values-aligned, whether the role was designed well, and whether leaders acted on early signals.</p>
+
+<p>Statistics do not remove the need for thinking. They demand better thinking.</p>
+<h3>Statistics Must Reveal the System Behind the Symptom</h3>
+<p>TAG’s systems-first worldview changes how statistics are interpreted. A conventional leader may see a number and ask, “Who is responsible for this?” A systems-first leader asks, “What system is producing this?”</p>
+
+<p>That question changes the quality of the decision.</p>
+
+<p>If sales conversion drops, the issue may not be sales effort. It may be lead quality, market positioning, offer clarity, pricing friction, follow-up design, CRM discipline, or handoff gaps between marketing and sales. If customer complaints rise, the issue may not be service attitude. It may be unclear expectations, broken onboarding, capacity constraints, product-service mismatch, or communication drift. If managers are burned out, the issue may not be resilience. It may be decision overload, unclear priorities, too many meetings, weak delegation systems, or the impossible task of trying to hold people accountable after systems have already failed.</p>
+
+<p>Statistics Decoded makes the invisible visible by connecting numbers to operating architecture.</p>
+<p>This is especially important for SMBs. Smaller and mid-sized organizations often have enough data to see symptoms but not enough decision architecture to diagnose them. The owner sees revenue pressure. The C-level leader sees execution gaps. The manager sees employee frustration. The team sees shifting priorities. Each person sees part of the truth. Statistics can help unify the view, but only if they are decoded through the system.</p>
+
+<p>The question is not, “What does the number say?”</p>
+
+<p>The better question is, “What does this number reveal about how the system is currently designed?”</p>
+<h3>Statistics, Trust, and Leadership Communication</h3>
+<p>Statistics also influence trust. When leaders use numbers carelessly, people notice. If a statistic is exaggerated, cherry-picked, or used to justify a decision already made, trust weakens. If leaders present data without context, people may comply outwardly while questioning the decision privately.</p>
+<p>Trust grows when evidence is handled with discipline.</p>
+
+<p>This connects directly to TAG’s Trust Communication Framework. Leaders must move through trust, understanding, and agreement. A statistic can support that sequence, but it cannot replace it. Leaders still need to ask how people understand the situation and what they believe to be true. They still need to reach agreement before moving forward.</p>
+
+<p>Numbers can clarify reality. They can also create distance if people feel reduced to metrics.</p>
+
+<p>A systems-first leader uses statistics to open understanding, not shut it down. The leader says, in effect: “Here is what we are seeing. Here is what we know. Here is what we do not yet know. Here is what we need to understand. Here is the decision this may influence. Here is the agreement we need before we move forward.”</p>
+
+<p>That posture protects both truth and trust.</p>
+
+<p>Gallup’s trust research reinforces the importance of this clarity. Employees are more likely to trust leaders when they see credible leadership actions and understand how changes affect the organization. A statistic that is properly decoded helps people see. A statistic that is poorly communicated may create confusion, suspicion, or resistance.</p>
+
+<p>This is why statistics belong inside leadership discipline, not outside it.</p>
+<h3>AI Makes Statistical Discipline More Important, Not Less</h3>
+<p>AI can accelerate analysis. It can summarize large data sets, surface patterns, draft reports, identify anomalies, and help leaders explore scenarios faster. Used well, AI can support better decision-making by making information more accessible.</p>
+
+<p>But AI does not remove the need for judgment. It increases the need for governance.</p>
+
+<p>If leaders feed AI poor data, unclear questions, biased assumptions, or incomplete context, AI may produce outputs that appear polished while remaining structurally weak. The danger is not that AI will make every decision worse. The danger is that AI can make weak interpretation look more credible.</p>
+
+<p>Statistics Decoded becomes more important in an AI-amplified environment because leaders must know how to question outputs. What data was used? What context is missing? What assumptions are embedded? What decision is being supported? What risk does the model not see? What human, operational, or trust factor must be considered?</p>
+
+<p>The World Economic Forum’s Future of Jobs work places AI, automation, reskilling, and changing work demands at the center of the employment conversation. That means leaders will increasingly use data and AI to make talent, capability, and performance decisions. Those decisions must be handled carefully because they affect people, roles, trust, and organizational direction.</p>
+
+<p>A human-led, AI-amplified organization does not outsource judgment. It strengthens judgment with better tools and stronger decision architecture.</p>
+<h3>Statistics Decoded and MEACT Specialist Positioning</h3>
+<p>Statistics Decoded also clarifies the role of the MEACT specialist. A traditional consultant may bring benchmarks. A trainer may deliver content. A coach may help a leader reflect. A data analyst may produce reports. A MEACT specialist operates differently.</p>
+
+<p>A MEACT specialist helps leaders translate evidence into the right development, system, and decision response. The specialist understands that a statistic may require mentoring, educating, advising, coaching, or training depending on what the number reveals.</p>
+
+<table>
+<thead>
+<tr>
+<th>MEACT Mode</th>
+<th>How Statistics Inform the Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mentoring</td>
+<td>Helps leaders interpret evidence with maturity, restraint, and systems-first responsibility.</td>
+</tr>
+<tr>
+<td>Educating</td>
+<td>Teaches leaders what the statistic means, what it does not mean, and how to think about it.</td>
+</tr>
+<tr>
+<td>Advising</td>
+<td>Supports decision-making when evidence has strategic, financial, talent, or system implications.</td>
+</tr>
+<tr>
+<td>Coaching</td>
+<td>Helps leaders communicate data, ask better questions, and convert insight into agreement.</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>Builds repeatable skills where the statistic reveals a capability gap.</td>
+</tr>
+</tbody>
+</table>
+
+<p>This matters because the same statistic can require different interventions. A low performance metric may require training if skill is the constraint. It may require coaching if behavior is the constraint. It may require advising if system design is the constraint. It may require mentoring if leadership maturity is the constraint. It may require education if people do not understand the change.</p>
+
+<p>Statistics do not prescribe the intervention automatically. They reveal where disciplined interpretation must begin.</p>
+<h3>Evidence Standard: Clear, Defensible, and Useful</h3>
+<p>TAG’s standard for statistics is simple: evidence must be clear, defensible, and useful. Clear means the reader can understand what the statistic says. Defensible means the source is credible and the claim is not overstated. Useful means the statistic helps leaders see a system, make a decision, or take action.</p>
+
+<table>
+<thead>
+<tr>
+<th>Evidence Standard</th>
+<th>What It Requires</th>
+<th>What It Prevents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clear</td>
+<td>The statistic is explained in plain language with enough context to understand it.</td>
+<td>Confusion, jargon, and borrowed authority.</td>
+</tr>
+<tr>
+<td>Defensible</td>
+<td>The source is credible, the claim is accurate, and limitations are respected.</td>
+<td>Exaggeration, misquotation, and inflated certainty.</td>
+</tr>
+<tr>
+<td>Useful</td>
+<td>The statistic connects to a decision, system, or performance implication.</td>
+<td>Data decoration, fear-based messaging, and insight without action.</td>
+</tr>
+</tbody>
+</table>
+
+<p>This is also an E-E-A-T issue. Experience, expertise, authoritativeness, and trustworthiness are not created by adding more citations. They are strengthened when evidence is handled responsibly. A strong article does not simply show that sources exist. It demonstrates that the sources have been interpreted with discipline.</p>
+
+<p>For TAG, evidence is not used to sound smart. It is used to make the invisible visible.</p>
+<h3>Closing: Leaders Do Not Need More Data. They Need Better Decoding.</h3>
+<p>The future will not give leaders less information. It will give them more. More dashboards. More AI outputs. More benchmarks. More employee data. More market signals. More noise.</p>
+<p>The advantage will belong to leaders who can decode.</p>
+
+<p>Statistics Decoded gives leaders a disciplined way to translate numbers into structural insight, decision relevance, and system action. It prevents statistics from becoming decoration. It protects leaders from bias, overconfidence, and false certainty. It helps organizations move from data consumption to decision clarity.</p>
+
+<p>A statistic should make reality more visible. If it does not, it is not yet useful.</p>
+
+<p>Design systems. Align talent. Performance follows.</p>
+<h3>References</h3>
+<p><a href="https://online.hbs.edu/blog/post/data-driven-decision-making" target="_blank">\[1\] Harvard Business School Online — Data-Driven Decision-Making</a>
+<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1819486" target="_blank">\[2\] Brynjolfsson, Hitt, and Kim — Strength in Numbers: How Does Data-Driven Decisionmaking Affect Firm Performance?</a>
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6016354/" target="_blank">\[3\] Factors Affecting Evidence-Based Management in Healthcare Organizations</a>
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8763848/" target="_blank">\[4\] The Impact of Cognitive Biases on Professionals' Decision-Making</a>
+<a href="https://www.gallup.com/workplace/473738/why-trust-leaders-faltering-gain-back.aspx" target="_blank">\[5\] Gallup — Why Trust in Leaders Is Faltering and How to Gain It Back</a>
+<a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank">\[6\] World Economic Forum — The Future of Jobs Report 2025</a></p>
+
+<!-- NAVIGATION SECTION -->
+            <div class="navigation-section">
+                <a href="/article-trust-lens-framework" class="nav-button prev">
+                    <div style="text-align: left;">
+                        <div class="nav-label">← Previous</div>
+                        <div class="nav-title">The Trust Lens Framework: Building Organizational Trust Through Systems</div>
+                    </div>
+                </a>
+                <a href="/our-thinking" class="nav-button next">
+                    <div style="text-align: right;">
+                        <div class="nav-label">Back to All Articles →</div>
+                        <div class="nav-title">Our Thinking</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 9: Footer -->
+            <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="/index">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663397493018/RtUPfWsgEAaldZbl.png" alt="TAG" class="footer-logo">
+                </a>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="/systems-architecture">Systems Architecture</a>
+                <a href="/talent-capability">Talent Capability</a>
+                <a href="/team-service">Self-directed Teams</a>
+                <a href="/workflow-automation">Workflow Automation</a>
+                <a href="/capacity-as-a-service">Capacity as a Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="/our-work">Our Work</a>
+                <a href="/our-thinking">Our Thinking</a>
+                <a href="/tag-in-action">TAG in action</a>
+                <a href="/about">About</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TAG. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        if (window.innerWidth <= 768) {
+            const script = document.createElement('script');
+            script.src = 'navbar-mobile.js?v=5';
+            document.body.appendChild(script);
+        }
+    </script>
+    <script src="dropdown-handler.js?v=5"></script>
+<style>
+.nav-links a.contact-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;text-decoration:none!important;color:var(--white)!important;line-height:1.2!important}.nav-links .dropdown{position:relative!important}.nav-links .dropdown-menu{pointer-events:auto!important}.nav-links .dropdown-menu a{pointer-events:auto!important;cursor:pointer!important}.nav-links .dropdown.open .dropdown-menu{display:block!important;visibility:visible!important;opacity:1!important}.mobile-menu-mobile.active{display:flex!important;visibility:visible!important;height:auto!important;overflow:visible!important}.mobile-dropdown-menu-mobile.active{display:flex!important;visibility:visible!important;height:auto!important;overflow:visible!important}.mobile-dropdown-btn-mobile[aria-expanded="true"] .dropdown-icon-mobile,.dropdown-btn[aria-expanded="true"] .dropdown-icon{transform:rotate(180deg)}
+</style>
+<script>
+(function(){
+  window.TAG_MENU_DEBUG = window.TAG_MENU_DEBUG || false;
+  var TAG_LOCAL_SLUGS = ['','home','about','systems-architecture','talent-capability','team-service','workflow-automation','fractional-services','our-work','our-thinking','tag-in-action','insights','contact','thank-you','privacy','terms','article-trust-lens-framework','article-triforce-leadership','article-talent-capability','article-systems-architecture','article-statistics-decoded','article-tag-in-action-04','article-tag-in-action-03','article-tag-in-action-02','article-tag-in-action-01'];
+  function isLocalPreview(){ return location.hostname === '127.0.0.1' || location.hostname === 'localhost'; }
+  function normalizeLocalHref(href){
+    if(!isLocalPreview() || !href || href.indexOf('/') !== 0 || href.indexOf('//') === 0) return href;
+    var hash = '';
+    var hashIndex = href.indexOf('#');
+    if(hashIndex >= 0){ hash = href.slice(hashIndex); href = href.slice(0, hashIndex); }
+    var query = '';
+    var queryIndex = href.indexOf('?');
+    if(queryIndex >= 0){ query = href.slice(queryIndex); href = href.slice(0, queryIndex); }
+    var slug = href.replace(/^\//,'').replace(/\/$/,'');
+    if(slug === '') return '/home.html' + query + hash;
+    if(TAG_LOCAL_SLUGS.indexOf(slug) >= 0 && !/\.html$/.test(slug)) return '/' + slug + '.html' + query + hash;
+    return href + query + hash;
+  }
+  function log(){ if(window.TAG_MENU_DEBUG && window.console) console.log.apply(console, arguments); }
+  function bindOnce(el, key, handler){
+    if(!el || el.dataset[key] === '1') return false;
+    el.dataset[key] = '1';
+    el.addEventListener('click', handler);
+    return true;
+  }
+  function closeDesktopMenus(except){
+    document.querySelectorAll('.tag-desktop-nav .dropdown.open').forEach(function(item){
+      if(except && item === except) return;
+      item.classList.remove('open');
+      var btn=item.querySelector('.dropdown-btn');
+      if(btn) btn.setAttribute('aria-expanded','false');
+    });
+  }
+  function initTagMenu(){
+    var bound = 0;
+    document.querySelectorAll('a[href^="/"]').forEach(function(link){
+      if(bindOnce(link, 'tagLocalRouteReady', function(e){
+        var raw = link.getAttribute('href');
+        var next = normalizeLocalHref(raw);
+        if(next && next !== raw){
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = next;
+        }
+      })) bound++;
+    });
+    document.querySelectorAll('.tag-desktop-nav .dropdown-btn').forEach(function(btn){
+      if(!btn.getAttribute('type')) btn.setAttribute('type','button');
+      if(!btn.getAttribute('aria-expanded')) btn.setAttribute('aria-expanded','false');
+      if(bindOnce(btn, 'tagMenuReady', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var item=btn.closest('.dropdown');
+        var willOpen=item && !item.classList.contains('open');
+        closeDesktopMenus(item);
+        if(item){
+          item.classList.toggle('open', !!willOpen);
+          btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+      })) bound++;
+    });
+    document.querySelectorAll('.hamburger-btn-mobile').forEach(function(btn){
+      if(!btn.getAttribute('type')) btn.setAttribute('type','button');
+      if(bindOnce(btn, 'tagMenuReady', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var nav=btn.closest('nav') || document;
+        var menu=nav.querySelector('.mobile-menu-mobile') || document.querySelector('.mobile-menu-mobile');
+        if(menu){
+          var willOpen=!menu.classList.contains('active');
+          menu.classList.toggle('active', willOpen);
+          btn.classList.toggle('active', willOpen);
+          btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+      })) bound++;
+    });
+    document.querySelectorAll('.mobile-dropdown-btn-mobile').forEach(function(btn){
+      if(!btn.getAttribute('type')) btn.setAttribute('type','button');
+      if(!btn.getAttribute('aria-expanded')) btn.setAttribute('aria-expanded','false');
+      if(bindOnce(btn, 'tagMenuReady', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var wrap=btn.closest('.mobile-dropdown-item');
+        var menu=wrap && wrap.querySelector('.mobile-dropdown-menu-mobile');
+        if(menu){
+          var willOpen=!menu.classList.contains('active');
+          menu.classList.toggle('active', willOpen);
+          btn.classList.toggle('active', willOpen);
+          btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        }
+      })) bound++;
+    });
+    if(!document.documentElement.dataset.tagMenuCloseReady){
+      document.documentElement.dataset.tagMenuCloseReady='1';
+      document.addEventListener('click', function(e){
+        if(e.target.closest && e.target.closest('.tag-desktop-nav .dropdown')) return;
+        closeDesktopMenus();
+      }, true);
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') closeDesktopMenus();
+      });
+    }
+    if(bound) log('TAG menu bound', bound);
+    return bound;
+  }
+  window.initTagMenu = initTagMenu;
+  function scheduleInit(){
+    initTagMenu();
+    setTimeout(initTagMenu, 50);
+    setTimeout(initTagMenu, 250);
+    setTimeout(initTagMenu, 1000);
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', scheduleInit);
+  scheduleInit();
+  if(!window.__TAG_MENU_OBSERVER__ && 'MutationObserver' in window){
+    window.__TAG_MENU_OBSERVER__ = new MutationObserver(function(){ initTagMenu(); });
+    window.__TAG_MENU_OBSERVER__.observe(document.documentElement, {childList:true, subtree:true});
+  }
+})();
+</script>
+
+
+<style id="tag-hero-stat-fix-style">
+.hero,.hero-section,.service-hero,.page-hero,.case-hero,.article-hero{background-repeat:no-repeat!important;background-size:cover!important;background-position:center center}.hero[style*="background"],.hero-section[style*="background"],.service-hero[style*="background"],.page-hero[style*="background"]{background-repeat:no-repeat!important;background-size:cover!important}.challenge-stat{font-variant-numeric:tabular-nums;will-change:contents}.challenge-stat.tag-stat-animating{opacity:.96}
+</style>
+<script id="tag-stat-animation-script">
+(function(){
+  function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+  function decimalsOf(n){var s=String(n);return s.indexOf('.')>=0?s.split('.')[1].length:0;}
+  function formatNumber(value, decimals){return decimals?value.toFixed(decimals):String(Math.round(value));}
+  function animateText(el, finalText){
+    var text=(finalText||el.textContent||'').trim();
+    if(!text || el.dataset.tagStatDone==='1') return;
+    el.dataset.tagStatDone='1';
+    el.classList.add('tag-stat-animating');
+    var range=text.match(/^([^0-9+-]*[+-]?)(\d+(?:\.\d+)?)(\s*[-–]\s*)(\d+(?:\.\d+)?)([^0-9]*)$/);
+    var single=text.match(/^([^0-9+-]*[+-]?)(\d+(?:\.\d+)?)([^0-9]*)$/);
+    var start=performance.now();
+    var duration=1200;
+    function frame(now){
+      var p=Math.min(1,(now-start)/duration);
+      var e=easeOutCubic(p);
+      if(range){
+        var a=parseFloat(range[2]), b=parseFloat(range[4]);
+        var da=decimalsOf(range[2]), db=decimalsOf(range[4]);
+        el.textContent=range[1]+formatNumber(a*e,da)+range[3]+formatNumber(b*e,db)+range[5];
+      }else if(single){
+        var n=parseFloat(single[2]);
+        var d=decimalsOf(single[2]);
+        el.textContent=single[1]+formatNumber(n*e,d)+single[3];
+      }else{
+        el.textContent=text;
+        p=1;
+      }
+      if(p<1) requestAnimationFrame(frame); else { el.textContent=text; el.classList.remove('tag-stat-animating'); }
+    }
+    requestAnimationFrame(frame);
+  }
+  function initStats(){
+    var stats=[].slice.call(document.querySelectorAll('.challenge-stat'));
+    stats.forEach(function(el){ if(!el.dataset.tagFinalStat) el.dataset.tagFinalStat=(el.textContent||'').trim(); });
+    if(!stats.length) return;
+    if(!('IntersectionObserver' in window)){
+      stats.forEach(function(el){animateText(el,el.dataset.tagFinalStat);});
+      return;
+    }
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ animateText(entry.target,entry.target.dataset.tagFinalStat); observer.unobserve(entry.target); }
+      });
+    },{threshold:.35});
+    stats.forEach(function(el){observer.observe(el);});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initStats); else initStats();
+})();
+</script>
+
+<style id="tag-cookie-consent-style">
+.tag-cookie-consent{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:2147483000;background:#181921;color:#fff;border:1px solid rgba(153,170,166,.35);box-shadow:0 18px 50px rgba(0,0,0,.28);border-radius:14px;padding:1rem;display:none;font-family:'Antipasto','Poppins',sans-serif}.tag-cookie-consent.is-visible{display:block}.tag-cookie-consent__inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}.tag-cookie-consent__copy{font-size:.9rem;line-height:1.5;color:#c9d5d2;text-align:left}.tag-cookie-consent__copy strong{display:block;color:#fff;font-size:1rem;margin-bottom:.15rem}.tag-cookie-consent__copy a{color:#00af8d;text-decoration:underline;text-underline-offset:3px}.tag-cookie-consent__actions{display:flex;gap:.75rem;flex-shrink:0}.tag-cookie-consent__btn{appearance:none;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:transparent;color:#fff;cursor:pointer;font:inherit;font-weight:800;padding:.7rem 1rem;white-space:nowrap}.tag-cookie-consent__btn--accept{background:#e84005;border-color:#e84005}.tag-cookie-consent__btn:hover{transform:translateY(-1px)}@media(max-width:720px){.tag-cookie-consent__inner{flex-direction:column;align-items:flex-start}.tag-cookie-consent__actions{width:100%;flex-direction:column}.tag-cookie-consent__btn{width:100%}}
+</style>
+<div class="tag-cookie-consent" id="tag-cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+  <div class="tag-cookie-consent__inner">
+    <div class="tag-cookie-consent__copy"><strong>Cookie preferences</strong>We use cookies to keep the site working, improve performance, and understand how visitors use TAG. You can accept all cookies or continue with necessary cookies only. <a href="/privacy">Privacy Policy</a></div>
+    <div class="tag-cookie-consent__actions"><button class="tag-cookie-consent__btn" type="button" data-tag-cookie-choice="necessary">Necessary only</button><button class="tag-cookie-consent__btn tag-cookie-consent__btn--accept" type="button" data-tag-cookie-choice="accepted">Accept all</button></div>
+  </div>
+</div>
+<script id="tag-cookie-consent-script">
+(function(){
+  var key='tag_cookie_consent';
+  var banner=document.getElementById('tag-cookie-consent');
+  if(!banner) return;
+  function setCookie(value){
+    try{localStorage.setItem(key,value);}catch(e){}
+    var secure=location.protocol==='https:'?'; Secure':'';
+    document.cookie=key+'='+encodeURIComponent(value)+'; Max-Age=31536000; Path=/; SameSite=Lax'+secure;
+  }
+  function hasChoice(){
+    try{if(localStorage.getItem(key)) return true;}catch(e){}
+    return document.cookie.indexOf(key+'=')!==-1;
+  }
+  if(!hasChoice()) banner.classList.add('is-visible');
+  banner.querySelectorAll('[data-tag-cookie-choice]').forEach(function(btn){
+    btn.addEventListener('click',function(){setCookie(btn.getAttribute('data-tag-cookie-choice'));banner.classList.remove('is-visible');});
+  });
+})();
+</script>
+
+<style id="tag-responsive-polish-final">
+html,body{max-width:100%!important;overflow-x:hidden!important}.tag-webflow-root,main,section,header,footer,nav{max-width:100%!important}.container{width:min(100%,1200px)!important;max-width:1200px!important;min-width:0!important;padding-left:clamp(1rem,4vw,1.5rem)!important;padding-right:clamp(1rem,4vw,1.5rem)!important}img,svg,video,iframe{max-width:100%;height:auto}.hero-orientation{width:auto!important;max-width:min(100%,1120px)!important;white-space:normal!important;overflow-wrap:normal!important;text-wrap:pretty!important}.ticker-wrapper,.logo-ticker,.logo-wall,.logos-section{overflow:hidden!important}.ticker-tape{max-width:none!important}.footer-content,.footer-section,.footer-bottom,.footer-bottom-links{min-width:0!important}.footer-section{max-width:100%!important}.footer-section a,.footer-section h3{max-width:100%!important;overflow-wrap:anywhere}.tag-leads-bg,.ecosystem-bg{max-width:100vw!important;overflow:hidden!important}.hero-pattern{max-width:52vw!important}.nonprofit-image-col,.nonprofit-img{max-width:100%!important}.services-page .audience-card,.services-page .service-card,.services-page .capacity-card{min-width:0!important}.services-page .services-hero:before{background:linear-gradient(to right,var(--turquoise) 0%,var(--turquoise) 45%,rgba(0,175,141,.66) 65%,rgba(0,175,141,0) 90%)!important}.services-page .capacity-card{height:auto!important;min-height:0!important;max-height:none!important}.services-page .capacity-cta{display:inline-flex!important;flex-direction:column!important;align-items:flex-start!important;width:auto!important;max-width:max-content!important;min-width:0!important;padding:.72rem .85rem!important;border-radius:30px!important}.services-page .capacity-cta span{display:block!important;line-height:1.15!important;white-space:nowrap!important}
+@media (max-width:1024px){.services-page .services-hero{min-height:600px!important;background-position:62% center!important}.services-page .services-hero h1{font-size:clamp(2.7rem,7vw,3.8rem)!important;line-height:1.12!important}.services-page .services-hero p{font-size:clamp(1.1rem,2.4vw,1.35rem)!important;line-height:1.45!important}.services-page .capacity-card{grid-template-columns:72px minmax(0,1fr)!important}.services-page .capacity-cta{grid-column:2!important;justify-self:start!important}.footer-content{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:900px){.audience-grid,.core-grid,.services-page .audience-grid,.services-page .core-grid{grid-template-columns:1fr!important}.services-page .services-hero:before{background:linear-gradient(to right,rgba(0,175,141,.94) 0%,rgba(0,175,141,.78) 58%,rgba(0,175,141,.2) 100%)!important}.nonprofit-image-col,.nonprofit-img{width:100%!important;max-width:100%!important}.footer-bottom{display:flex!important;flex-wrap:wrap!important;gap:1rem!important;justify-content:space-between!important}}
+@media (max-width:640px){body{font-size:16px!important}.container{padding-left:1rem!important;padding-right:1rem!important}.nav-logo{height:2.35rem!important}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1,.case-hero h1,.article-hero h1{font-size:clamp(2.15rem,10vw,3rem)!important;line-height:1.08!important;text-wrap:balance!important;letter-spacing:0!important}.hero p,.hero-section p,.page-hero p,.service-hero p,.case-hero p,.article-hero p{font-size:clamp(1rem,4.6vw,1.2rem)!important;line-height:1.48!important}.hero-orientation{display:block!important;width:auto!important;max-width:100%!important;white-space:normal!important;font-size:clamp(.86rem,3.8vw,1rem)!important;line-height:1.45!important}.tag-leads-bg,.ecosystem-bg{left:0!important;right:0!important;width:100%!important}.hero-pattern{right:0!important;left:auto!important;width:min(52vw,220px)!important}.hero-visual{width:100%!important;max-width:100%!important;overflow:hidden!important}.services-page .services-hero{min-height:560px!important;padding:4.25rem 0!important;background-position:68% center!important}.services-page .services-hero:before{background:linear-gradient(to bottom,rgba(0,175,141,.98) 0%,rgba(0,175,141,.88) 56%,rgba(0,175,141,.28) 100%)!important}.services-page .services-hero h1{font-size:clamp(2.55rem,13vw,3.45rem)!important;line-height:1.08!important;margin-bottom:1.25rem!important}.services-page .services-hero p{font-size:clamp(1.08rem,5vw,1.3rem)!important;line-height:1.42!important}.services-page .audience-card,.services-page .service-card,.services-page .capacity-card{grid-template-columns:1fr!important;gap:1rem!important;padding:1.35rem!important}.services-page .audience-icon,.services-page .service-icon,.services-page .capacity-icon{width:64px!important;height:64px!important}.services-page .capacity-cta{grid-column:auto!important;justify-self:start!important;width:auto!important;max-width:100%!important;padding:.72rem .9rem!important}.services-page .capacity-cta span{white-space:normal!important}.footer-content{display:grid!important;grid-template-columns:1fr!important;gap:1.6rem!important;text-align:left!important}.footer-section,.footer-section h3,.footer-section a{text-align:left!important;width:auto!important}.footer-bottom{flex-direction:column!important;align-items:flex-start!important}.footer-bottom-links{display:flex!important;flex-wrap:wrap!important;gap:.75rem!important}.tag-cookie-consent{left:.75rem!important;right:.75rem!important;bottom:.75rem!important}}
+@media (max-width:420px){.container{padding-left:.9rem!important;padding-right:.9rem!important}.services-page .services-hero h1{font-size:clamp(2.25rem,12vw,3rem)!important}.services-page .services-hero p br{display:none!important}.hero h1,.hero-section h1,.page-hero h1,.service-hero h1{font-size:clamp(2rem,10.5vw,2.65rem)!important}.closing-actions,.footer-bottom-links{width:100%!important}.closing-btn{width:100%!important;justify-content:flex-start!important}}
+</style><style id="tag-tablet-polish-final">
+@media (min-width:641px) and (max-width:1024px){
+  .hero{min-height:620px!important;background-position:56% center!important;align-items:center!important;}
+  .hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.92) 42%,rgba(232,64,5,.55) 70%,rgba(232,64,5,.16) 100%)!important;}
+  .hero .container{width:100%!important;max-width:768px!important;padding-left:1.5rem!important;padding-right:1.5rem!important;}
+  .hero .hero-content{width:100%!important;max-width:680px!important;display:block!important;margin:0!important;}
+  .hero .hero-text{width:100%!important;max-width:660px!important;padding:2.75rem 0!important;}
+  .hero .hero-text h1{font-size:clamp(2.75rem,6.25vw,3.45rem)!important;line-height:1.13!important;margin-bottom:1.35rem!important;max-width:660px!important;text-wrap:balance!important;}
+  .hero .hero-text p:not(.hero-orientation){font-size:clamp(1.02rem,2.25vw,1.18rem)!important;line-height:1.48!important;max-width:620px!important;margin-bottom:1.25rem!important;}
+  .hero .hero-text p br{display:none!important;}
+  .hero .hero-btn{padding:.82rem 1.9rem!important;font-size:1rem!important;}
+  .hero .hero-orientation{font-size:.82rem!important;line-height:1.35!important;max-width:620px!important;white-space:normal!important;margin-top:1rem!important;}
+  .services-page .services-hero{min-height:620px!important;background-position:70% center!important;align-items:center!important;}
+  .services-page .services-hero:before{background:linear-gradient(to right,var(--turquoise) 0%,rgba(0,175,141,.94) 43%,rgba(0,175,141,.58) 71%,rgba(0,175,141,.18) 100%)!important;}
+  .services-page .services-hero .container{max-width:768px!important;padding-left:1.5rem!important;padding-right:1.5rem!important;}
+  .services-page .services-hero-copy{max-width:620px!important;}
+  .services-page .services-hero h1{font-size:clamp(2.85rem,6.5vw,3.65rem)!important;line-height:1.12!important;margin-bottom:1.3rem!important;max-width:620px!important;}
+  .services-page .services-hero p{font-size:clamp(1.05rem,2.35vw,1.2rem)!important;line-height:1.48!important;max-width:560px!important;}
+  .services-page .audience-section,.services-page .core-services,.services-page .capacity-section{padding-top:3.5rem!important;padding-bottom:3.5rem!important;}
+  .services-page .audience-grid,.services-page .core-grid{gap:1.25rem!important;}
+  .services-page .audience-card,.services-page .service-card{padding:1.35rem!important;gap:1.15rem!important;}
+  .services-page .audience-icon,.services-page .service-icon,.services-page .capacity-icon{width:72px!important;height:72px!important;}
+  .services-page .capacity-card{padding:1.35rem!important;gap:1.15rem!important;grid-template-columns:72px minmax(0,1fr) auto!important;align-items:center!important;}
+  .services-page .capacity-copy h2{font-size:clamp(1.65rem,3.4vw,2rem)!important;line-height:1.15!important;}
+  .services-page .capacity-copy p{font-size:1rem!important;line-height:1.45!important;}
+  .services-page .capacity-cta{grid-column:auto!important;justify-self:end!important;max-width:196px!important;padding:.72rem .85rem!important;font-size:.95rem!important;}
+  .hero-video{height:520px!important;min-height:520px!important;}
+  .wwb-hero,.page-hero,.service-hero,.case-hero,.article-hero{padding-top:4.5rem!important;padding-bottom:4.5rem!important;}
+  .hero-visual{max-width:360px!important;margin-left:auto!important;margin-right:auto!important;}
+  .tag-cookie-consent{left:1rem!important;right:1rem!important;bottom:1rem!important;padding:.85rem 1rem!important;border-radius:12px!important;}
+  .tag-cookie-consent__inner{gap:.8rem!important;}
+  .tag-cookie-consent__copy{font-size:.82rem!important;line-height:1.35!important;}
+  .tag-cookie-consent__copy strong{font-size:.92rem!important;}
+  .tag-cookie-consent__btn{padding:.62rem .9rem!important;font-size:.88rem!important;}
+}
+@media (min-width:641px) and (max-width:820px){
+  .services-page .capacity-card{grid-template-columns:72px minmax(0,1fr)!important;}
+  .services-page .capacity-cta{grid-column:2!important;justify-self:start!important;max-width:max-content!important;}
+}
+</style><style id="tag-tablet-image-balance">
+@media (min-width:641px) and (max-width:1024px){
+  .hero{background-position:72% center!important;}
+  .hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.94) 38%,rgba(232,64,5,.68) 58%,rgba(232,64,5,.08) 100%)!important;}
+  .hero .hero-content{max-width:650px!important;}
+  .hero .hero-text{max-width:630px!important;}
+  .hero .hero-text h1{max-width:630px!important;font-size:clamp(2.65rem,6vw,3.25rem)!important;}
+  .hero .hero-text p:not(.hero-orientation){max-width:610px!important;}
+}
+</style><style id="tag-home-mid-screen-polish">
+@media (min-width:1025px) and (max-width:1450px){
+  .hero{min-height:710px!important;background-position:62% center!important;}
+  .hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.96) 40%,rgba(232,64,5,.72) 62%,rgba(232,64,5,.18) 100%)!important;}
+  .hero .container{max-width:1240px!important;width:100%!important;padding-left:clamp(3rem,7vw,6rem)!important;padding-right:clamp(2rem,4vw,4rem)!important;}
+  .hero .hero-content{max-width:760px!important;width:760px!important;display:block!important;margin:0!important;}
+  .hero .hero-text{max-width:760px!important;width:760px!important;padding:3rem 0!important;}
+  .hero .hero-text h1{font-size:clamp(3.15rem,4.45vw,4rem)!important;line-height:1.16!important;max-width:760px!important;margin-bottom:1.65rem!important;text-wrap:balance!important;}
+  .hero .hero-text p:not(.hero-orientation){font-size:clamp(1.18rem,1.75vw,1.48rem)!important;line-height:1.48!important;max-width:760px!important;margin-bottom:1.65rem!important;}
+  .hero .hero-btn{font-size:1.15rem!important;padding:1rem 2.8rem!important;}
+  .hero .hero-orientation{font-size:.95rem!important;line-height:1.35!important;max-width:760px!important;white-space:normal!important;margin-top:1.35rem!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  .hero .container{padding-left:3rem!important;padding-right:2rem!important;}
+  .hero .hero-content,.hero .hero-text{width:690px!important;max-width:690px!important;}
+  .hero .hero-text h1{font-size:clamp(3rem,4.3vw,3.45rem)!important;max-width:690px!important;}
+  .hero .hero-text p:not(.hero-orientation),.hero .hero-orientation{max-width:660px!important;}
+}
+</style><style id="tag-home-mid-screen-force">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero .container{max-width:1240px!important;width:100%!important;padding-left:clamp(3rem,7vw,6rem)!important;padding-right:clamp(2rem,4vw,4rem)!important;}
+  section.hero .container .hero-content{max-width:760px!important;width:760px!important;display:block!important;margin-left:0!important;margin-right:auto!important;}
+  section.hero .container .hero-content .hero-text{max-width:760px!important;width:760px!important;padding:3rem 0!important;}
+  section.hero .container .hero-content .hero-text h1{font-size:clamp(3.15rem,4.45vw,4rem)!important;line-height:1.16!important;max-width:760px!important;width:760px!important;margin-bottom:1.65rem!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){font-size:clamp(1.18rem,1.75vw,1.48rem)!important;line-height:1.48!important;max-width:760px!important;width:760px!important;margin-bottom:1.65rem!important;}
+  section.hero .container .hero-content .hero-text .hero-orientation{font-size:.95rem!important;line-height:1.35!important;max-width:760px!important;width:auto!important;white-space:normal!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  section.hero .container .hero-content,section.hero .container .hero-content .hero-text{width:690px!important;max-width:690px!important;}
+  section.hero .container .hero-content .hero-text h1{width:690px!important;max-width:690px!important;font-size:clamp(3rem,4.3vw,3.45rem)!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation),section.hero .container .hero-content .hero-text .hero-orientation{width:auto!important;max-width:660px!important;}
+}
+</style><style id="tag-home-mid-screen-image-visible">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero{background-position:70% center!important;}
+  section.hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.94) 36%,rgba(232,64,5,.68) 52%,rgba(232,64,5,.25) 70%,rgba(232,64,5,0) 100%)!important;}
+}
+</style><style id="tag-home-mid-screen-smaller">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero .container .hero-content .hero-text h1{font-size:clamp(2.85rem,4.05vw,3.62rem)!important;line-height:1.17!important;max-width:760px!important;width:760px!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){font-size:clamp(1.08rem,1.55vw,1.3rem)!important;line-height:1.5!important;max-width:730px!important;width:730px!important;}
+  section.hero .container .hero-content .hero-text .hero-orientation{font-size:.86rem!important;max-width:730px!important;}
+  section.hero .container .hero-content .hero-text .hero-btn{font-size:1.06rem!important;padding:.9rem 2.45rem!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  section.hero .container .hero-content .hero-text h1{font-size:clamp(2.75rem,4vw,3.15rem)!important;width:690px!important;max-width:690px!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){font-size:clamp(1.02rem,1.65vw,1.16rem)!important;width:auto!important;max-width:650px!important;}
+}
+</style><style id="tag-home-mid-screen-smaller-image-balance">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero{background-position:72% center!important;}
+  section.hero::before{background:linear-gradient(to right,var(--orange) 0%,rgba(232,64,5,.93) 34%,rgba(232,64,5,.58) 50%,rgba(232,64,5,.12) 68%,rgba(232,64,5,0) 100%)!important;}
+}
+</style><style id="tag-home-hero-slightly-smaller-final">
+@media (min-width:1025px) and (max-width:1450px){
+  section.hero .container .hero-content,section.hero .container .hero-content .hero-text{width:700px!important;max-width:700px!important;}
+  section.hero .container .hero-content .hero-text h1{width:700px!important;max-width:700px!important;font-size:clamp(2.45rem,3.55vw,3.15rem)!important;line-height:1.18!important;margin-bottom:1.45rem!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){width:auto!important;max-width:660px!important;font-size:clamp(1rem,1.35vw,1.16rem)!important;line-height:1.5!important;margin-bottom:1.35rem!important;}
+  section.hero .container .hero-content .hero-text .hero-orientation{font-size:.8rem!important;max-width:660px!important;}
+  section.hero .container .hero-content .hero-text .hero-btn{font-size:1rem!important;padding:.82rem 2.25rem!important;}
+}
+@media (min-width:1025px) and (max-width:1240px){
+  section.hero .container .hero-content,section.hero .container .hero-content .hero-text{width:640px!important;max-width:640px!important;}
+  section.hero .container .hero-content .hero-text h1{width:640px!important;max-width:640px!important;font-size:clamp(2.35rem,3.55vw,2.8rem)!important;}
+  section.hero .container .hero-content .hero-text p:not(.hero-orientation){max-width:610px!important;font-size:clamp(.98rem,1.4vw,1.08rem)!important;}
+}
+</style><style id="tag-nav-alignment-final">
+.tag-desktop-nav .nav-links,
+#navbar-container .nav-links,
+nav .nav-links{
+  display:flex!important;
+  align-items:center!important;
+}
+.tag-desktop-nav .nav-links>li,
+#navbar-container .nav-links>li,
+nav .nav-links>li,
+.tag-desktop-nav .nav-links .dropdown,
+#navbar-container .nav-links .dropdown,
+nav .nav-links .dropdown{
+  display:flex!important;
+  align-items:center!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1!important;
+}
+.tag-desktop-nav .nav-links a,
+#navbar-container .nav-links a,
+nav .nav-links a,
+.tag-desktop-nav .nav-links .dropdown-btn,
+#navbar-container .nav-links .dropdown-btn,
+nav .nav-links .dropdown-btn{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:44px!important;
+  height:44px!important;
+  padding:0!important;
+  margin:0!important;
+  line-height:1!important;
+  vertical-align:middle!important;
+  font-family:var(--font-family)!important;
+  font-size:.9rem!important;
+  font-weight:500!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+}
+.tag-desktop-nav .nav-links .dropdown-btn,
+#navbar-container .nav-links .dropdown-btn,
+nav .nav-links .dropdown-btn{
+  gap:.35rem!important;
+  appearance:none!important;
+  background:none!important;
+  border:0!important;
+}
+.tag-desktop-nav .dropdown-icon,
+#navbar-container .dropdown-icon,
+nav .dropdown-icon{
+  display:block!important;
+  flex:0 0 auto!important;
+  width:1rem!important;
+  height:1rem!important;
+  margin:0!important;
+  transform-origin:center!important;
+  position:relative!important;
+  top:0!important;
+  vertical-align:middle!important;
+}
+.tag-desktop-nav .nav-links .dropdown-menu,
+#navbar-container .nav-links .dropdown-menu,
+nav .nav-links .dropdown-menu{
+  top:calc(100% + .35rem)!important;
+}
+.tag-desktop-nav .nav-links .dropdown-menu a,
+#navbar-container .nav-links .dropdown-menu a,
+nav .nav-links .dropdown-menu a{
+  justify-content:flex-start!important;
+  min-height:40px!important;
+  height:auto!important;
+  padding:.65rem .9rem!important;
+}
+</style><style id="tag-contact-nav-button-fix">
+#navbar-container .nav-links a.contact-btn,
+.tag-desktop-nav .nav-links a.contact-btn,
+body > nav .nav-links a.contact-btn,
+nav .nav-links a.contact-btn{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:44px!important;
+  height:44px!important;
+  width:auto!important;
+  min-width:92px!important;
+  padding:0 1.25rem!important;
+  border-radius:50px!important;
+  background-color:var(--orange)!important;
+  color:var(--white)!important;
+  font-weight:800!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+}
+#navbar-container .nav-links a.contact-btn:hover,
+.tag-desktop-nav .nav-links a.contact-btn:hover,
+body > nav .nav-links a.contact-btn:hover,
+nav .nav-links a.contact-btn:hover{
+  color:var(--white)!important;
+  background-color:#d63804!important;
+  transform:translateY(-2px)!important;
+}
+@media (min-width:769px){
+  #navbar-container .nav-links a.contact-btn,
+  .tag-desktop-nav .nav-links a.contact-btn,
+  body > nav .nav-links a.contact-btn,
+  nav .nav-links a.contact-btn{
+    min-width:88px!important;
+    padding:0 1.15rem!important;
+    font-size:.72rem!important;
+  }
+}
+</style><script id="tag-services-dropdown-fix">
+(function(){
+  function closeDesktop(except){
+    document.querySelectorAll('.tag-desktop-nav .dropdown').forEach(function(item){
+      if(item !== except){
+        item.classList.remove('open','active');
+        var btn=item.querySelector('.dropdown-btn');
+        var menu=item.querySelector('.dropdown-menu');
+        if(btn) btn.setAttribute('aria-expanded','false');
+        if(menu) menu.style.display='';
+      }
+    });
+  }
+  function bindMenus(){
+    document.querySelectorAll('.tag-desktop-nav .dropdown-btn').forEach(function(btn){
+      if(btn.dataset.servicesDropdownFix) return;
+      btn.dataset.servicesDropdownFix='1';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var item=btn.closest('.dropdown');
+        var menu=item && item.querySelector('.dropdown-menu');
+        if(!item || !menu) return;
+        var open=!item.classList.contains('open');
+        closeDesktop(item);
+        item.classList.toggle('open', open);
+        item.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menu.style.display=open ? 'block' : '';
+      }, true);
+    });
+    document.querySelectorAll('.hamburger-btn-mobile').forEach(function(btn){
+      if(btn.dataset.servicesDropdownFix) return;
+      btn.dataset.servicesDropdownFix='1';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var nav=btn.closest('nav') || document;
+        var menu=nav.querySelector('.mobile-menu-mobile') || document.querySelector('.mobile-menu-mobile');
+        if(!menu) return;
+        var open=!menu.classList.contains('active');
+        menu.classList.toggle('active', open);
+        btn.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }, true);
+    });
+    document.querySelectorAll('.mobile-dropdown-btn-mobile').forEach(function(btn){
+      if(btn.dataset.servicesDropdownFix) return;
+      btn.dataset.servicesDropdownFix='1';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var menu=btn.nextElementSibling;
+        if(!menu) return;
+        var open=!menu.classList.contains('active');
+        document.querySelectorAll('.mobile-dropdown-menu-mobile').forEach(function(other){ if(other !== menu) other.classList.remove('active'); });
+        document.querySelectorAll('.mobile-dropdown-btn-mobile').forEach(function(other){ if(other !== btn){ other.classList.remove('active'); other.setAttribute('aria-expanded','false'); } });
+        menu.classList.toggle('active', open);
+        btn.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }, true);
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindMenus); else bindMenus();
+  setTimeout(bindMenus, 100);
+  setTimeout(bindMenus, 500);
+})();
+</script>
+<style id="tag-unified-hero-type">
+:root{
+  --tag-hero-heading-size:clamp(39px,5.8vw,50px);
+  --tag-hero-heading-line:1.14;
+  --tag-hero-copy-size:clamp(16px,2.3vw,19px);
+  --tag-hero-copy-line:1.5;
+}
+html body .hero h1,
+html body section.hero h1,
+html body section.hero .container .hero-content .hero-text h1,
+html body .hero .hero-text h1,
+html body .hero-section h1,
+html body .page-hero h1,
+html body .service-hero h1,
+html body .case-hero h1,
+html body .article-hero h1,
+html body .services-page .services-hero h1,
+html body .caas-page .caas-hero h1,
+html body .caas-hero h1{
+  font-size:var(--tag-hero-heading-size)!important;
+  line-height:var(--tag-hero-heading-line)!important;
+  letter-spacing:0!important;
+  text-wrap:balance!important;
+  max-width:min(760px,100%)!important;
+}
+html body .hero h1 span,
+html body section.hero h1 span,
+html body .hero .hero-text h1 span,
+html body .hero-section h1 span,
+html body .page-hero h1 span,
+html body .service-hero h1 span,
+html body .case-hero h1 span,
+html body .article-hero h1 span{
+  font-size:inherit!important;
+  line-height:inherit!important;
+  letter-spacing:inherit!important;
+}
+html body .hero p:not(.hero-orientation):not(.subtitle),
+html body section.hero p:not(.hero-orientation):not(.subtitle),
+html body section.hero .container .hero-content .hero-text p:not(.hero-orientation):not(.subtitle),
+html body .hero .hero-text p:not(.hero-orientation):not(.subtitle),
+html body .hero-section p,
+html body .page-hero p,
+html body .service-hero p,
+html body .case-hero p,
+html body .article-hero p,
+html body .services-page .services-hero p,
+html body .caas-page .caas-hero p,
+html body .caas-hero p{
+  font-size:var(--tag-hero-copy-size)!important;
+  line-height:var(--tag-hero-copy-line)!important;
+  max-width:min(720px,100%)!important;
+}
+html body .hero .subtitle,
+html body .hero p.subtitle,
+html body section.hero .hero-text p.subtitle,
+html body section.hero .container .hero-content .hero-text p.subtitle{
+  font-size:var(--tag-hero-copy-size)!important;
+  line-height:var(--tag-hero-copy-line)!important;
+}
+@media (max-width:640px){
+  :root{
+    --tag-hero-heading-size:clamp(34px,10vw,39px);
+    --tag-hero-copy-size:clamp(16px,4.3vw,17px);
+    --tag-hero-heading-line:1.1;
+  }
+  html body .hero h1,html body section.hero h1,html body section.hero .container .hero-content .hero-text h1,html body .services-page .services-hero h1,html body .caas-page .caas-hero h1,html body .caas-hero h1{width:auto!important;max-width:100%!important;}
+  html body .hero p:not(.hero-orientation):not(.subtitle),html body section.hero p:not(.hero-orientation):not(.subtitle),html body .services-page .services-hero p,html body .caas-page .caas-hero p,html body .caas-hero p{max-width:100%!important;}
+}
+</style>
+</body>
+</html>
