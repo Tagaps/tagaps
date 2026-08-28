@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/api/send-results", "destination": "https://tag-performance-assessment.melisa-cediel1.chatgpt.site/api/send-results" },
+    { "source": "/services/systems-architecture", "destination": "/systems-architecture.html" },
+    { "source": "/services/talent-capability", "destination": "/talent-capability.html" },
+    { "source": "/services/self-directed-teams", "destination": "/team-service.html" },
+    { "source": "/services/workflow-automation", "destination": "/workflow-automation.html" }
+  ],
+  "redirects": [
+    { "source": "/assessment", "destination": "/assessment/", "statusCode": 301 }
+  ]
+}
