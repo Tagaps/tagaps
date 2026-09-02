@@ -1,4 +1,4 @@
-name: Apply services menu link fix
+name: Apply force services navigation
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Let Services link navigate to overview
+      - name: Force Services menu item to navigate to overview
         run: |
           node <<'NODE'
           const fs = require('fs');
@@ -30,15 +30,33 @@ jobs:
             return files;
           }
 
+          const forceScript = `<script id="tag-force-services-overview-link">
+(function(){
+  function goToServices(e){
+    var trigger = e.target && e.target.closest && e.target.closest('.tag-desktop-nav .dropdown > .dropdown-btn, #services-dropdown-btn');
+    if(!trigger) return;
+    var text = (trigger.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+    if(text.indexOf('services') !== 0) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+    window.location.assign('/services');
+  }
+  document.addEventListener('click', goToServices, true);
+})();
+</script>`;
+
           let changed = false;
           const changedFiles = [];
           for (const file of walk('.')) {
             let html = fs.readFileSync(file, 'utf8');
             const before = html;
-            html = html
-              .replace(/document\.querySelectorAll\('\.tag-desktop-nav \.dropdown-btn'\)/g, "document.querySelectorAll('.tag-desktop-nav button.dropdown-btn')")
-              .replace(/document\.querySelectorAll\("\.tag-desktop-nav \.dropdown-btn"\)/g, 'document.querySelectorAll(".tag-desktop-nav button.dropdown-btn")');
-
+            html = html.replace(/<script id="tag-force-services-overview-link">[\s\S]*?<\/script>/g, '');
+            if (html.includes('</body>')) {
+              html = html.replace('</body>', forceScript + '\n</body>');
+            } else {
+              html += '\n' + forceScript + '\n';
+            }
             if (html !== before) {
               fs.writeFileSync(file, html);
               changed = true;
@@ -47,7 +65,7 @@ jobs:
           }
 
           if (!changed) {
-            console.log('No Services link click fix needed.');
+            console.log('No Services force navigation update needed.');
           } else {
             console.log(`Updated ${changedFiles.length} files:`);
             for (const file of changedFiles) console.log(file);
@@ -62,5 +80,5 @@ jobs:
           git config user.name "Tagaps"
           git config user.email "systems@tagaps.com"
           git add .
-          git commit -m "Fix services overview menu link"
+          git commit -m "Force Services menu item to overview"
           git push
