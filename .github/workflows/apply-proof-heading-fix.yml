@@ -1,4 +1,4 @@
-name: Apply homepage hero cleanup
+name: Apply services menu cleanup
 
 on:
   workflow_dispatch:
@@ -10,31 +10,50 @@ permissions:
   contents: write
 
 jobs:
-  patch-home:
+  patch-navigation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Remove homepage orientation line
+      - name: Remove Services Overview and link Services label
         run: |
           node <<'NODE'
           const fs = require('fs');
+          const path = require('path');
 
-          const files = ['index.html', 'home.html'];
-          const orientationPattern = /<p class="hero-orientation">[\s\S]*?<\/p>/g;
+          function walk(dir, files = []) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              if (entry.name === '.git' || entry.name === 'node_modules') continue;
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) walk(full, files);
+              else if (entry.isFile() && entry.name.endsWith('.html')) files.push(full);
+            }
+            return files;
+          }
+
+          const desktopServicesPattern = /<button class="dropdown-btn" type="button" aria-expanded="false">Services\s*(<svg class="dropdown-icon"[\s\S]*?<\/svg>)<\/button><div class="dropdown-menu"><a href="\/services" id="nav-services">Services Overview<\/a>/g;
+          const mobileServicesOverviewPattern = /<li><a href="\/services" id="mobile-nav-services">Services Overview<\/a><\/li>/g;
 
           let changed = false;
-          for (const file of files) {
+          const changedFiles = [];
+          for (const file of walk('.')) {
             let html = fs.readFileSync(file, 'utf8');
             const before = html;
-            html = html.replace(orientationPattern, '');
+            html = html
+              .replace(desktopServicesPattern, '<a href="/services" class="dropdown-btn">Services $1</a><div class="dropdown-menu">')
+              .replace(mobileServicesOverviewPattern, '');
+
             if (html !== before) {
               fs.writeFileSync(file, html);
               changed = true;
+              changedFiles.push(file);
             }
           }
 
           if (!changed) {
-            console.log('No hero orientation line found.');
+            console.log('No services menu cleanup needed.');
+          } else {
+            console.log(`Updated ${changedFiles.length} files:`);
+            for (const file of changedFiles) console.log(file);
           }
           NODE
       - name: Commit patched files
@@ -45,6 +64,6 @@ jobs:
           fi
           git config user.name "Tagaps"
           git config user.email "systems@tagaps.com"
-          git add index.html home.html
-          git commit -m "Remove homepage hero orientation line"
+          git add .
+          git commit -m "Clean up services menu navigation"
           git push
