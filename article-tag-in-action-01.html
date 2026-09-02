@@ -1794,5 +1794,20 @@ html body section.hero .container .hero-content .hero-text p.subtitle{
   html body .hero p:not(.hero-orientation):not(.subtitle),html body section.hero p:not(.hero-orientation):not(.subtitle),html body .services-page .services-hero p,html body .caas-page .caas-hero p,html body .caas-hero p{max-width:100%!important;}
 }
 </style>
+<script id="tag-force-services-overview-link">
+(function(){
+  function goToServices(e){
+    var trigger = e.target && e.target.closest && e.target.closest(".tag-desktop-nav .dropdown > .dropdown-btn, #services-dropdown-btn");
+    if(!trigger) return;
+    var text = (trigger.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+    if(text.indexOf("services") !== 0) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+    window.location.assign("/services");
+  }
+  document.addEventListener("click", goToServices, true);
+})();
+</script>
 </body>
 </html>
