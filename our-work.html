@@ -92,7 +92,7 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
         }
       })) bound++;
     });
-    document.querySelectorAll('.tag-desktop-nav .dropdown-btn').forEach(function(btn){
+    document.querySelectorAll('.tag-desktop-nav button.dropdown-btn').forEach(function(btn){
       if(!btn.getAttribute('type')) btn.setAttribute('type','button');
       if(!btn.getAttribute('aria-expanded')) btn.setAttribute('aria-expanded','false');
       if(bindOnce(btn, 'tagMenuReady', function(e){
@@ -513,7 +513,7 @@ nav .nav-links a.contact-btn:hover{
     });
   }
   function bindMenus(){
-    document.querySelectorAll('.tag-desktop-nav .dropdown-btn').forEach(function(btn){
+    document.querySelectorAll('.tag-desktop-nav button.dropdown-btn').forEach(function(btn){
       if(btn.dataset.servicesDropdownFix) return;
       btn.dataset.servicesDropdownFix='1';
       btn.addEventListener('click', function(e){

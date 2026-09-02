@@ -374,7 +374,7 @@ nav .nav-links a.contact-btn:hover{
     });
   }
   function bindMenus(){
-    document.querySelectorAll('.tag-desktop-nav .dropdown-btn').forEach(function(btn){
+    document.querySelectorAll('.tag-desktop-nav button.dropdown-btn').forEach(function(btn){
       if(btn.dataset.servicesDropdownFix) return;
       btn.dataset.servicesDropdownFix='1';
       btn.addEventListener('click', function(e){
