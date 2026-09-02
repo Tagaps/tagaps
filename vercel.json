@@ -1,14 +1,6 @@
 {
   "cleanUrls": true,
-  "functions": {
-    "api/home.js": {
-      "includeFiles": "home.html"
-    }
-  },
   "rewrites": [
-    { "source": "/", "destination": "/api/home" },
-    { "source": "/home", "destination": "/api/home" },
-    { "source": "/home/", "destination": "/api/home" },
     { "source": "/api/send-results", "destination": "https://tag-performance-assessment.melisa-cediel1.chatgpt.site/api/send-results" },
     { "source": "/services/systems-architecture", "destination": "/systems-architecture.html" },
     { "source": "/services/talent-capability", "destination": "/talent-capability.html" },
