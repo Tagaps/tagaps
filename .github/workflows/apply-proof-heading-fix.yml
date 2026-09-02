@@ -1,4 +1,4 @@
-name: Apply services menu cleanup
+name: Apply services menu link fix
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Remove Services Overview and link Services label
+      - name: Let Services link navigate to overview
         run: |
           node <<'NODE'
           const fs = require('fs');
@@ -30,17 +30,14 @@ jobs:
             return files;
           }
 
-          const desktopServicesPattern = /<button class="dropdown-btn" type="button" aria-expanded="false">Services\s*(<svg class="dropdown-icon"[\s\S]*?<\/svg>)<\/button><div class="dropdown-menu"><a href="\/services" id="nav-services">Services Overview<\/a>/g;
-          const mobileServicesOverviewPattern = /<li><a href="\/services" id="mobile-nav-services">Services Overview<\/a><\/li>/g;
-
           let changed = false;
           const changedFiles = [];
           for (const file of walk('.')) {
             let html = fs.readFileSync(file, 'utf8');
             const before = html;
             html = html
-              .replace(desktopServicesPattern, '<a href="/services" class="dropdown-btn">Services $1</a><div class="dropdown-menu">')
-              .replace(mobileServicesOverviewPattern, '');
+              .replace(/document\.querySelectorAll\('\.tag-desktop-nav \.dropdown-btn'\)/g, "document.querySelectorAll('.tag-desktop-nav button.dropdown-btn')")
+              .replace(/document\.querySelectorAll\("\.tag-desktop-nav \.dropdown-btn"\)/g, 'document.querySelectorAll(".tag-desktop-nav button.dropdown-btn")');
 
             if (html !== before) {
               fs.writeFileSync(file, html);
@@ -50,7 +47,7 @@ jobs:
           }
 
           if (!changed) {
-            console.log('No services menu cleanup needed.');
+            console.log('No Services link click fix needed.');
           } else {
             console.log(`Updated ${changedFiles.length} files:`);
             for (const file of changedFiles) console.log(file);
@@ -65,5 +62,5 @@ jobs:
           git config user.name "Tagaps"
           git config user.email "systems@tagaps.com"
           git add .
-          git commit -m "Clean up services menu navigation"
+          git commit -m "Fix services overview menu link"
           git push
