@@ -8,6 +8,7 @@
     { "source": "/services/workflow-automation", "destination": "/workflow-automation.html" }
   ],
   "redirects": [
-    { "source": "/assessment", "destination": "/assessment/", "statusCode": 401 }
+    { "source": "/assessment", "destination": "/assessment/", "statusCode": 401 },
+    { "source": "/services", "destination": "/organization-tag", "statusCode": 308 }
   ]
 }
