@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TAG Not-for-Profit Courses</title>
+    <meta name="description" content="Courses, tools, and operating support from TAG for mission-driven, not-for-profit organizations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --ink: #24113f;
+        --plum: #2d124e;
+        --violet: #4e2c8c;
+        --royal: #683ab6;
+        --gold: #b8872e;
+        --gold-2: #efa726;
+        --cream: #fff8ef;
+        --surface: #fbf3e7;
+        --white: #ffffff;
+        --muted: #675a72;
+        --line: rgba(78, 44, 140, 0.18);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Manrope, Arial, sans-serif;
+        color: var(--ink);
+        background:
+          linear-gradient(180deg, var(--cream), var(--surface) 42%, var(--cream));
+      }
+      img { display: block; max-width: 100%; }
+      a { color: inherit; }
+
+      .wrap, .nav-inner {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topline {
+        background: linear-gradient(90deg, var(--plum), var(--violet), var(--plum));
+        color: var(--white);
+        padding: 10px 16px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 248, 239, 0.94);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav-inner {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .logo { width: min(168px, 44vw); }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-size: 14px;
+        font-weight: 800;
+      }
+      .nav-links a { text-decoration: none; }
+
+      .audience-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fffaf4;
+      }
+      .audience-switch span, .audience-switch a {
+        padding: 8px 11px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 900;
+        text-decoration: none;
+        color: inherit;
+      }
+      .audience-switch a:hover {
+        background: rgba(78, 44, 140, 0.12);
+      }
+      .audience-switch .active {
+        background: var(--violet);
+        color: var(--white);
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+        border-radius: 8px;
+        border: 2px solid transparent;
+        text-decoration: none;
+        font-weight: 900;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 22px rgba(45, 18, 78, 0.16);
+      }
+      .button.dark { background: var(--violet); color: var(--white); }
+      .button.green { background: var(--gold-2); color: var(--ink); border-color: rgba(184, 135, 46, 0.36); }
+      .button.light { background: var(--cream); border-color: rgba(78, 44, 140, 0.28); color: var(--ink); }
+
+      .hero {
+        color: var(--white);
+        background:
+          linear-gradient(90deg, rgba(36, 17, 63, 0.98), rgba(78, 44, 140, 0.82), rgba(184, 135, 46, 0.22)),
+          url("https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/tag-hero-team_f129fed3.webp") center / cover;
+      }
+
+      .hero-inner {
+        min-height: 700px;
+        padding: 74px 0 58px;
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.75fr);
+        align-items: center;
+        gap: 42px;
+      }
+
+      .label {
+        display: inline-flex;
+        min-height: 30px;
+        align-items: center;
+        padding: 0 11px;
+        border-radius: 999px;
+        background: rgba(184, 135, 46, 0.18);
+        color: var(--gold-2);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      h1, h2, h3 {
+        margin: 0;
+        line-height: 1.04;
+        text-wrap: balance;
+      }
+      h1 {
+        max-width: 780px;
+        margin-top: 18px;
+        font-size: clamp(44px, 7vw, 86px);
+      }
+      h2 { font-size: clamp(32px, 4.6vw, 58px); }
+      h3 { font-size: 22px; }
+
+      .hero-copy, .section-copy {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.65;
+        text-wrap: pretty;
+      }
+      .hero-copy {
+        max-width: 720px;
+        margin: 22px 0 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: clamp(18px, 2vw, 22px);
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .gateway-panel {
+        padding: 22px;
+        border-radius: 12px;
+        background: rgba(255, 248, 239, 0.94);
+        color: var(--ink);
+        border: 1px solid rgba(239, 167, 38, 0.32);
+        box-shadow: 0 22px 46px rgba(36, 17, 63, 0.28);
+      }
+      .gateway-panel h3 { margin-bottom: 14px; }
+      .gateway-option {
+        display: block;
+        padding: 18px;
+        margin-top: 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--line);
+      }
+      .gateway-option strong { display: block; font-size: 20px; }
+      .gateway-option span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      section { padding: 86px 0; }
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 26px;
+        margin-bottom: 34px;
+      }
+      .section-head .section-copy { max-width: 610px; margin: 0; }
+
+      .mission-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        border-radius: 8px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .mission-item {
+        min-height: 190px;
+        padding: 22px;
+        background: #fffaf4;
+      }
+      .mission-item b { color: var(--violet); }
+      .mission-item p { color: var(--muted); line-height: 1.55; }
+
+      .wial-pattern {
+        background:
+          linear-gradient(180deg, var(--cream), #fffaf4 45%, var(--surface));
+      }
+      .course-feature {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.74fr);
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: #fffaf4;
+        box-shadow: 0 22px 60px rgba(78, 44, 140, 0.12);
+      }
+      .feature-copy { padding: clamp(26px, 5vw, 48px); }
+      .feature-copy h3 {
+        margin-top: 16px;
+        font-size: clamp(30px, 4vw, 48px);
+      }
+      .feature-copy p, .product-body p {
+        color: var(--muted);
+        line-height: 1.58;
+      }
+      .feature-meta, .product-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 22px;
+      }
+      .feature-meta span, .product-meta span {
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(78, 44, 140, 0.08);
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 850;
+      }
+      .price-line {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .price-line strong { font-size: 34px; }
+      .price-line span { color: var(--muted); font-weight: 750; }
+      .feature-art {
+        min-height: 100%;
+        padding: 26px;
+        color: var(--cream);
+        background:
+          linear-gradient(145deg, #1e0c35 0%, #35165f 38%, #4e2c8c 72%, #683ab6 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .feature-art b {
+        max-width: 290px;
+        font-size: clamp(34px, 5vw, 54px);
+        line-height: 0.94;
+      }
+      .feature-art span { font-weight: 900; }
+
+      .product-section-title {
+        margin: 52px 0 22px;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 20px;
+      }
+      .product-section-title p {
+        max-width: 610px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .product-card {
+        min-height: 386px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: #fffaf4;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 14px 34px rgba(78, 44, 140, 0.08);
+      }
+      .product-image {
+        min-height: 148px;
+        padding: 18px;
+        display: flex;
+        align-items: end;
+        color: var(--cream);
+        font-size: 26px;
+        font-weight: 900;
+        line-height: 0.98;
+      }
+      .product-card:nth-child(1) .product-image { background: linear-gradient(135deg, #1e0c35, #4e2c8c); }
+      .product-card:nth-child(2) .product-image { background: linear-gradient(135deg, #2b114d, #683ab6); }
+      .product-card:nth-child(3) .product-image { background: linear-gradient(135deg, #351658, #5f2fa3); }
+      .product-card:nth-child(4) .product-image { background: linear-gradient(135deg, #24113f, #4b247f); }
+      .product-card:nth-child(5) .product-image { background: linear-gradient(135deg, #43206f, #7444bd); }
+      .product-card:nth-child(6) .product-image { background: linear-gradient(135deg, #2d124e, #5b2a96); }
+      .product-card:nth-child(7) .product-image { background: linear-gradient(135deg, #683ab6, #4e2c8c); }
+      .product-card:nth-child(8) .product-image { background: linear-gradient(135deg, #1c0d32, #6234a8); }
+      .product-body {
+        padding: 17px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+      .product-body h3 {
+        margin-top: 12px;
+        font-size: 20px;
+        line-height: 1.15;
+      }
+      .product-bottom { margin-top: auto; }
+      .product-price {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--gold);
+      }
+
+      .architecture {
+        color: var(--white);
+        background:
+          linear-gradient(135deg, var(--plum), var(--violet) 58%, #1c0d32);
+      }
+      .architecture .section-copy { color: rgba(255, 255, 255, 0.74); }
+      .architecture-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .architecture-card {
+        min-height: 250px;
+        padding: 24px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(239, 167, 38, 0.24);
+      }
+      .architecture-card b { color: var(--gold-2); }
+      .architecture-card p {
+        color: rgba(255, 255, 255, 0.74);
+        line-height: 1.58;
+      }
+
+      .taxonomy-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .taxonomy-card {
+        min-height: 154px;
+        padding: 18px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: #fffaf4;
+      }
+      .taxonomy-card b { color: var(--violet); }
+      .taxonomy-card p { color: var(--muted); line-height: 1.45; }
+
+      .cta {
+        color: var(--white);
+        background:
+          linear-gradient(90deg, rgba(36, 17, 63, 0.96), rgba(78, 44, 140, 0.78), rgba(184, 135, 46, 0.22)),
+          url("https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/f1-track-straight-bg-MvNKzwyMWpc83ZjMJtVVFw.webp") center / cover;
+      }
+      .cta .section-copy {
+        max-width: 720px;
+        margin-top: 18px;
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .footer {
+        padding: 28px 0;
+        background: #1c0d32;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 14px;
+      }
+      .footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 1020px) {
+        .nav-links a:not(.button) { display: none; }
+        .hero-inner, .course-feature { grid-template-columns: 1fr; }
+        .mission-strip, .product-grid, .taxonomy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .architecture-grid { grid-template-columns: 1fr; }
+        .section-head { display: block; }
+        .section-head .section-copy { margin-top: 16px; }
+      }
+
+      @media (max-width: 660px) {
+        .nav-inner { min-height: 68px; }
+        .audience-switch { display: none; }
+        .hero-inner { min-height: auto; padding: 52px 0; }
+        .hero-actions, .button { width: 100%; }
+        .mission-strip, .product-grid, .taxonomy-grid { grid-template-columns: 1fr; }
+        .product-section-title { display: block; }
+        section { padding: 62px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topline">TAG's not-for-profit pathway: courses and operating support for mission-driven organizations</div>
+    <header class="nav" aria-label="Primary navigation">
+      <div class="nav-inner">
+        <a href="/" aria-label="TAG home">
+          <img class="logo" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/PrimarylogoTAGforclearbackground_e4900ec5.png" alt="TAG">
+        </a>
+        <nav class="nav-links" aria-label="Page navigation">
+          <div class="audience-switch" aria-label="Audience switch"><a href="/home">For-Profit</a><span class="active">Not-for-Profit</span></div>
+          <a href="#courses">Courses</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#categories">Categories</a>
+          <a class="button dark" href="#assessment">Capacity Assessment</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-inner">
+          <div>
+            <span class="label">Not-for-profit learning pathway</span>
+            <h1>Your mission deserves an operating system designed to deliver it.</h1>
+            <p class="hero-copy">Courses and practical learning paths for mission-driven leaders who need stronger governance, resource stewardship, funder confidence, team capacity, and reliable mission delivery.</p>
+            <div class="hero-actions">
+              <a class="button green" href="#courses">Explore courses</a>
+              <a class="button light" href="#assessment">Start with capacity assessment</a>
+            </div>
+          </div>
+          <aside class="gateway-panel" aria-label="TAG audience selector">
+            <h3>Choose the operating reality you lead</h3>
+            <a class="gateway-option" href="#courses"><strong>I lead a not-for-profit organization</strong><span>Courses, tools, assessments, and operating support for sustainable mission delivery.</span></a>
+            <a class="gateway-option" href="https://tagaps.com/"><strong>I lead a for-profit business</strong><span>Continue to TAG's current performance advisory site for systems, talent, and business performance.</span></a>
+          </aside>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Built from the same TAG architecture. Translated for mission reality.</h2>
+            <p class="section-copy">The MD recommendation is the foundation: TAG should not create a second brand. It should create a distinct not-for-profit path inside one TAG ecosystem.</p>
+          </div>
+          <div class="mission-strip">
+            <article class="mission-item"><b>Mission ROI</b><p>Translate performance and profitability language into mission value, resource stewardship, and evidence of impact.</p></article>
+            <article class="mission-item"><b>Resource Stewardship</b><p>Help leaders see how funding, program economics, capacity, and financial decisions support mission delivery.</p></article>
+            <article class="mission-item"><b>Funder Confidence</b><p>Build reporting readiness, decision visibility, and operating discipline that funders and boards can trust.</p></article>
+            <article class="mission-item"><b>Sustainable Capacity</b><p>Strengthen staff, volunteer, board, and partner systems so mission delivery does not depend on heroic effort.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="wial-pattern" id="courses">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Not-for-Profit Courses</h2>
+            <p class="section-copy">This section uses the WIAL course page pattern: a complete program offer first, then individual course cards with image-style headers, price, and a clear enrollment action.</p>
+          </div>
+
+          <article class="course-feature">
+            <div class="feature-copy">
+              <span class="label">Complete learning path</span>
+              <h3>Complete Mission Performance Architecture Series - 7 Modules</h3>
+              <p>A guided program for executive directors, board members, operations leads, and nonprofit teams who need to make mission delivery visible, sustainable, and governable.</p>
+              <div class="feature-meta"><span>7 modules</span><span>Certificate path</span><span>Board-ready tools</span><span>Templates included</span></div>
+              <div class="price-line"><strong>$499.00</strong><span>suggested bundle price</span></div>
+              <a class="button dark" href="#">View full series</a>
+            </div>
+            <div class="feature-art"><b>Performance is designed, not demanded.</b><span>TAG Not-for-Profit Learning</span></div>
+          </article>
+
+          <div class="product-section-title">
+            <div><h3>Individual courses</h3><p>Standalone nonprofit courses can be sold like WIAL's individual trainings, while still mapping back to TAG's operating architecture.</p></div>
+            <a class="button light" href="#categories">Browse by category</a>
+          </div>
+
+          <div class="product-grid">
+            <article class="product-card"><div class="product-image">Mission ROI Foundations</div><div class="product-body"><span class="label">Financial Stewardship</span><h3>Mission ROI Foundations</h3><p>Show where resources create mission value and where capacity, funding, or reporting gaps hide.</p><div class="product-meta"><span>90 min</span><span>Board-ready</span></div><div class="product-bottom"><span class="product-price">$129.00</span><a class="button dark" href="#">Add to cart</a></div></div></article>
+            <article class="product-card"><div class="product-image">Board Clarity Sprint</div><div class="product-body"><span class="label">Governance</span><h3>Board Clarity Sprint</h3><p>Clarify board roles, decision rights, meeting rhythm, and accountability without adding bureaucracy.</p><div class="product-meta"><span>Workshop</span><span>Template</span></div><div class="product-bottom"><span class="product-price">$129.00</span><a class="button dark" href="#">Add to cart</a></div></div></article>
+            <article class="product-card"><div class="product-image">Grant Pipeline Builder</div><div class="product-body"><span class="label">Funding Readiness</span><h3>Grant Pipeline Builder</h3><p>Create a repeatable system for opportunities, deadlines, narratives, evidence, and funder follow-up.</p><div class="product-meta"><span>Self-paced</span><span>Beginner</span></div><div class="product-bottom"><span class="product-price">$129.00</span><a class="button dark" href="#">Add to cart</a></div></div></article>
+            <article class="product-card"><div class="product-image">Back-of-House Operating Model</div><div class="product-body"><span class="label">BaaS</span><h3>Back-of-House Operating Model</h3><p>Understand what an integrated operating partner does, what the board owns, and where TAG fits.</p><div class="product-meta"><span>2 hours</span><span>Leadership</span></div><div class="product-bottom"><span class="product-price">$129.00</span><a class="button dark" href="#">Add to cart</a></div></div></article>
+            <article class="product-card"><div class="product-image">Volunteer Systems That Scale</div><div class="product-body"><span class="label">People & Culture</span><h3>Volunteer Systems That Scale</h3><p>Design onboarding, communication, role clarity, and continuity across staff and volunteer teams.</p><div class="product-meta"><span>Live cohort</span><span>Intermediate</span></div><div class="product-bottom"><span class="product-price">$129.00</span><a class="button dark" href="#">Add to cart</a></div></div></article>
+            <article class="product-card"><div class="product-image">Automate the Administration</div><div class="product-body"><span class="label">Workflow Automation</span><h3>Automate the Administration</h3><p>Reduce manual reporting, duplicate data entry, and follow-up friction without automating judgment.</p><div class="product-meta"><span>AI-ready</span><span>Systems</span></div><div class="product-bottom"><span class="product-price">$129.00</span><a class="button dark" href="#">Add to cart</a></div></div></article>
+            <article class="product-card"><div class="product-image">Stakeholder Confidence Kit</div><div class="product-body"><span class="label">AIM</span><h3>Stakeholder Confidence Kit</h3><p>Turn operating clarity into funder, donor, member, and community-facing communication.</p><div class="product-meta"><span>Toolkit</span><span>Messaging</span></div><div class="product-bottom"><span class="product-price">$129.00</span><a class="button dark" href="#">Add to cart</a></div></div></article>
+            <article class="product-card"><div class="product-image">Capacity Assessment Lab</div><div class="product-body"><span class="label">Diagnostic</span><h3>Capacity Assessment Lab</h3><p>Identify where governance, systems, finance, people, data, or stakeholder confidence constrain delivery.</p><div class="product-meta"><span>Assessment</span><span>Next step</span></div><div class="product-bottom"><span class="product-price">$129.00</span><a class="button dark" href="#">Add to cart</a></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="architecture" id="architecture">
+        <div class="wrap">
+          <div class="section-head"><h2>The mission-performance architecture</h2><p class="section-copy">The MD recommends presenting services as an integrated operating architecture, not isolated boxes. Courses should teach that same model.</p></div>
+          <div class="architecture-grid">
+            <article class="architecture-card"><b>TAG</b><h3>Systems, talent, performance</h3><p>Courses on operating rhythms, decision visibility, staff and volunteer capability, service delivery, and measurement.</p></article>
+            <article class="architecture-card"><b>BIG</b><h3>Financial stewardship</h3><p>Courses on mission ROI, program economics, funding readiness, budget visibility, risk, and board reporting.</p></article>
+            <article class="architecture-card"><b>AIM</b><h3>Stakeholder clarity</h3><p>Courses on funder communication, impact narrative, digital presence, donor/member confidence, and community trust.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="categories">
+        <div class="wrap">
+          <div class="section-head"><h2>Course categories</h2><p class="section-copy">These categories come directly from the not-for-profit pathway recommendation and translate TAG's commercial architecture into mission-oriented language.</p></div>
+          <div class="taxonomy-grid">
+            <article class="taxonomy-card"><b>Governance & Board Clarity</b><p>Board roles, oversight, meeting rhythm, decision rights, and accountability.</p></article>
+            <article class="taxonomy-card"><b>Mission ROI & Stewardship</b><p>Program economics, resource allocation, cash-flow visibility, and evidence of impact.</p></article>
+            <article class="taxonomy-card"><b>Back-of-House as a Service</b><p>Ongoing operating support across systems, finance, talent, and communications.</p></article>
+            <article class="taxonomy-card"><b>Systems & Workflow Automation</b><p>Capacity recovery through better tools, documentation, data flow, and automation.</p></article>
+            <article class="taxonomy-card"><b>People, Volunteers & Culture</b><p>Staff, volunteer, leadership, partner, and board capability continuity.</p></article>
+            <article class="taxonomy-card"><b>Funding & Funder Confidence</b><p>Grant readiness, reporting discipline, funder materials, and trust-building evidence.</p></article>
+            <article class="taxonomy-card"><b>Stakeholder Communication</b><p>Community, member, donor, partner, and funder-facing clarity.</p></article>
+            <article class="taxonomy-card"><b>Capacity Assessment</b><p>Diagnostics across governance, systems, finance, people, data, and confidence.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="assessment">
+        <div class="wrap">
+          <span class="label">Recommended first conversion</span>
+          <h2>See what is constraining your mission.</h2>
+          <p class="section-copy">The course page should not only sell training. It should also route leaders into TAG's NFP Capacity Assessment and BaaS conversation when they need a deeper operating partner.</p>
+          <div class="hero-actions"><a class="button green" href="#">Start capacity assessment</a><a class="button light" href="#">Explore BaaS pathway</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <span>TAG Not-for-Profit Courses</span>
+        <span>A distinct not-for-profit pathway inside the TAG ecosystem.</span>
+      </div>
+    </footer>
+  </body>
+</html>
