@@ -77,6 +77,13 @@
             opacity: 1;
         }
 
+        .profit-toggle{display:inline-flex;align-items:center;margin-left:auto;background:#fff;border-radius:999px;overflow:hidden;border:1px solid #e2e2e6;box-shadow:0 1px 3px rgba(0,0,0,.12);flex-shrink:0;}
+        .profit-toggle a{padding:.55rem 1.25rem;font-size:.8rem;font-weight:700;letter-spacing:.01em;color:var(--dark-blue);text-decoration:none;white-space:nowrap;transition:background-color .2s ease,color .2s ease;}
+        .profit-toggle a:hover{color:#fff;}
+        .profit-toggle a:first-child:hover{background:var(--orange);}
+        .profit-toggle a:last-child:hover{background:#4b2e97;}
+        @media (max-width:640px){.profit-toggle a{padding:.42rem .85rem;font-size:.68rem;}}
+
         /* Navbar Container - Sticky */
         #navbar-container {
             position: sticky;
@@ -905,6 +912,7 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
             <a href="https://www.bigaps.com/" target="_blank" rel="noopener noreferrer">
                 <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663397493018/behwqDBXQJFSAV5v6UzR8C/logo-big_89fdd27e.png" alt="BIG" class="top-bar-logo">
             </a>
+            <div class="profit-toggle"><a href="/home">For-Profit</a><a href="/contact?audience=not-for-profit">Not-for-Profit</a></div>
         </div>
     </div>
 </div>
