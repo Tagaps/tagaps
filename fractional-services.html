@@ -701,4 +701,13 @@ html body section.hero .container .hero-content .hero-text p.subtitle{
     flex-shrink:0!important;
   }
 }
+</style><style id="tag-hero-visual-side-by-side">
+@media (min-width:641px){
+  section.hero .container .hero-content{display:contents!important;}
+}
+@media (min-width:641px){
+  html body section.hero .container{grid-template-columns:56% 44%!important;}
+  html body section.hero .container .hero-content .hero-text{width:auto!important;max-width:100%!important;}
+  html body section.hero .container .hero-content .hero-visual{width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;justify-content:center!important;}
+}
 </style>
