@@ -22,6 +22,9 @@
 .pdf-modal input{width:100%;padding:.7rem .9rem;margin-bottom:1rem;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:var(--white);font-family:inherit;font-size:.95rem}
 .pdf-modal input::placeholder{color:rgba(255,255,255,.35)}
 .pdf-modal input:focus{outline:none;border-color:var(--turquoise)}
+.pdf-modal-checkbox{display:flex;align-items:flex-start;gap:.6rem;margin:0 0 1.2rem;cursor:pointer}
+.pdf-modal-checkbox input[type="checkbox"]{width:auto;margin:.15rem 0 0;padding:0;flex-shrink:0;accent-color:var(--turquoise)}
+.pdf-modal-checkbox span{color:rgba(255,255,255,.75);font-size:.85rem;line-height:1.4;font-weight:400}
 .pdf-modal-submit{width:100%;min-height:48px;border:0;border-radius:50px;background:var(--turquoise);color:var(--white);font-weight:800;font-size:1rem;cursor:pointer;transition:filter .2s ease}
 .pdf-modal-submit:hover{filter:brightness(1.08)}
 .pdf-modal-submit:disabled{opacity:.7;cursor:default}
@@ -167,7 +170,7 @@ nav .nav-links a.contact-btn:hover{
   <section class="resources-section resources-path">
     <div class="container">
       <div class="path-head">
-        <h2>Move through the lab in sequence.</h2>
+        <h2>Move through our resources in sequence.</h2>
         <p>Each station gives leaders one clear next move: see the pattern, build the discipline, diagnose the condition, then master the architecture.</p>
       </div>
       <div class="asset-list">
@@ -228,8 +231,10 @@ nav .nav-links a.contact-btn:hover{
       <input type="text" id="pdfModalName" name="name" placeholder="Your name" required>
       <label for="pdfModalEmail">Email</label>
       <input type="email" id="pdfModalEmail" name="email" placeholder="you@company.com" required>
-      <label for="pdfModalPhone">Phone</label>
-      <input type="tel" id="pdfModalPhone" name="phone" placeholder="Your phone number" required>
+      <label class="pdf-modal-checkbox" for="pdfModalNewsletter">
+        <input type="checkbox" id="pdfModalNewsletter" name="newsletter_opt_in" value="yes">
+        <span>I'd like to receive TAG's newsletter.</span>
+      </label>
       <input type="hidden" name="resource_requested" id="pdfModalResourceField">
       <input type="hidden" name="_subject" id="pdfModalSubjectField">
       <input type="hidden" name="_template" value="table">
