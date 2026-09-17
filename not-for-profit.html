@@ -130,7 +130,7 @@
       }
 
       .hero-inner {
-        min-height: 700px;
+        min-height: 650px;
         padding: 74px 0 58px;
         display: grid;
         grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.75fr);
@@ -446,6 +446,76 @@
         section { padding: 62px 0; }
       }
     </style>
+<style id="tag-unified-hero-type">
+:root{
+  --tag-hero-heading-size:clamp(39px,5.8vw,50px);
+  --tag-hero-heading-line:1.14;
+  --tag-hero-copy-size:clamp(16px,2.3vw,19px);
+  --tag-hero-copy-line:1.5;
+}
+html body .hero h1,
+html body section.hero h1,
+html body section.hero .container .hero-content .hero-text h1,
+html body .hero .hero-text h1,
+html body .hero-section h1,
+html body .page-hero h1,
+html body .service-hero h1,
+html body .case-hero h1,
+html body .article-hero h1,
+html body .services-page .services-hero h1,
+html body .caas-page .caas-hero h1,
+html body .caas-hero h1{
+  font-size:var(--tag-hero-heading-size)!important;
+  line-height:var(--tag-hero-heading-line)!important;
+  letter-spacing:0!important;
+  text-wrap:balance!important;
+  max-width:min(760px,100%)!important;
+}
+html body .hero h1 span,
+html body section.hero h1 span,
+html body .hero .hero-text h1 span,
+html body .hero-section h1 span,
+html body .page-hero h1 span,
+html body .service-hero h1 span,
+html body .case-hero h1 span,
+html body .article-hero h1 span{
+  font-size:inherit!important;
+  line-height:inherit!important;
+  letter-spacing:inherit!important;
+}
+html body .hero p:not(.hero-orientation):not(.subtitle),
+html body section.hero p:not(.hero-orientation):not(.subtitle),
+html body section.hero .container .hero-content .hero-text p:not(.hero-orientation):not(.subtitle),
+html body .hero .hero-text p:not(.hero-orientation):not(.subtitle),
+html body .hero-section p,
+html body .page-hero p,
+html body .service-hero p,
+html body .case-hero p,
+html body .article-hero p,
+html body .services-page .services-hero p,
+html body .caas-page .caas-hero p,
+html body .caas-hero p{
+  font-size:var(--tag-hero-copy-size)!important;
+  line-height:var(--tag-hero-copy-line)!important;
+  max-width:min(720px,100%)!important;
+}
+html body .hero .subtitle,
+html body .hero p.subtitle,
+html body section.hero .hero-text p.subtitle,
+html body section.hero .container .hero-content .hero-text p.subtitle{
+  font-size:var(--tag-hero-copy-size)!important;
+  line-height:var(--tag-hero-copy-line)!important;
+}
+@media (max-width:640px){
+  :root{
+    --tag-hero-heading-size:clamp(34px,10vw,39px);
+    --tag-hero-copy-size:clamp(16px,4.3vw,17px);
+    --tag-hero-heading-line:1.1;
+  }
+  html body .hero h1,html body section.hero h1,html body section.hero .container .hero-content .hero-text h1,html body .services-page .services-hero h1,html body .caas-page .caas-hero h1,html body .caas-hero h1{width:auto!important;max-width:100%!important;}
+  html body .hero p:not(.hero-orientation):not(.subtitle),html body section.hero p:not(.hero-orientation):not(.subtitle),html body .services-page .services-hero p,html body .caas-page .caas-hero p,html body .caas-hero p{max-width:100%!important;}
+}
+</style>
   </head>
   <body>
     <div class="topline">TAG's not-for-profit pathway: courses and operating support for mission-driven organizations</div>
