@@ -382,5 +382,35 @@ html body section.hero .container .hero-content .hero-text p.subtitle{
   });
 })();
 </script>
+
+<style id="tag-cookie-consent-style">
+.tag-cookie-consent{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:2147483000;background:#181921;color:#fff;border:1px solid rgba(153,170,166,.35);box-shadow:0 18px 50px rgba(0,0,0,.28);border-radius:14px;padding:1rem;display:none;font-family:'Antipasto','Poppins',sans-serif}.tag-cookie-consent.is-visible{display:block}.tag-cookie-consent__inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}.tag-cookie-consent__copy{font-size:.9rem;line-height:1.5;color:#c9d5d2;text-align:left}.tag-cookie-consent__copy strong{display:block;color:#fff;font-size:1rem;margin-bottom:.15rem}.tag-cookie-consent__copy a{color:#00af8d;text-decoration:underline;text-underline-offset:3px}.tag-cookie-consent__actions{display:flex;gap:.75rem;flex-shrink:0}.tag-cookie-consent__btn{appearance:none;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:transparent;color:#fff;cursor:pointer;font:inherit;font-weight:800;padding:.7rem 1rem;white-space:nowrap}.tag-cookie-consent__btn--accept{background:#e84005;border-color:#e84005}.tag-cookie-consent__btn:hover{transform:translateY(-1px)}@media(max-width:720px){.tag-cookie-consent__inner{flex-direction:column;align-items:flex-start}.tag-cookie-consent__actions{width:100%;flex-direction:column}.tag-cookie-consent__btn{width:100%}}
+</style>
+<div class="tag-cookie-consent" id="tag-cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+  <div class="tag-cookie-consent__inner">
+    <div class="tag-cookie-consent__copy"><strong>Cookie preferences</strong>We use cookies to keep the site working, improve performance, and understand how visitors use TAG. You can accept all cookies or continue with necessary cookies only. <a href="/privacy.html">Privacy Policy</a></div>
+    <div class="tag-cookie-consent__actions"><button class="tag-cookie-consent__btn" type="button" data-tag-cookie-choice="necessary">Necessary only</button><button class="tag-cookie-consent__btn tag-cookie-consent__btn--accept" type="button" data-tag-cookie-choice="accepted">Accept all</button></div>
+  </div>
+</div>
+<script id="tag-cookie-consent-script">
+(function(){
+  var key='tag_cookie_consent';
+  var banner=document.getElementById('tag-cookie-consent');
+  if(!banner) return;
+  function setCookie(value){
+    try{localStorage.setItem(key,value);}catch(e){}
+    var secure=location.protocol==='https:'?'; Secure':'';
+    document.cookie=key+'='+encodeURIComponent(value)+'; Max-Age=31536000; Path=/; SameSite=Lax'+secure;
+  }
+  function hasChoice(){
+    try{if(localStorage.getItem(key)) return true;}catch(e){}
+    return document.cookie.indexOf(key+'=')!==-1;
+  }
+  if(!hasChoice()) banner.classList.add('is-visible');
+  banner.querySelectorAll('[data-tag-cookie-choice]').forEach(function(btn){
+    btn.addEventListener('click',function(){setCookie(btn.getAttribute('data-tag-cookie-choice'));banner.classList.remove('is-visible');});
+  });
+})();
+</script>
 </body>
 </html>
