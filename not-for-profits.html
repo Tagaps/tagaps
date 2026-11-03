@@ -238,7 +238,7 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 .page-hero-copy{max-width:700px}
 .page-hero-copy h1{margin:0 0 1.5rem}
 .page-hero p{color:rgba(255,255,255,.95)}
-.nfp-kicker{color:var(--turquoise)!important;font-weight:900;letter-spacing:.09em;text-transform:uppercase;font-size:.85rem!important;margin:0 0 1rem!important}
+.nfp-kicker{color:var(--yellow)!important;font-weight:900;letter-spacing:.09em;text-transform:uppercase;font-size:.85rem!important;margin:0 0 1rem!important}
 .nfp-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}
 
 .nfp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:.9rem 1.9rem;border:2px solid transparent;border-radius:999px;font:inherit;font-weight:800;font-size:1rem;line-height:1.2;text-decoration:none;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease,color .2s ease}
@@ -252,11 +252,11 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 .nfp-btn--outline:hover{background:var(--dark-blue);color:#fff}
 
 .nfp-section{padding:clamp(3.5rem,7vw,6rem) 0;scroll-margin-top:1rem}
-.nfp-section--pale{background:#f7faf9}
+.nfp-section--pale{background:#fff6ec}
 .nfp-section--dark{background:var(--dark-blue);color:#fff}
 .nfp-head{max-width:820px;margin:0 0 clamp(2rem,4vw,3rem)}
 .nfp-eyebrow{font-size:.85rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#c43a07;margin:0 0 .9rem}
-.nfp-section--dark .nfp-eyebrow{color:var(--turquoise)}
+.nfp-section--dark .nfp-eyebrow{color:var(--yellow)}
 .nfp-head h2{font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.15;font-weight:900;margin:0 0 1rem;color:var(--dark-blue);text-wrap:balance}
 .nfp-section--dark .nfp-head h2{color:#fff}
 .nfp-head p{font-size:clamp(1.02rem,1.5vw,1.2rem);line-height:1.6;color:#4a5651;margin:0}
@@ -265,7 +265,7 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 
 .nfp-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;margin-bottom:2.5rem}
 .nfp-stat{background:#fff;border:1px solid rgba(153,170,166,.35);border-top:4px solid var(--c,var(--orange));border-radius:12px;padding:1.75rem 1.5rem;box-shadow:0 8px 24px rgba(24,25,33,.05)}
-.nfp-stat strong{display:block;font-size:clamp(2.6rem,4.4vw,3.6rem);line-height:1;font-weight:900;color:#c43a07;margin-bottom:.75rem}
+.nfp-stat strong{display:block;font-size:clamp(2.6rem,4.4vw,3.6rem);line-height:1;font-weight:900;color:var(--n,#c43a07);margin-bottom:.75rem}
 .nfp-stat p{margin:0;font-size:1rem;line-height:1.5;color:#3d4a46}
 .nfp-statement{max-width:860px;font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.5;font-weight:800;margin:0;color:var(--dark-blue);text-wrap:balance}
 
@@ -284,11 +284,11 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 .nfp-card{background:#fff;border:1px solid rgba(153,170,166,.4);border-top:4px solid var(--c,var(--orange));border-radius:12px;padding:1.75rem 1.5rem;display:flex;flex-direction:column;gap:.65rem}
 .nfp-card h3{font-size:1.2rem;line-height:1.25;font-weight:900;margin:0;color:var(--dark-blue)}
 .nfp-card p{margin:0;font-size:1rem;line-height:1.6;color:#4a5651}
-.nfp-num{font-size:.85rem;font-weight:900;letter-spacing:.08em;color:#c43a07;margin:0}
-.nfp-cards--ways .nfp-card{background:#f7faf9}
+.nfp-num{font-size:.85rem;font-weight:900;letter-spacing:.08em;color:var(--n,#c43a07);margin:0}
+.nfp-cards--ways .nfp-card{background:#fffaf4}
 
 .nfp-result{display:grid;grid-template-columns:minmax(200px,270px) 1fr;gap:2rem 3rem;align-items:center;background:var(--dark-blue);color:#fff;border-radius:16px;padding:clamp(1.75rem,4vw,2.75rem);margin-top:clamp(2rem,4vw,3rem)}
-.nfp-result .nfp-eyebrow{color:var(--turquoise);margin-bottom:.35rem}
+.nfp-result .nfp-eyebrow{color:var(--yellow);margin-bottom:.35rem}
 .nfp-result .nfp-result-num{font-size:clamp(3.5rem,6vw,4.75rem);line-height:1;font-weight:900;color:#e84005;margin:0}
 .nfp-result .nfp-result-sub{margin:.35rem 0 0;font-size:1rem;color:rgba(255,255,255,.82)}
 .nfp-result h3{font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.4;font-weight:800;margin:0 0 .9rem;color:#fff}
@@ -298,7 +298,9 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 .nfp-section:not(.nfp-section--dark) .nfp-link:not(.nfp-result .nfp-link){color:#c43a07}
 
 .nfp-keep{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-top:clamp(2rem,4vw,3rem)}
-.nfp-keep div{border-top:4px solid var(--turquoise);padding-top:1.1rem}
+.nfp-keep div{border-top:4px solid var(--orange);padding-top:1.1rem}
+.nfp-keep div:nth-child(2){border-top-color:var(--yellow)}
+.nfp-keep div:nth-child(3){border-top-color:var(--turquoise)}
 .nfp-keep h3{font-size:1.2rem;font-weight:900;margin:0 0 .5rem;color:var(--dark-blue)}
 .nfp-keep p{margin:0;font-size:1rem;line-height:1.6;color:#4a5651}
 
@@ -308,17 +310,20 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 .nfp-other .nfp-card h4{font-size:1.05rem;font-weight:900;margin:0;color:var(--dark-blue)}
 .nfp-other .nfp-card p{font-size:.97rem}
 
-.nfp-bridge{background:var(--turquoise);color:var(--dark-blue);padding:clamp(3rem,6vw,4.5rem) 0}
+.nfp-bridge{background:var(--yellow);color:var(--dark-blue);padding:clamp(3rem,6vw,4.5rem) 0}
 .nfp-bridge .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem}
 .nfp-bridge-copy{max-width:700px}
 .nfp-bridge .nfp-eyebrow{color:var(--dark-blue)}
 .nfp-bridge h2{font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.2;font-weight:900;margin:0 0 .9rem}
 .nfp-bridge p{margin:0;font-size:1.08rem;line-height:1.55;color:rgba(24,25,33,.88)}
 
-.nfp-closing{background:var(--dark-blue);color:#fff;padding:clamp(4rem,8vw,6.5rem) 0;scroll-margin-top:1rem}
+.nfp-closing{background:#d23c05;color:#fff;padding:clamp(4rem,8vw,6.5rem) 0;scroll-margin-top:1rem}
 .nfp-closing-inner{max-width:780px}
 .nfp-closing h2{font-size:clamp(2rem,4vw,3rem);line-height:1.15;font-weight:900;margin:0 0 1.1rem;color:#fff;text-wrap:balance}
-.nfp-closing p{font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.6;color:rgba(255,255,255,.84);margin:0}
+.nfp-closing p{font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.6;color:#fff;margin:0}
+.nfp-closing .nfp-btn--primary{background:#fff;color:var(--dark-blue)}
+.nfp-closing .nfp-btn--primary:hover{background:var(--yellow);box-shadow:0 10px 24px rgba(24,25,33,.3)}
+.nfp-closing .nfp-btn--ghost:hover{color:#d23c05}
 .nfp-closing .nfp-actions{margin-top:2rem}
 
 .nfp-get{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:clamp(2rem,4vw,3rem)}
@@ -370,10 +375,10 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
       <p>Findings from the Ontario Nonprofit Network&rsquo;s 2026 State of the Sector survey of 741 nonprofits.</p>
     </div>
     <div class="nfp-stats">
-      <div class="nfp-stat" style="--c:var(--orange)"><strong>65%</strong><p>reported facing constraints on their work over the past year.</p></div>
-      <div class="nfp-stat" style="--c:var(--turquoise)"><strong>+23 pts</strong><p>increase in organizations filling staffing gaps by splitting roles across existing staff.</p></div>
-      <div class="nfp-stat" style="--c:var(--neon-green)"><strong>43%</strong><p>find senior leaders difficult to recruit.</p></div>
-      <div class="nfp-stat" style="--c:var(--yellow)"><strong>61%</strong><p>say board and committee members are the hardest volunteer roles to fill.</p></div>
+      <div class="nfp-stat" style="--c:var(--orange);--n:#c43a07"><strong>65%</strong><p>reported facing constraints on their work over the past year.</p></div>
+      <div class="nfp-stat" style="--c:var(--turquoise);--n:#007a63"><strong>+23 pts</strong><p>increase in organizations filling staffing gaps by splitting roles across existing staff.</p></div>
+      <div class="nfp-stat" style="--c:var(--yellow);--n:#b57300"><strong>43%</strong><p>find senior leaders difficult to recruit.</p></div>
+      <div class="nfp-stat" style="--c:var(--neon-green);--n:#5a8200"><strong>61%</strong><p>say board and committee members are the hardest volunteer roles to fill.</p></div>
     </div>
     <p class="nfp-statement">These aren&rsquo;t people problems. They&rsquo;re system conditions, and system conditions can be redesigned.</p>
   </div>
@@ -386,31 +391,31 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
       <h2>Making the invisible visible, then designing around it.</h2>
     </div>
     <div class="nfp-breaks">
-      <article class="nfp-break" style="--c:var(--orange)">
+      <article class="nfp-break" style="--c:var(--orange);--n:#c43a07">
         <p class="nfp-label">What we see</p>
         <h3>Roles absorbed by default</h3>
         <p>Program staff take on fundraising, communications, and admin work they were never hired or trained for.</p>
         <div class="nfp-design"><p class="nfp-label">What we design</p><span class="nfp-chip nfp-chip--tag">TAG</span><p>Role and talent architecture that puts the right work with the right people.</p></div>
       </article>
-      <article class="nfp-break" style="--c:var(--orange)">
+      <article class="nfp-break" style="--c:var(--yellow);--n:#b57300">
         <p class="nfp-label">What we see</p>
         <h3>Leadership roles hard to fill</h3>
         <p>Senior, executive, and middle management positions stay open, and the load lands on whoever is left.</p>
         <div class="nfp-design"><p class="nfp-label">What we design</p><span class="nfp-chip nfp-chip--tag">TAG</span><p>Self-directed teams and fractional leadership, so work moves without depending on a missing layer.</p></div>
       </article>
-      <article class="nfp-break" style="--c:var(--turquoise)">
+      <article class="nfp-break" style="--c:var(--turquoise);--n:#007a63">
         <p class="nfp-label">What we see</p>
         <h3>Expenses outpacing revenue</h3>
         <p>Leaders face hard decisions about programs, operations, and staff without a clear view of the numbers.</p>
         <div class="nfp-design"><p class="nfp-label">What we design</p><span class="nfp-chip nfp-chip--big">BIG</span><p>Financial clarity and decision systems that show what&rsquo;s sustainable before the hard choices arrive.</p></div>
       </article>
-      <article class="nfp-break" style="--c:var(--neon-green)">
+      <article class="nfp-break" style="--c:var(--neon-green);--n:#5a8200">
         <p class="nfp-label">What we see</p>
         <h3>Earned income and visibility declining</h3>
         <p>Building revenue takes expertise and time that stretched teams don&rsquo;t have.</p>
         <div class="nfp-design"><p class="nfp-label">What we design</p><span class="nfp-chip nfp-chip--aim">AIM</span><p>Clear positioning and activation, so the people you need to reach understand why you matter.</p></div>
       </article>
-      <article class="nfp-break" style="--c:var(--orange)">
+      <article class="nfp-break" style="--c:var(--orange);--n:#c43a07">
         <p class="nfp-label">What we see</p>
         <h3>Boards hard to build</h3>
         <p>Board seats are the hardest volunteer roles to fill, and governance grows more complex each year.</p>
@@ -428,9 +433,9 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
       <p>Your expertise is the mission. Instead of every organization building its own finance, talent, and systems capacity from scratch, TAG delivers the back of house you need, as a shared service.</p>
     </div>
     <div class="nfp-cards">
-      <div class="nfp-card" style="--c:var(--turquoise)"><h3>Finance and reporting</h3><p>Bookkeeping, monthly reporting, and board-ready financials.</p></div>
-      <div class="nfp-card" style="--c:var(--orange)"><h3>Talent and HR processes</h3><p>Role design, recruitment support, and onboarding systems.</p></div>
-      <div class="nfp-card" style="--c:var(--neon-green)"><h3>Systems and workflow</h3><p>Tools, automation, and information flow.</p></div>
+      <div class="nfp-card" style="--c:var(--orange);--n:#c43a07"><h3>Finance and reporting</h3><p>Bookkeeping, monthly reporting, and board-ready financials.</p></div>
+      <div class="nfp-card" style="--c:var(--yellow);--n:#b57300"><h3>Talent and HR processes</h3><p>Role design, recruitment support, and onboarding systems.</p></div>
+      <div class="nfp-card" style="--c:var(--turquoise);--n:#007a63"><h3>Systems and workflow</h3><p>Tools, automation, and information flow.</p></div>
     </div>
 
     <div class="nfp-result">
@@ -455,10 +460,10 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
     <div class="nfp-other">
       <h3>Other ways to work with us</h3>
       <div class="nfp-cards">
-        <div class="nfp-card" style="--c:var(--yellow)"><h4>Fixed-price systems check</h4><p>A short, defined assessment that makes your systems visible.</p></div>
-        <div class="nfp-card" style="--c:var(--yellow)"><h4>Fractional leadership</h4><p>Senior systems, talent, or financial leadership a few days a month.</p></div>
-        <div class="nfp-card" style="--c:var(--yellow)"><h4>Cohort engagements</h4><p>Several organizations working together, sharing the cost.</p></div>
-        <div class="nfp-card" style="--c:var(--yellow)"><h4>Capability transfer</h4><p>Every engagement is designed so your organization owns the system when we step back.</p></div>
+        <div class="nfp-card" style="--c:var(--orange);--n:#c43a07"><h4>Fixed-price systems check</h4><p>A short, defined assessment that makes your systems visible.</p></div>
+        <div class="nfp-card" style="--c:var(--turquoise);--n:#007a63"><h4>Fractional leadership</h4><p>Senior systems, talent, or financial leadership a few days a month.</p></div>
+        <div class="nfp-card" style="--c:var(--neon-green);--n:#5a8200"><h4>Cohort engagements</h4><p>Several organizations working together, sharing the cost.</p></div>
+        <div class="nfp-card" style="--c:var(--yellow);--n:#b57300"><h4>Capability transfer</h4><p>Every engagement is designed so your organization owns the system when we step back.</p></div>
       </div>
       <a class="nfp-link" href="/capacity-as-a-service">Learn more about Capacity as a Service &rarr;</a>
     </div>
