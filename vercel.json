@@ -9,6 +9,7 @@
   "redirects": [
     { "source": "/assessment", "destination": "/resources", "statusCode": 308 },
     { "source": "/assessment/", "destination": "/resources", "statusCode": 308 },
-    { "source": "/services", "destination": "/organization-tag", "statusCode": 308 }
+    { "source": "/services", "destination": "/organization-tag", "statusCode": 308 },
+    { "source": "/not-for-profit", "destination": "/not-for-profits", "statusCode": 308 }
   ]
 }
