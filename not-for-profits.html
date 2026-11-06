@@ -329,12 +329,6 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 .nfp-get{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:clamp(2rem,4vw,3rem)}
 .nfp-get h3{font-size:1.3rem;font-weight:900;margin:0 0 .5rem;color:var(--yellow)}
 .nfp-get p{margin:0;font-size:1.02rem;line-height:1.6;color:rgba(255,255,255,.84)}
-.nfp-section--dark .nfp-result{background:#fff;color:var(--dark-blue);margin-top:0}
-.nfp-section--dark .nfp-result .nfp-eyebrow{color:#c43a07}
-.nfp-section--dark .nfp-result .nfp-result-num{color:#c43a07}
-.nfp-section--dark .nfp-result .nfp-result-sub,.nfp-section--dark .nfp-result p{color:#3d4a46}
-.nfp-section--dark .nfp-result h3{color:var(--dark-blue)}
-.nfp-section--dark .nfp-result .nfp-link{color:#c43a07}
 
 .nfp-share{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem}
 .nfp-share-copy{max-width:640px}
@@ -343,13 +337,20 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 .nfp-share-actions{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
 .nfp-share-status{flex-basis:100%;margin:.25rem 0 0;font-size:.95rem;font-weight:700;color:#0a7a62;min-height:1.4em}
 
-.nfp-source{border-top:1px solid rgba(153,170,166,.35);padding:1.75rem 0;background:#fff}
-.nfp-source p{margin:0;font-size:.88rem;line-height:1.6;color:#5b6764}
 
+.nfp-cards--two,.nfp-cards--ways{grid-template-columns:repeat(2,1fr)}
+.nfp-breaks{grid-auto-flow:row}
+@supports (grid-template-rows:subgrid){
+  .nfp-break{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:.85rem}
+  .nfp-design{margin-top:0;align-self:stretch}
+}
+.nfp-section--dark .nfp-get{margin-bottom:0}
+.nfp-page ~ footer{margin-top:0}
 @media (max-width:760px){
   .page-hero{min-height:0;background-position:center}
   .nfp-result{grid-template-columns:1fr}
   .nfp-actions .nfp-btn,.nfp-bridge .nfp-btn{width:100%}
+  .nfp-cards--two,.nfp-cards--ways{grid-template-columns:1fr}
 }
 </style>
 <main class="nfp-page">
@@ -360,8 +361,7 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
       <h1>Doing more with less isn&rsquo;t a strategy. It&rsquo;s a design problem.</h1>
       <p>TAG designs the systems, talent, and financial clarity mission-driven organizations need, so your people can put their energy into the mission instead of the back office.</p>
       <div class="nfp-actions">
-        <a class="nfp-btn nfp-btn--primary" href="#systems-check">Book a Nonprofit Systems Check</a>
-        <a class="nfp-btn nfp-btn--ghost" href="#how-we-work">See how we work</a>
+        <a class="nfp-btn nfp-btn--primary" href="/contact#schedule">Book a Nonprofit Systems Check</a>
       </div>
     </div>
   </div>
@@ -376,7 +376,7 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
     </div>
     <div class="nfp-stats">
       <div class="nfp-stat" style="--c:var(--orange);--n:#c43a07"><strong>65%</strong><p>reported facing constraints on their work over the past year.</p></div>
-      <div class="nfp-stat" style="--c:var(--turquoise);--n:#007a63"><strong>+23 pts</strong><p>increase in organizations filling staffing gaps by splitting roles across existing staff.</p></div>
+      <div class="nfp-stat" style="--c:var(--turquoise);--n:#007a63"><strong>23%</strong><p>increase in organizations filling staffing gaps by splitting roles across existing staff.</p></div>
       <div class="nfp-stat" style="--c:var(--yellow);--n:#b57300"><strong>43%</strong><p>find senior leaders difficult to recruit.</p></div>
       <div class="nfp-stat" style="--c:var(--neon-green);--n:#5a8200"><strong>61%</strong><p>say board and committee members are the hardest volunteer roles to fill.</p></div>
     </div>
@@ -430,22 +430,23 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
     <div class="nfp-head">
       <p class="nfp-eyebrow">How we work within your constraints</p>
       <h2>Run on our infrastructure now. Build your own when it makes sense, and we&rsquo;ll help you build it.</h2>
-      <p>Your expertise is the mission. Instead of every organization building its own finance, talent, and systems capacity from scratch, TAG delivers the back of house you need, as a shared service.</p>
+      <p>Your expertise is the mission. Instead of every organization building its own finance, talent, marketing, and systems capacity from scratch, TAG delivers the back of house you need, as a shared service.</p>
     </div>
-    <div class="nfp-cards">
-      <div class="nfp-card" style="--c:var(--orange);--n:#c43a07"><h3>Finance and reporting</h3><p>Bookkeeping, monthly reporting, and board-ready financials.</p></div>
-      <div class="nfp-card" style="--c:var(--yellow);--n:#b57300"><h3>Talent and HR processes</h3><p>Role design, recruitment support, and onboarding systems.</p></div>
-      <div class="nfp-card" style="--c:var(--turquoise);--n:#007a63"><h3>Systems and workflow</h3><p>Tools, automation, and information flow.</p></div>
+    <div class="nfp-cards nfp-cards--two">
+      <div class="nfp-card" style="--c:var(--orange);--n:#c43a07"><h3>Systems and Workflow</h3><p>Tools, automation, and information flow.</p></div>
+      <div class="nfp-card" style="--c:var(--yellow);--n:#b57300"><h3>Talent</h3><p>Role design, recruitment support, and onboarding systems.</p></div>
+      <div class="nfp-card" style="--c:var(--turquoise);--n:#007a63"><h3>Finance and Reporting</h3><p>Bookkeeping, monthly reporting, and board-ready financials.</p></div>
+      <div class="nfp-card" style="--c:var(--neon-green);--n:#5a8200"><h3>Marketing &amp; Communications</h3><p>Brand, funder and donor communication, and campaign support.</p></div>
     </div>
 
     <div class="nfp-result">
       <div>
         <p class="nfp-eyebrow">Recent client result</p>
-        <p class="nfp-result-num">47%</p>
+        <p class="nfp-result-num">53%</p>
         <p class="nfp-result-sub">lower monthly finance costs</p>
       </div>
       <div>
-        <h3>A recent not-for-profit client cut its monthly finance costs from $7,500 to $4,000 within 120 days.</h3>
+        <h3>A recent not-for-profit client cut its monthly finance costs from $7,500 to $3,500 within 120 days.</h3>
         <p>We automated its expense and vendor invoice process. Submissions now come in through a simple web form and flow directly into the accounting software, reducing the time its accountant spends on them.</p>
         <a class="nfp-link" href="/contact?intent=client-reference">Want to hear it firsthand? We&rsquo;ll connect you with their leadership &rarr;</a>
       </div>
@@ -487,16 +488,13 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
       <h2>See what&rsquo;s invisible in your organization.</h2>
       <p>The Nonprofit Systems Check looks at the same indicators the sector tracks: demand and capacity, revenue and expenses, people, and volunteers and board. You leave with a clear view of where design will make the biggest difference.</p>
       <div class="nfp-actions">
-        <a class="nfp-btn nfp-btn--primary" href="/contact?intent=nonprofit-systems-check">Book your systems check</a>
+        <a class="nfp-btn nfp-btn--primary" href="/contact#schedule">Book your systems check</a>
         <a class="nfp-btn nfp-btn--ghost" href="/contact?intent=discovery-call">Or schedule a free 30-minute discovery call</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="nfp-source">
-  <div class="container"><p>Source: Ontario Nonprofit Network, 2026 State of the Sector survey, 741 Ontario nonprofits surveyed May&ndash;July 2026.</p></div>
-</section>
 </main>
 
 <footer><div class="footer-content"><div class="footer-section"><a href="/"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663397493018/RtUPfWsgEAaldZbl.png" alt="TAG APS" class="footer-logo" loading="lazy"></a></div><div class="footer-section"><h3>Services</h3><a href="/workflow-automation">AI & Workflow Automation</a><a href="/capacity-as-a-service">Capacity as a Service</a><a href="/team-service">Self-directed Teams</a><a href="/systems-architecture">Systems Architecture</a><a href="/talent-capability">Talent Capability</a></div><div class="footer-section"><h3>Company</h3><a href="/about">About</a><a href="/funders">For Funders</a><a href="/not-for-profits">Not-for-Profits</a><a href="/our-thinking">Our Thinking</a><a href="/our-work">Our Work</a><a href="/tag-in-action">TAG in action</a></div></div><div class="footer-bottom"><p>&copy; 2026 TAG. All rights reserved.</p><div class="footer-bottom-links"><a href="/privacy.html">Privacy Policy</a><a href="/terms">Terms of Service</a></div></div></footer>

@@ -329,12 +329,6 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 .nfp-get{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:clamp(2rem,4vw,3rem)}
 .nfp-get h3{font-size:1.3rem;font-weight:900;margin:0 0 .5rem;color:var(--yellow)}
 .nfp-get p{margin:0;font-size:1.02rem;line-height:1.6;color:rgba(255,255,255,.84)}
-.nfp-section--dark .nfp-result{background:#fff;color:var(--dark-blue);margin-top:0}
-.nfp-section--dark .nfp-result .nfp-eyebrow{color:#c43a07}
-.nfp-section--dark .nfp-result .nfp-result-num{color:#c43a07}
-.nfp-section--dark .nfp-result .nfp-result-sub,.nfp-section--dark .nfp-result p{color:#3d4a46}
-.nfp-section--dark .nfp-result h3{color:var(--dark-blue)}
-.nfp-section--dark .nfp-result .nfp-link{color:#c43a07}
 
 .nfp-share{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem}
 .nfp-share-copy{max-width:640px}
@@ -343,13 +337,20 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
 .nfp-share-actions{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
 .nfp-share-status{flex-basis:100%;margin:.25rem 0 0;font-size:.95rem;font-weight:700;color:#0a7a62;min-height:1.4em}
 
-.nfp-source{border-top:1px solid rgba(153,170,166,.35);padding:1.75rem 0;background:#fff}
-.nfp-source p{margin:0;font-size:.88rem;line-height:1.6;color:#5b6764}
 
+.nfp-cards--two,.nfp-cards--ways{grid-template-columns:repeat(2,1fr)}
+.nfp-breaks{grid-auto-flow:row}
+@supports (grid-template-rows:subgrid){
+  .nfp-break{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:.85rem}
+  .nfp-design{margin-top:0;align-self:stretch}
+}
+.nfp-section--dark .nfp-get{margin-bottom:0}
+.nfp-page ~ footer{margin-top:0}
 @media (max-width:760px){
   .page-hero{min-height:0;background-position:center}
   .nfp-result{grid-template-columns:1fr}
   .nfp-actions .nfp-btn,.nfp-bridge .nfp-btn{width:100%}
+  .nfp-cards--two,.nfp-cards--ways{grid-template-columns:1fr}
 }
 </style>
 <main class="nfp-page">
@@ -376,7 +377,7 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
     </div>
     <div class="nfp-stats">
       <div class="nfp-stat" style="--c:var(--orange);--n:#c43a07"><strong>56%</strong><p>named growing and maintaining existing work as their largest funding gap.</p></div>
-      <div class="nfp-stat" style="--c:var(--yellow);--n:#b57300"><strong>+23 pts</strong><p>increase in organizations splitting roles across existing staff to fill gaps.</p></div>
+      <div class="nfp-stat" style="--c:var(--yellow);--n:#b57300"><strong>23%</strong><p>increase in organizations splitting roles across existing staff to fill gaps.</p></div>
       <div class="nfp-stat" style="--c:var(--turquoise);--n:#007a63"><strong>65%</strong><p>reported facing constraints on their work over the past year.</p></div>
     </div>
     <p class="nfp-statement">Foundation grants were the only revenue source nonprofits reported growing year over year. That makes funders the most important lever for strengthening the systems behind the mission.</p>
@@ -408,18 +409,6 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
       <div><h3>Stronger grantees</h3><p>Organizations with clear roles, working systems, and capacity to deliver on their mission.</p></div>
       <div><h3>Clearer reporting</h3><p>Financial clarity that shows you, and their boards, how resources are being used.</p></div>
       <div><h3>Ownership, not dependency</h3><p>Every engagement is designed so the organization owns the system when TAG steps back.</p></div>
-    </div>
-    <div class="nfp-result">
-      <div>
-        <p class="nfp-eyebrow">Recent client result</p>
-        <p class="nfp-result-num">47%</p>
-        <p class="nfp-result-sub">lower monthly finance costs</p>
-      </div>
-      <div>
-        <h3>A recent not-for-profit client cut its monthly finance costs from $7,500 to $4,000 within 120 days.</h3>
-        <p>We automated its expense and vendor invoice process. Submissions now come in through a simple web form and flow directly into the accounting software, reducing the time its accountant spends on them.</p>
-        <a class="nfp-link" href="/contact?intent=client-reference">Want to hear it firsthand? We&rsquo;ll connect you with their leadership &rarr;</a>
-      </div>
     </div>
   </div>
 </section>
@@ -453,9 +442,6 @@ html,body{max-width:100%;overflow-x:hidden!important}body{min-width:0!important}
   </div>
 </section>
 
-<section class="nfp-source">
-  <div class="container"><p>Source: Ontario Nonprofit Network, 2026 State of the Sector survey, 741 Ontario nonprofits surveyed May&ndash;July 2026.</p></div>
-</section>
 <script>
 (function(){
   var PAGE_URL = 'https://www.tagaps.com/funders';
